@@ -1,0 +1,1191 @@
+<!DOCTYPE html><html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /><title>Scala基础 &mdash; ssgao</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/primer-css/css/primer.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/components/collection.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/components/repo-card.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/sections/repo-list.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/components/boxed-group.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/globals/common.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/globals/responsive.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/posts/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/octicons/octicons/octicons.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mzlogin/rouge-themes@master/dist/github.css"><link rel="canonical" href="http://localhost:4000/2021/10/21/scala%E5%9F%BA%E7%A1%80/"><link rel="alternate" type="application/atom+xml" title="ssgao" href="http://localhost:4000/feed.xml"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/favicon.ico"><meta property="og:title" content="Scala基础"><meta name="keywords" content="scala"><meta name="og:keywords" content="scala"><meta name="description" content="数据类型```scalaUnit 表示无值,和其他语言中的void等同。用作不返回任何结果的方法的结果类型。Null null或空引用Any Any是所有其他类的超类AnyRef AnyRef类是Scala里所有引用类(reference class)的基类"><meta name="og:description" content="数据类型```scalaUnit 表示无值,和其他语言中的void等同。用作不返回任何结果的方法的结果类型。Null null或空引用Any Any是所有其他类的超类AnyRef AnyRef类是Scala里所有引用类(reference class)的基类"><meta property="og:url" content="http://localhost:4000/2021/10/21/scala%E5%9F%BA%E7%A1%80/"><meta property="og:site_name" content="ssgao"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN" /><meta property="article:published_time" content="2021-10-21"> <script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/jquery-ui.js"></script> <script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/main.js"></script></head><body class="" data-mz=""><header class="site-header"><div class="container"><h1><a href="http://localhost:4000/" title="ssgao"><span class="octicon octicon-mark-github"></span> ssgao</a></h1><button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button><nav class="site-header-nav" role="navigation"> <a href="http://localhost:4000/" class=" site-header-nav-item" target="" title="首页">首页</a> <a href="http://localhost:4000/categories/" class=" site-header-nav-item" target="" title="分类">分类</a> <a href="http://localhost:4000/links/" class=" site-header-nav-item" target="" title="链接">链接</a> <a href="http://localhost:4000/about/" class=" site-header-nav-item" target="" title="关于">关于</a></nav></div></header><section class="collection-head small geopattern" data-pattern-id="Scala基础"><div class="container"><div class="columns"><div class="column three-fourths"><div class="collection-title"><h1 class="collection-header">Scala基础</h1><div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/10/21 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="http://localhost:4000/categories/#scala" title="scala">scala</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 21811 字，约 63 分钟 </span></div></div></div><div class="column one-fourth mobile-hidden"><div class="collection-title"> <img style="height:72px;width:72px" src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/images/qrcode.jpg" alt="ssgao断点" /></div></div></div></div></section><section class="container content"><div class="columns"><div class="column three-fourths" ><article class="article-content markdown-body"><h3 id="数据类型">数据类型</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Unit</span> <span class="n">表示无值</span><span class="o">,</span><span class="n">和其他语言中的void等同</span><span class="err">。</span><span class="n">用作不返回任何结果的方法的结果类型</span><span class="err">。</span>
+<span class="nc">Null</span> <span class="n">null或空引用</span>
+<span class="nc">Any</span>	<span class="nc">Any是所有其他类的超类</span>
+<span class="nc">AnyRef</span>	<span class="nc">AnyRef类是Scala里所有引用类</span><span class="o">(</span><span class="n">reference</span> <span class="n">class</span><span class="o">)</span><span class="n">的基类</span>
+
+</code></pre></div></div><p><a name="xDukI"></a></p><h3 id="变量">变量</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">一</span><span class="err">、</span><span class="n">变量</span><span class="err">：</span> <span class="n">在程序运行过程中其值可能发生改变的量叫做变量</span><span class="err">。</span><span class="n">如</span><span class="err">：</span><span class="n">时间</span><span class="err">，</span><span class="n">年龄</span><span class="err">。</span>
+<span class="n">二</span><span class="err">、</span><span class="n">常量</span> <span class="n">在程序运行过程中其值不会发生变化的量叫做常量</span><span class="err">。</span><span class="n">如</span><span class="err">：</span><span class="n">数值</span> <span class="mi">3</span><span class="err">，</span><span class="n">字符</span><span class="sc">'A'</span><span class="err">。</span>
+
+<span class="o">&gt;</span> <span class="n">在定义var</span> <span class="n">类型的成员变量的时候</span><span class="o">,</span><span class="n">可以使用_来初始化成员变量</span>
+<span class="o">&gt;</span> <span class="n">val类型的成员变量</span><span class="o">,</span><span class="n">必须要自己手动初始化</span>
+
+<span class="k">var</span> <span class="n">myVar</span> <span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Foo"</span> <span class="n">定义变量</span>
+<span class="k">val</span> <span class="nv">myVal</span> <span class="k">:</span> <span class="kt">String</span> <span class="o">=</span><span class="s">"Foo"</span> <span class="n">定义常量</span>
+
+<span class="k">var</span> <span class="nc">VariableName</span> <span class="k">:</span> <span class="kt">DataType</span> <span class="o">[</span><span class="kt">=</span>  <span class="kt">Initial</span> <span class="kt">Value</span><span class="o">]</span>
+<span class="n">或</span>
+<span class="k">val</span> <span class="nv">VariableName</span> <span class="k">:</span> <span class="kt">DataType</span> <span class="o">[</span><span class="kt">=</span>  <span class="kt">Initial</span> <span class="kt">Value</span><span class="o">]</span> <span class="n">val类似于java中的final</span><span class="o">,</span><span class="n">值不可改变</span>
+
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PersonParam</span> <span class="o">{</span>
+  <span class="c1">// 方式一: 定义成员变量姓名和年龄</span>
+  <span class="c1">// val name:String =""</span>
+  <span class="c1">// 方式二: 采用类型推断实现</span>
+  <span class="c1">// val name =""</span>
+
+  <span class="c1">//方式三: 采用下划线来初始化成员变量值</span>
+  <span class="c1">// val name :String=_ // 这样写会报错,因为采用下划线来初始化成员变量值这种方式,只针对var类型的变量有效</span>
+  <span class="k">var</span> <span class="n">name</span><span class="k">:</span><span class="kt">String</span> <span class="o">=</span><span class="k">_</span>
+  <span class="k">var</span> <span class="n">age</span> <span class="k">:</span><span class="kt">Int</span> <span class="o">=</span><span class="k">_</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="IbPlg"></a></p><h3 id="访问权限">访问权限</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span><span class="n">的使用</span>
+<span class="k">private</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span> <span class="n">只能在当前类中访问</span><span class="o">,</span><span class="n">伴生对象也不可以访问</span>
+
+<span class="k">private</span><span class="o">[</span><span class="kt">package</span><span class="o">]</span> <span class="k">class</span> <span class="nc">ClassName</span><span class="k">:</span> <span class="kt">在当前包和子包下可见</span>
+<span class="k">private</span><span class="o">[</span><span class="kt">class</span><span class="o">]</span> <span class="n">calss</span> <span class="nc">ClassNanme</span><span class="k">:</span> <span class="kt">在当前包可见</span>
+
+
+<span class="n">class的访问权限修饰符</span>
+  <span class="k">private</span>
+  <span class="k">private</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span>
+  <span class="k">protected</span>
+	<span class="k">protected</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span>
+  <span class="n">默认的</span><span class="o">,</span><span class="n">scala没有public关键字</span><span class="o">,</span><span class="n">任何没有被private或protected的成员修饰的变量都是公共的</span>
+</code></pre></div></div><p><a name="lVdWG"></a></p><h3 id="块表达式">块表达式</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scala中使用</span><span class="o">{}</span><span class="n">表示一个块表达式</span>
+<span class="n">值就是最后一个表达式的值</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="nv">a</span> <span class="o">={</span><span class="nf">println</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">);</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="o">}</span>
+<span class="k">val</span> <span class="nv">a</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+<span class="mi">2</span>
+
+</code></pre></div></div><p><a name="5XD4x"></a></p><h3 id="scala循环">scala循环</h3><p><a name="5aXvw"></a></p><h4 id="for循环">for循环</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nf">for</span><span class="o">(</span> <span class="n">i</span><span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">3</span><span class="o">){</span>  <span class="c1">// 外循环, 控制行数</span>
+	<span class="nf">for</span><span class="o">(</span> <span class="n">j</span><span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="o">){</span> <span class="c1">// 内循环, 控制列数</span>
+    <span class="nf">print</span><span class="o">(</span><span class="s">"*"</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="nf">println</span><span class="o">()</span>
+<span class="o">}</span>
+<span class="n">等价于</span>
+<span class="nf">for</span><span class="o">(</span> <span class="n">i</span><span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">3</span><span class="o">,</span> <span class="n">j</span><span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="o">)</span> <span class="nf">if</span><span class="o">(</span><span class="n">j</span><span class="o">==</span><span class="mi">5</span><span class="o">)</span> <span class="nf">println</span><span class="o">(*)</span> <span class="k">else</span> <span class="nf">print</span><span class="o">(</span><span class="s">"*"</span><span class="o">)</span>
+
+
+<span class="n">for循环导航守卫</span>
+	<span class="n">scala</span><span class="o">&gt;</span> <span class="nf">for</span><span class="o">(</span><span class="n">i</span><span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">10</span>  <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="o">)</span> <span class="nf">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="mi">3</span>
+    <span class="mi">6</span>
+    <span class="mi">9</span>
+
+<span class="n">在for循环体中</span><span class="o">,</span><span class="nf">可以使用yield表达式构建出来一个集合</span><span class="o">(</span><span class="n">可以简单理解为</span><span class="k">:</span><span class="kt">就是一组数据</span><span class="o">)</span><span class="n">我们把使用yield的for表达式称为推导式</span><span class="err">。</span>
+  <span class="n">scala</span><span class="o">&gt;</span> <span class="k">var</span> <span class="n">a</span> <span class="k">=</span> <span class="nf">for</span><span class="o">(</span><span class="n">i</span><span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">10</span><span class="o">)</span> <span class="k">yield</span> <span class="n">i</span><span class="o">*</span><span class="mi">10</span><span class="o">;</span>
+  <span class="k">var</span> <span class="n">a</span><span class="k">:</span> <span class="kt">IndexedSeq</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">70</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="mi">100</span><span class="o">)</span>
+  <span class="n">scala</span><span class="o">&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+  <span class="nc">Vector</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">70</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="mi">100</span><span class="o">)</span>
+
+</code></pre></div></div><p><a name="6AQOm"></a></p><h3 id="方法和函数">方法和函数</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">方法声明</span>
+  <span class="k">def</span> <span class="nf">functionName</span> <span class="o">([</span><span class="kt">参数列表</span><span class="o">])</span><span class="k">:</span> <span class="err">[</span><span class="kt">return</span> <span class="k">type</span><span class="err">]</span>
+  <span class="kt">如果我们不懈等于号和方法主体</span><span class="o">,</span> <span class="n">那么方法被隐式声明为抽象abstract</span><span class="o">,</span><span class="n">包含它的类型也是一个抽象类型</span><span class="err">。</span>
+
+<span class="n">方法定义</span>
+	<span class="n">由一个</span> <span class="k">def</span> <span class="nf">关键字开始</span><span class="err">，</span><span class="n">紧接着是可选的参数列表</span><span class="err">，</span>
+			<span class="n">一个冒号</span> <span class="k">:</span> <span class="kt">和方法的返回类型</span><span class="err">，</span>
+			<span class="kt">一个等于号</span> <span class="o">=</span> <span class="err">，</span><span class="n">最后是方法的主体</span><span class="err">。</span>
+  <span class="k">def</span> <span class="nf">functionName</span> <span class="o">([</span><span class="kt">参数列表</span><span class="o">])</span> <span class="k">:</span> <span class="err">[</span><span class="kt">return</span> <span class="k">type</span><span class="err">]</span> <span class="o">=</span> <span class="o">{</span>
+   <span class="n">function</span> <span class="n">body</span>
+   <span class="k">return</span> <span class="o">[</span><span class="kt">expr</span><span class="o">]</span>
+	<span class="o">}</span>
+</code></pre></div></div><p><br /></p><p><a name="T5v8p"></a></p><h4 id="函数">函数</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scala支持函数式编程</span><span class="o">,</span><span class="n">将来编写spark</span><span class="o">/</span><span class="n">flink程序会大量使用到函数</span><span class="err">。</span>
+<span class="n">定义函数</span>
+<span class="k">val</span> <span class="nv">函数变量名</span> <span class="k">=</span> <span class="o">(</span><span class="n">参数名</span><span class="k">:</span> <span class="kt">参数类型</span><span class="o">,</span> <span class="n">参数名</span><span class="k">:</span><span class="kt">参数类型...</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">函数体</span>
+ <span class="o">&gt;</span> <span class="nf">在scala中函数是一个对象</span><span class="o">(</span><span class="n">变量</span><span class="o">)</span>
+ <span class="o">&gt;</span> <span class="n">类似于方法</span><span class="o">,</span><span class="n">函数也有参数列表和返回值</span>
+ <span class="o">&gt;</span> <span class="n">函数定义不需要使用def定义</span>
+ <span class="o">&gt;</span> <span class="n">无需指定返回值类型</span>
+
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="nv">add</span> <span class="k">=</span> <span class="o">(</span><span class="n">a</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span><span class="n">b</span><span class="k">:</span><span class="kt">Int</span><span class="o">)=&gt;{</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">}</span>
+<span class="k">val</span> <span class="nv">add</span><span class="k">:</span> <span class="o">(</span><span class="kt">Int</span><span class="o">,</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Int</span> <span class="k">=</span> <span class="nc">$Lambda$994</span><span class="o">/</span><span class="mi">1588976146</span><span class="k">@</span><span class="mi">4</span><span class="n">a50d04a</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nf">add</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">res1</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">5</span>
+ 
+</code></pre></div></div><p><br /></p><p><a name="kRBLi"></a></p><h4 id="惰性方法">惰性方法</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">当记录方法返回值的变量被声明为lazy时</span><span class="o">,</span><span class="n">方法的执行将被推迟</span><span class="o">,</span><span class="n">直到我们首次使用改值时</span><span class="o">,</span><span class="n">方法才会执行</span><span class="o">,</span><span class="n">像这样的方法叫做</span><span class="s">"惰性方法"</span>
+ <span class="o">&gt;</span> <span class="n">java中没有提供原生态的</span><span class="s">"惰性"</span><span class="n">技术</span><span class="o">,</span><span class="n">但是可以通过特定的代码结构实现</span><span class="o">,</span><span class="n">这种结构被称为</span><span class="s">"懒加载(也叫延迟加载)"</span>
+ <span class="o">&gt;</span> <span class="k">lazy</span> <span class="n">不能修饰var类型的变量</span>
+
+<span class="n">scala</span><span class="o">&gt;</span>  <span class="k">def</span> <span class="nf">sum</span><span class="o">(</span><span class="n">a</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span><span class="n">b</span><span class="k">:</span><span class="kt">Int</span><span class="o">)={</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">}</span>
+<span class="k">def</span> <span class="nf">sum</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">lazy</span> <span class="k">var</span> <span class="n">c</span> <span class="k">=</span> <span class="nf">sum</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span>  <span class="c1">//不能修饰var类型的变量</span>
+       <span class="n">error</span><span class="k">:</span> <span class="kt">lazy</span> <span class="kt">not</span> <span class="kt">allowed</span> <span class="kt">here.</span> <span class="kt">Only</span> <span class="kt">vals</span> <span class="kt">can</span> <span class="kt">be</span> <span class="kt">lazy</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">lazy</span> <span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="nf">sum</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span>
+<span class="k">lazy</span> <span class="k">val</span> <span class="nv">c</span><span class="k">:</span> <span class="kt">Int</span> <span class="c1">// unevaluated</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+<span class="mi">5</span>
+</code></pre></div></div><p><br /></p><p><a name="bIoEA"></a></p><h4 id="方法和函数的区别">方法和函数的区别</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">在java中</span><span class="o">,</span><span class="n">方法和函数之间没有任何区别</span><span class="o">,</span><span class="n">只是叫法不同</span><span class="o">,</span><span class="n">但是在scala中</span><span class="o">,</span><span class="n">函数和方法就有区别</span>
+ <span class="mi">1</span><span class="o">)</span> <span class="n">方法是隶属于类或者对象的</span><span class="o">,</span><span class="n">在运行时</span><span class="o">,</span><span class="n">它是加载到JVM的方法区中</span>
+ <span class="mi">2</span><span class="o">)</span> <span class="n">可以将函数对象赋值给一个变量</span><span class="o">,</span><span class="n">在运行时</span><span class="o">,</span><span class="n">它是加载到JVM的堆内存中</span>
+ <span class="mi">3</span><span class="o">)</span> <span class="n">函数是一个对象</span><span class="o">,</span><span class="n">继承自FunctionN</span><span class="o">,</span> <span class="n">函数对象有apply</span> <span class="n">curried</span><span class="o">,</span> <span class="n">toString</span><span class="o">,</span> <span class="n">tupled</span> <span class="n">这些方法</span><span class="o">,</span> <span class="n">方法则没有</span>
+
+<span class="n">结论</span><span class="k">:</span> <span class="kt">在scala中</span><span class="o">,</span><span class="n">函数是对象</span><span class="o">,</span><span class="n">而方法是属于对象的</span><span class="o">,</span><span class="n">所以可以理解为</span> <span class="n">方法属于函数</span><span class="err">。</span>
+
+</code></pre></div></div><p><a name="rZKVV"></a></p><h2 id="scala相关的类">scala相关的类</h2><p><a name="tyaXJ"></a></p><h3 id="scala类">scala类</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Point</span><span class="o">(</span><span class="n">xc</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">yc</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>  <span class="c1">//scala的类定义可以有参数,称为类参数,类参数在整个类中都可以访问</span>
+ <span class="o">{</span> 
+   <span class="k">var</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">xc</span>
+   <span class="k">var</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">yc</span>
+
+   <span class="k">def</span> <span class="nf">move</span><span class="o">(</span><span class="n">dx</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">dy</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">x</span> <span class="k">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>
+      <span class="n">y</span> <span class="k">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>
+      <span class="nf">println</span> <span class="o">(</span><span class="s">"x 的坐标点: "</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
+      <span class="nf">println</span> <span class="o">(</span><span class="s">"y 的坐标点: "</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">Test</span> <span class="o">{</span>
+   <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="nv">pt</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+
+      <span class="c1">// 移到一个新的位置</span>
+      <span class="nv">pt</span><span class="o">.</span><span class="py">move</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="xQsiR"></a></p><h4 id="创建类的简写形式">创建类的简写形式</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">如果类是空的</span><span class="o">,</span><span class="n">没有任何成员</span><span class="o">,</span><span class="n">可以省略</span><span class="o">{}</span>
+<span class="o">&gt;</span> <span class="n">如果类的构造器的参数是空的</span><span class="o">,</span><span class="nf">可以省略</span><span class="o">()</span>
+
+<span class="k">object</span> <span class="nc">ClassDemo</span><span class="o">{</span>
+	<span class="k">class</span> <span class="nc">Person</span><span class="o">;</span>
+  <span class="k">def</span> <span class="nf">main</span> <span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span><span class="kt">Unit</span><span class="o">={</span>
+     <span class="k">val</span> <span class="nv">p</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">p</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="NWJkB"></a> ### <a name="C6mnZ"></a></p><h4 id="下划线初始化成员变量">下划线初始化成员变量</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">在定义var类型的变量时</span><span class="o">,</span><span class="n">可以使用</span><span class="s">"_"</span><span class="n">来初始化成员变量</span><span class="o">.</span> <span class="n">val类型的成员变量</span><span class="o">,</span><span class="n">必须要自己手动初始化</span>
+<span class="k">var</span> <span class="n">类型使用</span><span class="s">"_"</span><span class="n">初始化的默认值</span>
+<span class="nc">String</span> <span class="k">=&gt;</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">Int</span> <span class="k">=&gt;</span> <span class="mi">0</span>
+<span class="nc">Boolean</span> <span class="k">=&gt;</span> <span class="kc">false</span>
+<span class="nc">Double</span> <span class="k">=&gt;</span> <span class="mf">0.0</span>
+</code></pre></div></div><p><a name="TcPvj"></a> ### <a name="QlRED"></a></p><h4 id="类的构造器重载">类的构造器重载</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">一个主构造器</span><span class="err">（</span><span class="n">函数</span><span class="err">），</span><span class="n">其他是辅助构造器</span>
+    <span class="n">辅助构造器的实现体里</span><span class="err">，</span><span class="n">必须引用</span><span class="err">（</span><span class="n">调用</span><span class="err">）</span><span class="n">主构造器</span>
+    <span class="n">主构造器的参数</span><span class="err">，</span><span class="n">也会成为类的属性</span>
+    <span class="n">辅助构造函数的名称都是this</span>
+    <span class="n">辅助构造函数中必须以一个其他辅助构造器或主构造器的调用开始</span><span class="err">。</span>
+
+
+<span class="n">主构造器</span>
+	<span class="k">class</span> <span class="nc">类名</span><span class="o">(</span><span class="k">var</span><span class="o">/</span><span class="k">val</span> <span class="nv">参数名</span><span class="k">:</span><span class="kt">类型</span><span class="o">=</span><span class="n">默认值</span><span class="o">,</span> <span class="k">var</span><span class="o">/</span><span class="k">val</span> <span class="nv">参数名</span><span class="k">:</span><span class="kt">类型</span> <span class="o">=</span> <span class="n">默认值</span><span class="o">){</span>
+    <span class="c1">//构造代码块</span>
+  <span class="o">}</span>
+  <span class="o">&gt;</span> <span class="n">主构造器的参数列表直接定义在类名后面</span><span class="o">,</span><span class="n">添加了var</span><span class="o">/</span><span class="n">val表示直接通过主构造器定义成员变量</span>
+  <span class="o">&gt;</span> <span class="n">构造器参数可以指定默认值</span>
+  <span class="o">&gt;</span> <span class="n">创建实例</span><span class="o">,</span><span class="n">调用构造器可以指定字段进行初始化</span>
+  <span class="o">&gt;</span> <span class="n">整个class中除了字段定义和方法定义的代码都是构造代码块</span>
+<span class="n">ps</span><span class="k">:</span> <span class="kt">var/val</span> <span class="kt">参数名</span><span class="o">,</span><span class="n">不写var</span><span class="o">/</span><span class="k">val</span> <span class="nv">默认为val</span><span class="o">,</span><span class="nv">没有无法直接通过对象</span><span class="o">.</span><span class="py">参数名获取信息</span><span class="o">,</span><span class="n">必须显示声明为var类型</span>
+
+
+<span class="k">object</span> <span class="nc">PersonBTest</span><span class="o">{</span>
+  
+  <span class="k">class</span> <span class="nc">TestA</span><span class="o">{}</span> <span class="c1">// 等价于 class TestA 如果类是空的,没有任何成员, 可以省略{}</span>
+  
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="c1">// 调用默认构造器   如果构造器的参数为空,可以省略()</span>
+    <span class="k">val</span> <span class="nv">scala</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PersonB</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">20</span><span class="o">);</span>
+    <span class="c1">// 调用默认构造器</span>
+    <span class="k">val</span> <span class="nv">scala2</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PersonB</span><span class="o">();</span>
+    <span class="c1">// 调用 def this(newName:String) 构造器</span>
+    <span class="k">val</span> <span class="nv">scala3</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PersonB</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">);</span>
+    <span class="c1">// 调用 def this(newName:String,age:Int) 构造器</span>
+    <span class="k">val</span> <span class="nv">scala4</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PersonB</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span>
+    
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">PersonB</span> <span class="o">{</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"aaaa"</span><span class="o">);</span>
+  
+  <span class="k">private</span> <span class="k">var</span> <span class="n">myName</span><span class="o">=</span><span class="s">"kylin"</span><span class="o">;</span>
+  <span class="k">private</span> <span class="k">var</span> <span class="n">age</span> <span class="k">=</span> <span class="mi">10</span><span class="o">;</span>
+  
+  <span class="c1">// 辅助构造器 默认的名字都是this,且不能修改</span>
+  <span class="k">def</span> <span class="nf">this</span><span class="o">(</span><span class="n">newName</span><span class="k">:</span><span class="kt">String</span><span class="o">){</span>
+    <span class="nf">this</span><span class="o">();</span> <span class="c1">//第一行必须调用主构造器或者其他构造器</span>
+    <span class="n">myName</span> <span class="k">=</span> <span class="n">newName</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"this is a newName"</span> <span class="o">+</span> <span class="n">newName</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="k">def</span> <span class="nf">this</span><span class="o">(</span><span class="n">newName</span><span class="k">:</span><span class="kt">String</span><span class="o">,</span><span class="n">age</span><span class="k">:</span><span class="kt">Int</span><span class="o">){</span>
+    <span class="nf">this</span><span class="o">(</span><span class="n">newName</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="py">age</span><span class="k">=</span><span class="n">age</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"this is a newage : "</span><span class="o">+</span><span class="n">age</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">ClassDemo</span> <span class="o">{</span>
+  <span class="k">class</span> <span class="nc">Customer</span><span class="o">(</span><span class="n">name</span><span class="k">:</span><span class="kt">String</span><span class="o">,</span><span class="n">age</span><span class="k">:</span><span class="kt">Int</span><span class="o">){</span>
+     <span class="c1">// 主构造器,通过代码块实现</span>
+     <span class="o">{</span>
+       <span class="nf">println</span><span class="o">(</span><span class="s">"name = "</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
+       <span class="nf">println</span><span class="o">(</span><span class="s">"age = "</span><span class="o">+</span><span class="s">"age"</span><span class="o">);</span>
+       <span class="nf">println</span><span class="o">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">20</span><span class="o">)</span>
+     <span class="o">}</span>
+
+    <span class="k">def</span> <span class="nf">this</span><span class="o">(</span><span class="n">arr</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">]){</span>
+       <span class="nf">this</span><span class="o">(</span><span class="nf">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span><span class="mi">20</span><span class="o">);</span> <span class="c1">// 第一行代码必须访问主构造器或其他的辅助构造器</span>
+       <span class="nf">println</span><span class="o">(</span><span class="s">"辅助构造器"</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">a</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Customer</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"张三"</span><span class="o">,</span><span class="s">"李四"</span><span class="o">))</span>
+    <span class="k">var</span> <span class="n">b</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Customer</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">,</span><span class="mi">30</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">输出结果</span><span class="k">:</span>
+<span class="kt">name</span> <span class="o">=</span> <span class="n">张三</span>
+<span class="n">age</span> <span class="k">=</span> <span class="n">age</span>
+<span class="o">--------------------</span>
+<span class="n">辅助构造器</span>
+<span class="n">name</span> <span class="k">=</span> <span class="n">ssgao</span>
+<span class="n">age</span> <span class="k">=</span> <span class="n">age</span>
+<span class="o">--------------------</span>
+</code></pre></div></div><p><a name="biWPZ"></a> ### <a name="YgS1Y"></a></p><h4 id="成员private与默认public">成员private与默认public</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 成员定义private的时候会默认定义private的get.set方法 因为是私有的所以不可访问
+ * 这个时候就需要自定定义set get方法来访问name
+ */</span>
+<span class="k">object</span> <span class="nc">ProTest</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">scala</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Hiscala</span><span class="o">;</span>
+
+    <span class="nv">scala</span><span class="o">.</span><span class="py">sayName</span><span class="o">();</span>
+    <span class="nv">scala</span><span class="o">.</span><span class="py">sayName</span><span class="o">;</span>
+<span class="c1">//    println(scala.name);</span>
+<span class="c1">//    private 是私有的,不可直接访问,但是可以通过getName方法进行访问</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">scala</span><span class="o">.</span><span class="py">getName</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">Hiscala</span><span class="o">{</span>
+    <span class="k">private</span> <span class="k">var</span> <span class="n">name</span> <span class="o">=</span><span class="s">"scala"</span><span class="o">;</span>
+    <span class="k">def</span> <span class="nf">sayName</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
+      <span class="nf">println</span><span class="o">(</span><span class="s">"hi "</span><span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">def</span> <span class="nf">getName</span> <span class="k">=</span><span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="9nA8I"></a></p><h4 id="private包名">private[包名]</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span><span class="o">[</span><span class="kt">包名</span><span class="o">],</span> <span class="k">private</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span> <span class="n">可以放在</span><span class="s">"字段"</span> <span class="s">"方法"</span><span class="n">和</span><span class="s">"类"</span><span class="n">上</span><span class="o">,</span> <span class="n">用来限制访问权限</span><span class="err">。</span>
+ 
+	<span class="k">private</span><span class="o">[</span><span class="kt">包名</span><span class="o">]</span> <span class="n">包名可以是父包名或当前包名</span><span class="o">,</span> <span class="n">如果是父包名</span><span class="o">,</span><span class="n">则父包和子包都可以访问</span><span class="err">。</span>
+	<span class="k">private</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span> <span class="n">修饰的方法或字段只能在本类访问</span><span class="o">,</span> <span class="n">如果是字段编译成java的时候就没有get</span><span class="o">/</span><span class="n">set方法</span>
+
+<span class="n">如果有两个名称相同的子包</span><span class="o">,</span><span class="n">比如</span> <span class="k">package</span> <span class="nn">x.y.z.x.v</span> <span class="n">有两个x</span><span class="o">,</span><span class="k">private</span><span class="o">[</span><span class="kt">x</span><span class="o">]</span><span class="n">为是否离当前包最近的一个包生效</span><span class="err">。</span>
+
+</code></pre></div></div><p><a name="VFwOc"></a> ### <a name="2sEIP"></a></p><h3 id="伴生对象object">伴生对象object</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span><span class="o">)</span> <span class="k">object</span> <span class="nc">成员函数为静态的</span><span class="o">,</span><span class="n">可以直接调用</span>
+<span class="mi">2</span><span class="o">)</span> <span class="k">object</span> <span class="nc">有自带的默认构造器</span><span class="o">,</span> <span class="n">而且只在调用object成员的时候第一次执行</span><span class="o">,</span><span class="n">后面不执行</span><span class="err">。</span>
+   <span class="k">object</span> <span class="nc">对象不能带参数</span><span class="o">,</span> <span class="n">class可以带有参数</span>
+<span class="mi">3</span><span class="o">)</span> <span class="n">同文件中同名的class类即为其伴生类</span><span class="o">,</span><span class="n">object为class的伴生对象</span><span class="err">。</span><span class="n">伴生类与伴生对象必须在同一个文件之中</span><span class="err">。</span>
+<span class="mi">4</span><span class="o">)</span> <span class="n">伴生对象中有apply方法</span><span class="o">,</span> <span class="n">当前类的伴生对象的工厂方法</span><span class="err">。</span>
+<span class="mi">5</span><span class="o">)</span> <span class="n">抽象类依旧可以通过伴生对象的工厂方法来构造实例化</span><span class="err">。</span>
+<span class="mi">6</span><span class="err">）</span><span class="n">伴生类和伴生对象可以互相访问私有的成员和方法</span>  <span class="n">ps</span><span class="k">:</span> <span class="kt">private</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span> <span class="n">修饰的不能访问</span><span class="err">。</span>
+
+<span class="n">scala没有静态的修饰符</span><span class="o">,</span><span class="n">但object下的成员都是静态的</span><span class="o">,</span><span class="n">若有同名的class</span><span class="o">,</span><span class="n">则其作为它的伴生类</span><span class="o">.</span>
+<span class="n">object中一般可以为伴生类做一些初始化的操作</span><span class="o">,</span><span class="n">如我们常常使用的var</span> <span class="n">array</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">)(</span><span class="n">ps</span><span class="k">:</span> <span class="kt">其使用了apply方法</span><span class="o">)</span>
+
+<span class="n">有了伴生对象</span><span class="o">,</span><span class="nf">并且覆盖了其中的apply</span><span class="o">(</span><span class="n">参数列表</span><span class="o">)</span><span class="n">方法</span><span class="o">,</span><span class="n">在创建对象的时候就可以省略new关键字</span><span class="o">,</span><span class="n">但是需要注意一点的是</span><span class="o">,</span><span class="n">apply的</span>
+<span class="n">参数列表最好和class对应的构造器保持一致</span><span class="o">,</span><span class="n">同时返回值为class的类型</span><span class="err">。</span>
+</code></pre></div></div><p><a name="xuGaj"></a></p><h4 id="object单例对象">object(单例对象)</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">对象的含义</span><span class="o">,</span><span class="n">不是类的实例的意思</span><span class="o">,</span><span class="n">就是object的直译</span><span class="err">。</span>
+<span class="n">object是scala中一种和class平级的语法结构</span><span class="o">,</span><span class="n">scala运行最后要到jvm中运行</span><span class="o">,</span><span class="n">jvm运行需要main函数</span><span class="o">,</span><span class="n">java中的main函数</span><span class="o">,</span><span class="n">必须是public的</span><span class="o">,</span><span class="n">必须是static的</span><span class="o">,</span><span class="n">void的</span><span class="err">。</span><span class="n">scala中没有静态的这个概念</span><span class="o">,</span><span class="n">于是scala提供了一种结构object</span><span class="o">,</span><span class="n">来模拟java中的静态行为</span><span class="o">,</span><span class="n">比如静态的成员变量和静态的方法</span><span class="err">。</span>
+
+
+<span class="n">单例对象表示全局仅有一个对象</span><span class="o">,</span><span class="n">也叫孤立对象</span><span class="err">。</span> <span class="k">object</span> <span class="nc">单例对象名</span> <span class="o">{</span> <span class="o">}</span> <span class="c1">//定义一个单例对象</span>
+<span class="mi">1</span><span class="o">)</span> <span class="n">在object中定义的成员变量类似于java中静态变量</span><span class="o">,</span><span class="n">在内存中有只有一个对象</span>
+<span class="mi">2</span><span class="o">)</span> <span class="n">在单例对象中</span><span class="o">,</span><span class="n">可以直接使用</span><span class="s">"单例对象名.xx"</span><span class="n">的形式调用成员</span>
+
+
+<span class="n">object中的apply方法</span>
+    <span class="nv">objectName</span><span class="o">.</span><span class="py">apply</span><span class="o">()</span><span class="nf">和objectName</span><span class="o">()</span><span class="n">是一样的效果</span>
+</code></pre></div></div><p><a name="lWyzv"></a></p><h4 id="apply实现单例对象">apply实现单例对象</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">apply方法</span>
+  <span class="n">在scala中</span><span class="o">,</span><span class="n">支持创建对象的时候</span><span class="o">,</span><span class="n">免new的工作</span><span class="o">,</span><span class="n">这种写法非常简单</span><span class="o">,</span><span class="n">优雅</span><span class="err">。</span><span class="n">要想实现免new</span><span class="o">,</span> <span class="n">我们就要通过伴生对象的apply方法来实现</span><span class="err">。</span>
+  <span class="k">object</span> <span class="nc">伴生对象名</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="o">(</span><span class="n">参数名</span><span class="k">:</span> <span class="kt">参数类型</span><span class="o">,</span> <span class="n">参数名</span><span class="k">:</span> <span class="kt">参数类型</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nf">类</span><span class="o">(...)</span>
+  <span class="o">}</span>
+  <span class="n">创建对象</span>
+  <span class="k">val</span> <span class="nv">对象名</span> <span class="k">=</span> <span class="nf">伴生对象名</span><span class="o">(</span><span class="n">参数1</span><span class="o">,</span><span class="n">参数2</span><span class="o">,...)</span>
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 添加private 隐藏构造器</span>
+<span class="k">class</span> <span class="nc">ApplyTest</span> <span class="k">private</span> <span class="o">{</span>
+   <span class="k">def</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="o">={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"hello jop"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">ApplyTest</span> <span class="o">{</span>
+  <span class="k">var</span> <span class="n">instant</span><span class="k">:</span><span class="kt">ApplyTest</span><span class="o">=</span><span class="kc">null</span>
+  <span class="k">def</span> <span class="nf">apply</span><span class="o">()</span> <span class="o">={</span>
+    <span class="nf">if</span><span class="o">(</span><span class="nv">Objects</span><span class="o">.</span><span class="py">isNull</span><span class="o">(</span><span class="n">instant</span><span class="o">)){</span>
+      <span class="n">instant</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ApplyTest</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">instant</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">ApplyDemo</span><span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">t</span><span class="k">=</span><span class="nc">ApplyTest</span><span class="o">()</span>
+    <span class="nv">t</span><span class="o">.</span><span class="py">sayHello</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><a name="WCh1m"></a></p><h3 id="traint特质">traint特质</h3><p><a name="EYVDX"></a></p><h4 id="traint">traint</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Scala的Trait相当于Java里的Interface</span><span class="err">，</span><span class="n">但Trait不仅可以定义函数</span><span class="err">，</span><span class="n">还可以有函数体实现</span><span class="err">。</span><span class="n">实现关键词是extends</span><span class="err">，</span><span class="n">实现多个Trait用with</span><span class="err">。</span><span class="n">当extends的多个Trait里有相同函数时</span><span class="err">，</span><span class="n">子类必须重写该函数</span><span class="err">。</span>
+
+<span class="n">父trait里无函数体的函数</span><span class="err">，</span><span class="n">子类必须override</span>
+<span class="n">重写父类里有函数体的函数</span><span class="err">，</span><span class="n">必须有关键词override</span>
+<span class="n">trait里的变量</span><span class="err">，</span><span class="n">都是val类型</span>
+<span class="n">在trait里定义的的变量</span><span class="err">，</span><span class="n">必须是val类型</span><span class="err">，</span><span class="n">如果变量没初始化</span><span class="err">，</span><span class="n">子类必须override</span>
+
+
+<span class="n">每个特质只有一个无参的构造器</span>
+
+<span class="n">一个类继承另一个类</span><span class="o">,</span><span class="n">以及多个trait情况</span><span class="o">,</span><span class="n">当创建该类的实例时</span><span class="o">,</span><span class="n">执行顺序如下</span><span class="k">:</span>
+  <span class="kt">&gt;</span> <span class="kt">执行父类的构造器</span>
+  <span class="o">&gt;</span> <span class="n">按照从左到右的顺序</span><span class="o">,</span><span class="n">依次执行trait的构造器</span>
+  <span class="o">&gt;</span> <span class="n">如果trait有父trait</span><span class="o">,</span><span class="n">则先执行trait的构造器</span>
+  <span class="o">&gt;</span> <span class="n">如果多个trait有同样的父trait</span><span class="o">,</span><span class="n">则父trait的构造器只初始化一次</span>
+  <span class="o">&gt;</span> <span class="n">执行子类构造器</span>
+
+
+<span class="n">traint</span> <span class="n">特质名称</span><span class="o">{</span>
+  <span class="c1">// 普通字段</span>
+  <span class="c1">// 抽象字段</span>
+  
+  <span class="c1">// 普通方法</span>
+  <span class="c1">// 抽象方法</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">ObjectTraint</span> <span class="o">{</span>
+   <span class="k">trait</span> <span class="nc">Logger</span><span class="o">{</span>
+     <span class="k">def</span> <span class="nf">info</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="k">trait</span> <span class="nc">Recoder</span><span class="o">{</span>
+     <span class="k">def</span> <span class="nf">record</span><span class="o">();</span>
+   <span class="o">}</span>
+   <span class="k">object</span> <span class="nc">ConsoleLogger</span> <span class="k">extends</span> <span class="nc">Logger</span> <span class="k">with</span> <span class="nc">Recoder</span><span class="o">{</span>
+     <span class="k">override</span> <span class="k">def</span> <span class="nf">info</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+       <span class="nf">println</span><span class="o">(</span><span class="s">"logger info"</span><span class="o">)</span>
+     <span class="o">}</span>
+     <span class="k">override</span> <span class="k">def</span> <span class="nf">record</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+       <span class="nf">println</span><span class="o">(</span><span class="s">"record logger"</span><span class="o">);</span>
+     <span class="o">}</span>
+   <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nv">ConsoleLogger</span><span class="o">.</span><span class="py">info</span><span class="o">();</span>
+    <span class="nv">ConsoleLogger</span><span class="o">.</span><span class="py">record</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="FBevd"></a></p><h4 id="代码实例">代码实例</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Bansheng</span> <span class="o">{</span>
+   <span class="c1">// 伴生类可以访问 伴生对象的private字段</span>
+  <span class="k">var</span> <span class="n">age1</span> <span class="k">=</span> <span class="nv">Bansheng</span><span class="o">.</span><span class="py">age</span><span class="o">;</span> 
+
+  <span class="k">def</span> <span class="nf">printAge</span><span class="o">={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">age1</span><span class="o">)</span>
+    <span class="nv">Bansheng</span><span class="o">.</span><span class="py">apply</span><span class="o">();</span> 
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">//object下的成员默认都是静态的</span>
+<span class="k">object</span> <span class="nc">Bansheng</span><span class="o">{</span>
+  <span class="k">private</span> <span class="k">var</span> <span class="n">age</span> <span class="k">=</span> <span class="mi">5</span><span class="o">;</span>
+  <span class="k">def</span> <span class="nf">apply</span><span class="o">()={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"伴生类--apply"</span><span class="o">)</span>
+    <span class="nc">Age</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">age</span><span class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 相当于: def Age2:Int= { age+1; return age;}</span>
+  <span class="k">def</span> <span class="nf">Age</span><span class="k">=</span> <span class="o">{</span>
+    <span class="n">age</span> <span class="k">=</span> <span class="n">age</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+    <span class="n">age</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="c1">// 伴生类</span>
+    <span class="k">var</span> <span class="n">ban</span> <span class="k">=</span>  <span class="k">new</span> <span class="nc">Bansheng</span><span class="o">();</span>
+    <span class="nv">ban</span><span class="o">.</span><span class="py">printAge</span>
+    
+    <span class="nv">Bansheng</span><span class="o">.</span><span class="py">apply</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">输出结果</span><span class="k">:</span>
+<span class="err">5</span>
+<span class="kt">伴生类--apply</span>
+<span class="mi">6</span>
+<span class="n">伴生类</span><span class="o">--</span><span class="n">apply</span>
+<span class="mi">7</span>
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">object</span> <span class="nc">Protest2</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="c1">// 使用new构建Person2类的实例</span>
+    <span class="k">var</span> <span class="n">p1</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Person2</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">p1</span><span class="o">.</span><span class="py">getAge</span><span class="o">);</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">20</span><span class="o">);</span>
+    <span class="c1">// 使用伴生对象构建实例</span>
+    <span class="k">var</span> <span class="n">p2</span> <span class="k">=</span> <span class="nc">Person2</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">p2</span><span class="o">.</span><span class="py">getAge2</span><span class="o">);</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">20</span><span class="o">);</span>
+    <span class="c1">// 使用伴生对象的apply方法构建类Person2的实例</span>
+    <span class="k">var</span> <span class="n">p3</span> <span class="k">=</span> <span class="nc">Person2</span><span class="o">();</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">p3</span><span class="o">.</span><span class="py">getAge</span><span class="o">)</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">20</span><span class="o">);</span>
+    <span class="c1">// object有自带的默认构建器,而且只有再调用object成员的时候第一次执行,后面不执行</span>
+    <span class="c1">// object 成员函数为静态,可以直接调用</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">Person2</span><span class="o">.</span><span class="py">getAge2</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+
+<span class="k">class</span> <span class="nc">Person2</span><span class="o">{</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"this is a class"</span><span class="o">);</span>
+  <span class="k">private</span> <span class="k">var</span> <span class="n">age</span> <span class="k">=</span> <span class="mi">10</span><span class="o">;</span>
+  <span class="k">def</span> <span class="nf">getAge</span> <span class="k">=</span><span class="n">age</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">object</span> <span class="nc">Person2</span><span class="o">{</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">" this is a object"</span><span class="o">);</span>
+  <span class="k">private</span> <span class="k">var</span> <span class="n">age2</span> <span class="k">=</span> <span class="mi">1</span><span class="o">;</span>
+  <span class="k">def</span> <span class="nf">getAge2</span><span class="k">=</span><span class="n">age2</span><span class="o">;</span>
+
+  <span class="k">def</span> <span class="nf">apply</span><span class="o">()={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">" this is a apply method !"</span><span class="o">);</span>
+    <span class="k">new</span> <span class="nc">Person2</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">输出结果</span><span class="k">:</span>
+<span class="kt">this</span> <span class="kt">is</span> <span class="kt">a</span> <span class="kt">class</span>
+<span class="mi">10</span>
+<span class="o">--------------------</span>
+ <span class="k">this</span> <span class="n">is</span> <span class="n">a</span> <span class="k">object</span>
+<span class="err">1</span>
+<span class="nc">--------------------</span>
+ <span class="k">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">apply</span> <span class="n">method</span> <span class="o">!</span>
+<span class="k">this</span> <span class="n">is</span> <span class="n">a</span> <span class="k">class</span>
+<span class="err">10</span>
+<span class="nc">--------------------</span>
+<span class="mi">1</span>
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">trait</span> <span class="nc">TestTrait</span> <span class="o">{</span>
+  <span class="c1">// 在trait里面定义的变量,必须是val类型,如果变量没有初始化,子类必须重写</span>
+  <span class="k">val</span> <span class="nv">age</span><span class="k">:</span><span class="kt">Int</span><span class="o">;</span>
+  <span class="k">val</span> <span class="nv">name</span> <span class="o">=</span><span class="s">"ssgao"</span><span class="o">;</span>
+  <span class="k">def</span> <span class="nf">say</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="k">trait</span> <span class="nc">Action</span><span class="o">{</span>
+  <span class="k">def</span> <span class="nf">action</span><span class="o">();</span>
+  <span class="k">def</span> <span class="nf">sleep</span><span class="o">()={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"sleep"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">Cat</span> <span class="k">extends</span> <span class="nc">TestTrait</span><span class="o">{</span>
+  <span class="k">override</span> <span class="k">val</span> <span class="nv">age</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+  <span class="c1">// 父trait里无函数体的函数,子类必须override</span>
+   <span class="k">def</span> <span class="nf">say</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+     <span class="nf">println</span><span class="o">(</span><span class="s">" cat say "</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 实现多个Trait用with, 当extends的多个Trait里有相同函数时，子类必须重写该函数</span>
+<span class="k">class</span> <span class="nc">bird</span> <span class="k">extends</span> <span class="nc">TestTrait</span>  <span class="k">with</span> <span class="nc">Action</span><span class="o">{</span>
+  <span class="k">override</span> <span class="k">val</span> <span class="nv">age</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">20</span>
+   <span class="k">def</span> <span class="nf">say</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+     <span class="nf">println</span><span class="o">(</span><span class="s">"bird say"</span><span class="o">)</span>
+   <span class="o">}</span>
+   <span class="k">def</span> <span class="nf">action</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+     <span class="nf">println</span><span class="o">(</span><span class="s">"bird action"</span><span class="o">)</span>
+   <span class="o">}</span>
+   <span class="c1">// 重写父类有方法体的方法,必须有关键词override</span>
+   <span class="k">override</span> <span class="k">def</span> <span class="nf">sleep</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+     <span class="nf">println</span><span class="o">(</span><span class="s">" bird sleep"</span><span class="o">)</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><a name="S9fcc"></a> ### <a name="BR7zr"></a></p><h4 id="trait的对象混入">trait的对象混入</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">有些情况</span><span class="err">，</span><span class="n">希望在不改变类继承体系的情况下</span><span class="o">,</span><span class="n">对对象的功能进行临时增强或者扩展</span><span class="err">。</span><span class="n">这是时候可以考虑使用对象混入技术了</span><span class="err">。</span>
+<span class="n">所谓的对象混入</span><span class="o">,</span><span class="n">指的是在scala中</span><span class="o">,</span><span class="n">类和特质之间无任何的继承关系</span><span class="o">,</span><span class="n">但是通过特定的关键字</span><span class="o">,</span><span class="n">可以让该类对象具有指定特质中的成员</span><span class="err">。</span>
+<span class="k">val</span><span class="o">/</span><span class="k">var</span> <span class="n">对象名</span> <span class="k">=</span> <span class="k">new</span> <span class="n">类</span> <span class="k">with</span> <span class="n">特质</span>
+
+<span class="k">object</span> <span class="nc">TraintFix</span> <span class="o">{</span>
+  <span class="k">trait</span> <span class="nc">Logger</span><span class="o">{</span>
+    <span class="k">def</span> <span class="nf">logger</span><span class="o">(</span><span class="n">msg</span><span class="k">:</span><span class="kt">String</span><span class="o">)</span><span class="k">=</span><span class="nf">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="k">class</span> <span class="nc">User</span><span class="o">;</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="c1">// 通过对象混入技术让User类具有logger特质的log()方法</span>
+    <span class="k">val</span> <span class="nv">ua</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">User</span> <span class="k">with</span> <span class="nc">Logger</span><span class="o">;</span>
+    <span class="nv">ua</span><span class="o">.</span><span class="py">logger</span><span class="o">(</span><span class="s">"对象混入"</span><span class="o">)</span>
+
+    <span class="c1">// val ub:User = new User with Logger;</span>
+    <span class="c1">// ub.logger("对象混入") 声明ub的类型为User不会存在logger方法</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="Rxhg5"></a></p><h3 id="抽象类匿名类">抽象类匿名类</h3><p><a name="DtIQz"></a></p><h4 id="方法重写">方法重写</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">子类中出现和父类一样的方法时</span><span class="o">,</span><span class="n">称为方法重写</span><span class="err">。</span><span class="n">在scala中可以在子类中使用override来重写父类的成员</span><span class="o">,</span><span class="n">也可以使用super来引用父类的成员</span><span class="err">。、</span>
+  <span class="mi">1</span><span class="o">)</span> <span class="n">子类要重写父类中的某一个方法</span><span class="o">,</span><span class="n">该方法必须要使用override关键字来修饰</span>
+  <span class="mi">2</span><span class="o">)</span> <span class="n">可以使用override来重写一个val字段</span><span class="o">,</span> <span class="n">父类用var修饰的变量</span><span class="o">,</span><span class="n">子类不能重写</span>
+  <span class="mi">3</span><span class="o">)</span> <span class="n">使用super关键字来访问父类的成员方法</span><span class="err">。</span>
+
+<span class="k">object</span> <span class="nc">OverTest</span> <span class="o">{</span>
+
+  <span class="k">class</span> <span class="nc">Person</span><span class="o">{</span>
+    <span class="k">val</span> <span class="nv">name</span> <span class="o">=</span><span class="s">"张三"</span> <span class="c1">//val修饰的变量,值不能修改</span>
+    <span class="k">var</span> <span class="n">age</span> <span class="k">=</span> <span class="mi">23</span> <span class="o">;</span> <span class="c1">//var修饰的变量,值可以被修改</span>
+    <span class="k">def</span> <span class="nf">sayHello</span><span class="o">()={</span>
+      <span class="nf">println</span><span class="o">(</span><span class="s">"hello Person!"</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="k">class</span> <span class="nc">Student</span> <span class="k">extends</span> <span class="nc">Person</span><span class="o">{</span>
+    <span class="k">override</span> <span class="k">val</span> <span class="nv">name</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"李四"</span><span class="o">;</span>
+    <span class="c1">// override var age = 20; 这样写会报错,因为父类中用var修饰的变量,子类不能重写</span>
+    <span class="c1">//重写父类方法</span>
+    <span class="k">override</span> <span class="k">def</span> <span class="nf">sayHello</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
+      <span class="nv">super</span><span class="o">.</span><span class="py">sayHello</span><span class="o">();</span> <span class="c1">//调用父类的成员方法</span>
+      <span class="nf">println</span><span class="o">(</span><span class="s">"name : "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">" , age :"</span><span class="o">+</span><span class="n">age</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">s</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">;</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">s</span><span class="o">.</span><span class="py">name</span><span class="o">,</span><span class="nv">s</span><span class="o">.</span><span class="py">age</span><span class="o">);</span>
+    <span class="nv">s</span><span class="o">.</span><span class="py">sayHello</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">输出结果</span><span class="k">:</span> 
+<span class="o">(</span><span class="kt">李四</span><span class="o">,</span><span class="err">23</span><span class="o">)</span>
+<span class="n">hello</span> <span class="nc">Person</span><span class="o">!</span>
+<span class="n">name</span> <span class="k">:</span> <span class="kt">李四</span> <span class="o">,</span> <span class="n">age</span> <span class="k">:</span><span class="err">23</span>
+</code></pre></div></div><p><a name="ey1rg"></a></p><h4 id="抽象类">抽象类</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">如果类中有抽象字段或者抽象方法</span><span class="o">,</span><span class="n">那么该类就应该是一个抽象类</span>
+  <span class="n">抽象字段</span><span class="o">,</span> <span class="n">没有初始化值的变量就是抽象字段</span>
+  <span class="n">抽象方法</span><span class="o">,</span> <span class="n">没有方法体的方法就是一个抽象方法</span>
+
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">抽象类名</span><span class="o">{</span>
+  <span class="c1">// 定义抽象字段 没有初始化值的字段</span>
+  <span class="k">val</span><span class="o">/</span><span class="k">var</span> <span class="n">抽象字段名</span><span class="k">:</span><span class="kt">类型</span>
+  <span class="c1">// 定义抽象方法</span>
+  <span class="k">def</span> <span class="nf">方法名</span><span class="o">(</span><span class="n">参数</span><span class="k">:</span><span class="kt">参数类型</span><span class="o">,</span><span class="n">参数</span><span class="k">:</span><span class="kt">参数类型</span><span class="o">)</span><span class="k">:</span><span class="kt">返回类型</span> 
+<span class="o">}</span>
+
+
+<span class="n">抽象类加final</span><span class="o">,</span><span class="nf">则无法被继承</span><span class="o">(</span><span class="n">方法也是如此</span><span class="o">)</span>
+<span class="k">override</span> <span class="nf">覆写父类的方法</span><span class="o">(</span><span class="n">统一</span><span class="o">,</span><span class="n">抽象方法不写不影响功能</span><span class="o">)</span> <span class="n">覆写父类非抽象方法就必须加override</span>
+
+<span class="k">class</span> <span class="nc">Cat</span> <span class="k">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">var</span> <span class="n">color</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"ssgao"</span>
+  <span class="k">override</span> <span class="k">var</span> <span class="n">action</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="k">_</span>
+  <span class="k">def</span> <span class="nf">eat</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"Fish"</span><span class="o">)</span>
+  <span class="o">}</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="nf">drink</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"cat drink"</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">Animal</span><span class="o">{</span>
+  <span class="k">var</span> <span class="n">color</span> <span class="k">:</span> <span class="kt">String</span><span class="o">;</span>
+  <span class="k">var</span> <span class="n">action</span><span class="k">:</span> <span class="kt">String</span><span class="o">;</span>
+  <span class="c1">// 抽象方法重写不用override</span>
+  <span class="k">def</span> <span class="nf">eat</span> <span class="k">:</span> <span class="kt">Unit</span><span class="o">;</span>
+  <span class="c1">// 非抽象方法重写需要添加Override</span>
+  <span class="k">def</span> <span class="nf">drink</span><span class="o">={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"animal drink"</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="c1">// final 方法不能被重写</span>
+  <span class="k">final</span> <span class="k">def</span> <span class="nf">sleep</span><span class="o">()={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"sleep"</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">Cat</span><span class="o">{</span>
+  <span class="k">def</span> <span class="nf">apply</span><span class="o">()={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"this is a cat"</span><span class="o">);</span>
+    <span class="k">new</span> <span class="nc">Cat</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">CatTest</span><span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">c1</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Cat</span><span class="o">;</span>
+    <span class="nv">c1</span><span class="o">.</span><span class="py">eat</span>
+    <span class="c1">// 使用apply工厂方法</span>
+    <span class="k">val</span> <span class="nv">c2</span> <span class="k">=</span> <span class="nc">Cat</span><span class="o">();</span>
+    <span class="nv">c2</span><span class="o">.</span><span class="py">eat</span>
+
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">输出结果</span><span class="k">:</span>
+<span class="kt">Fish</span>
+<span class="k">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">cat</span>
+<span class="nc">Fish</span>
+</code></pre></div></div><p><a name="CjnlE"></a></p><h4 id="匿名内部类">匿名内部类</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">匿名内部类是继承了类的匿名的子类对象</span><span class="o">,</span><span class="n">它可以直接用来创建实例对象</span><span class="err">。</span>
+
+<span class="k">new</span> <span class="nf">类名</span><span class="o">(){</span>  
+  <span class="c1">// 重写类中所有的抽象内容</span>
+<span class="o">}</span>
+<span class="n">ps</span><span class="k">:</span> <span class="kt">如果类的主构造器参数列表为空</span><span class="o">,</span><span class="n">则小括号可以省略不写</span>
+
+<span class="k">object</span> <span class="nc">NoNameDemo</span> <span class="o">{</span>
+  <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">{</span>
+    <span class="k">def</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="c1">//抽象方法</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">show</span><span class="o">(</span><span class="n">p</span><span class="k">:</span><span class="kt">Person</span><span class="o">)</span> <span class="k">=</span><span class="nv">p</span><span class="o">.</span><span class="py">sayHello</span><span class="o">();</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">new</span> <span class="nc">Person</span> <span class="o">{</span>
+      <span class="k">override</span> <span class="k">def</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="k">=</span> <span class="nf">println</span><span class="o">(</span><span class="s">" 这是一个匿名内部类"</span><span class="o">)</span>
+    <span class="o">}.</span><span class="py">sayHello</span><span class="o">();</span>
+
+    <span class="nf">show</span><span class="o">(</span><span class="k">new</span> <span class="nc">Person</span> <span class="o">{</span>
+      <span class="k">override</span> <span class="k">def</span> <span class="nf">sayHello</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nf">println</span><span class="o">(</span><span class="s">"-"</span><span class="o">*</span><span class="mi">20</span><span class="o">)</span>
+    <span class="o">})</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><a name="5R7OX"></a></p><h3 id="样例类case-class">样例类case class</h3><p><br /></p><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">在scala中</span><span class="o">,</span><span class="n">样例类是一种特殊的类</span><span class="o">,</span><span class="nf">一般用于保存数据</span><span class="o">(</span><span class="n">类似java</span> <span class="nc">POJO类</span><span class="o">)</span>
+
+<span class="n">格式</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">class</span> <span class="kt">样例类名</span><span class="o">(</span><span class="err">[</span><span class="kt">var/val</span><span class="err">]</span> <span class="kt">成员变量名1:类型1</span><span class="o">,</span> <span class="kt">成员变量名2:类型2</span><span class="o">,</span><span class="n">成员变量名3</span><span class="k">:</span><span class="kt">类型3</span><span class="o">){}</span>
+
+<span class="n">如果不写</span><span class="o">,</span><span class="n">则变量的默认修饰符是val</span><span class="k">:</span> <span class="kt">即val是可以省略不写的</span>
+  <span class="n">如果要实现某个成员变量的值可以被修改</span><span class="o">,</span><span class="n">则需要手动的添加var来修饰此变量</span>
+
+<span class="n">样例类默认实现的方法</span>
+ <span class="nf">apply</span><span class="o">()</span><span class="n">方法</span>
+    <span class="n">可以快速使用类名来创建对象</span><span class="o">,</span><span class="n">省去new这个关键字</span>
+     <span class="k">val</span> <span class="nv">p</span> <span class="k">=</span> <span class="nc">Person</span><span class="o">();</span>
+ <span class="nf">toString</span><span class="o">()</span><span class="n">方法</span>
+		<span class="n">通过输出语句打印对象是</span><span class="o">,</span><span class="n">直接打印该对象的各个属性值</span><span class="o">,</span><span class="nf">println</span><span class="o">(</span><span class="n">p</span><span class="o">)</span> <span class="n">打印的是p的各个属性值</span><span class="o">,</span><span class="n">不是它的地址值</span>
+ <span class="nf">equals</span><span class="o">()</span><span class="n">方法</span>
+    <span class="n">可以直接使用</span><span class="o">==</span><span class="n">来比较两个样例类对象的所有成员变量值是否相等</span>
+    <span class="n">例如p1</span><span class="o">==</span><span class="n">p2</span> <span class="n">比较的是两个对象的各个属性值是否相同</span><span class="o">,</span><span class="n">而不是地址值</span>
+ <span class="nf">hashCode</span><span class="o">()</span><span class="n">方法</span>
+    <span class="n">同一个对象哈希值肯定相同</span><span class="o">,</span><span class="n">不同对象的哈希值一般不同</span>
+ <span class="nf">copy</span><span class="o">()</span><span class="n">方法</span>
+    <span class="n">可以用来快速创建一个属性值相同的实例对象</span><span class="o">,</span><span class="n">还可以使用带名参数的形式给指定的成员变量赋值</span>
+    <span class="k">val</span> <span class="nv">p1</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"张三"</span><span class="o">,</span><span class="mi">23</span><span class="o">);</span> <span class="k">val</span> <span class="nv">p2</span><span class="k">=</span><span class="nv">p1</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">age</span><span class="o">==</span><span class="mi">24</span><span class="o">);</span>
+ <span class="nf">unapply</span><span class="o">()</span><span class="n">方法</span>
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">CasePerson</span><span class="o">(</span>
+     <span class="k">var</span> <span class="n">ssgao</span><span class="k">:</span><span class="kt">String</span><span class="o">,</span> 
+     <span class="k">var</span> <span class="n">age</span><span class="k">:</span><span class="kt">Int</span><span class="o">);</span>
+<span class="k">class</span> <span class="nc">PP</span><span class="o">(</span><span class="k">var</span> <span class="n">name</span><span class="k">:</span><span class="kt">String</span><span class="o">,</span><span class="k">var</span> <span class="n">addr</span><span class="k">:</span><span class="kt">String</span><span class="o">);</span>
+<span class="k">class</span> <span class="nc">SS</span><span class="o">;</span>
+
+<span class="k">object</span> <span class="nc">CasePersonDemo</span><span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">p</span> <span class="k">=</span> <span class="nc">CasePerson</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">,</span><span class="mi">33</span><span class="o">);</span> <span class="c1">//可以不用new 关键字</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${p}"</span><span class="o">);</span> <span class="c1">//CasePerson(ssgao,33)</span>
+
+    <span class="nv">p</span><span class="o">.</span><span class="py">ssgao</span><span class="o">=</span><span class="s">"xiaoxiao"</span><span class="o">;</span> <span class="c1">// 必须声明为var类型</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">age</span><span class="k">=</span><span class="mi">4</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${p}"</span><span class="o">);</span>
+
+    <span class="k">var</span> <span class="n">pp</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PP</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">,</span><span class="s">"hangzhou"</span><span class="o">);</span> <span class="c1">// 必须使用new</span>
+    <span class="k">var</span> <span class="n">ss</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SS</span><span class="o">;</span> <span class="c1">// 可以不用()</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${pp}"</span><span class="o">)</span> <span class="c1">// class_demo.PP@376b4233</span>
+    <span class="nv">pp</span><span class="o">.</span><span class="py">name</span> <span class="o">=</span><span class="s">"chenlin"</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${pp}"</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="aZgfS"></a></p><h4 id="样例类的区别">样例类的区别</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">和class</span> <span class="n">区别</span>
+  <span class="o">&gt;</span> <span class="n">初始化的时候可以不用new</span><span class="o">,</span> <span class="n">也可以加上</span><span class="o">,</span> <span class="n">但普通类必须加new</span>
+  <span class="o">&gt;</span> <span class="n">默认实现了equals</span><span class="o">,</span> <span class="n">hashcode方法</span>
+  <span class="o">&gt;</span> <span class="n">默认是可序列化的</span><span class="o">,</span><span class="n">实现Serializable</span>
+  <span class="o">&gt;</span> <span class="nv">自动从scala</span><span class="o">.</span><span class="py">Product</span> <span class="n">中继承一些函数</span>
+  <span class="o">&gt;</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">构造函数是public</span><span class="o">,</span> <span class="n">我们可以直接访问</span>
+  <span class="o">&gt;</span> <span class="k">case</span> <span class="n">class默认情况下不能修改属性值</span><span class="o">,</span> <span class="n">必须声明为var</span> <span class="n">类型</span>
+  <span class="o">&gt;</span> <span class="k">case</span> <span class="n">class最重要的功能</span><span class="o">,</span><span class="n">支持模式匹配</span><span class="o">,</span> <span class="n">这也是定义case</span> <span class="n">class重要原因</span><span class="err">。</span>
+
+
+<span class="k">case</span> <span class="n">class和</span> <span class="k">case</span> <span class="n">object区别</span>
+  <span class="n">类中有参和无参</span><span class="o">,</span> <span class="n">当类有参数的时候用case</span> <span class="n">class</span><span class="o">,</span> <span class="n">当类没有参数的时候用case</span> <span class="k">object</span>
+
+<span class="nc">当一个类被声名为case</span> <span class="n">class的时候</span><span class="o">,</span><span class="n">scala会帮助我们做下面的几件事情</span>
+  <span class="o">&gt;</span> <span class="n">构造器中的参数如果不被声名为var的话</span><span class="o">,</span><span class="n">默认为val类型</span><span class="o">,</span><span class="n">赋值后不可改变</span>
+  <span class="o">&gt;</span> <span class="n">自动创建伴生对象</span><span class="o">,</span><span class="n">同时在里面给我们实现apply方法</span><span class="o">,</span> <span class="n">使得我们可以不用显示的new对象</span>
+  <span class="o">&gt;</span> <span class="n">伴生对象中同样会帮我们实现unapply方法</span><span class="err">，</span><span class="n">从而可以将case</span> <span class="n">class应用于模式匹配</span>
+  <span class="o">&gt;</span> <span class="n">实现自己的toString</span><span class="err">、</span><span class="n">hashCode</span><span class="err">、</span><span class="n">copy</span><span class="err">、</span><span class="n">equals方法</span>
+  <span class="o">*</span> <span class="n">除此之此</span><span class="err">，</span><span class="k">case</span> <span class="n">class与其它普通的scala类没有区别</span>
+</code></pre></div></div><p><br /></p><p><a name="kiPAm"></a></p><h3 id="样例对象caseobject">样例对象caseobject</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">在scala中</span><span class="o">,</span><span class="n">用case修饰符的单例对象就叫</span><span class="k">:</span> <span class="kt">样例对象</span><span class="o">,</span><span class="n">而且它没有主构造器</span><span class="err">。</span><span class="n">主要用在两个地方</span>
+<span class="mi">1</span><span class="o">)</span> <span class="n">当做枚举值使用</span>
+		<span class="n">枚举</span><span class="k">:</span> <span class="kt">就是一些固定值</span><span class="o">,</span><span class="n">用来统一项目规范的</span>
+<span class="mi">2</span><span class="o">)</span> <span class="n">作为没有任务参数的消息传递</span>
+		<span class="nc">Akka中会使用</span>
+
+<span class="k">case</span> <span class="k">object</span> <span class="nc">样例对象名</span>
+
+
+</code></pre></div></div><p><br /></p><p><a name="tEN4v"></a></p><h3 id="枚举类">枚举类</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Sex</span><span class="o">;</span>
+
+<span class="c1">// 定义样例对象Male/Female 表示男和女</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Male</span> <span class="k">extends</span> <span class="nc">Sex</span><span class="o">;</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Female</span> <span class="k">extends</span> <span class="nc">Sex</span><span class="o">;</span>
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span> <span class="o">(</span><span class="k">var</span> <span class="n">name</span><span class="k">:</span><span class="kt">String</span><span class="o">,</span><span class="k">var</span> <span class="n">sex</span><span class="k">:</span><span class="kt">Sex</span><span class="o">){}</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+	<span class="k">val</span> <span class="nv">p</span> <span class="k">=</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"张三"</span><span class="o">,</span><span class="nc">Male</span><span class="o">);</span>
+  <span class="nf">println</span><span class="o">(</span><span class="nv">p</span><span class="o">.</span><span class="py">name</span><span class="o">,</span><span class="nv">p</span><span class="o">.</span><span class="py">sex</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="CZQEA"></a></p><h3 id="main方法">main方法</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scala程序中</span><span class="o">,</span><span class="n">如果要运行一个程序</span><span class="o">,</span><span class="n">必须有一个main方法</span><span class="o">,</span><span class="n">java中main方法是静态的</span><span class="o">,</span><span class="nv">而在scala中没有静态方法</span><span class="o">.</span><span class="py">所以scala中这个main方法必须放在一个单例对象中</span>
+
+<span class="mi">1</span><span class="o">)</span> <span class="n">定义main方法</span>
+	  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span><span class="kt">Unit</span><span class="o">={</span> <span class="o">}</span>
+<span class="mi">2</span><span class="o">)</span> <span class="n">继承App特质</span>
+    <span class="n">创建一个Object</span><span class="o">,</span><span class="nf">继承自App特质</span><span class="o">(</span><span class="nc">Trait</span><span class="o">),</span><span class="n">然后将需要编写在main方法中的代码</span><span class="o">,</span><span class="n">写在object的构造方法体内</span><span class="err">。</span>
+    <span class="k">object</span> <span class="nc">MainT</span> <span class="k">extends</span> <span class="nc">App</span><span class="o">{</span>
+        <span class="nf">println</span><span class="o">(</span><span class="s">"mainTestC"</span><span class="o">);</span> <span class="c1">//顺序全部执行</span>
+        <span class="o">{</span> <span class="nf">println</span><span class="o">(</span><span class="s">"mainTest"</span><span class="o">);}</span> 
+        <span class="o">{</span> <span class="nf">println</span><span class="o">(</span><span class="s">"mainTestB"</span><span class="o">);}</span>
+    <span class="o">}</span>
+
+</code></pre></div></div><p><a name="9J9qP"></a></p><h3 id="isinstanceofasinstanceof">isInstanceof&amp;asInstanceOf</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">isInstanceOf</span> <span class="n">判断对象是否为指定类的对象</span>
+<span class="n">asInstanceOf</span> <span class="n">将对象转换为指定类型</span>
+<span class="c1">// 判断对象是否为指定类型</span>
+<span class="k">var</span> <span class="n">tureOrFalse</span><span class="k">:</span><span class="kt">Boolean</span> <span class="o">=</span> <span class="nv">对象</span><span class="o">.</span><span class="py">isIntanceOf</span><span class="o">[</span><span class="kt">类型</span><span class="o">]</span>
+
+<span class="c1">// 将对象转换为指定类型</span>
+<span class="k">val</span> <span class="nv">变量</span> <span class="k">=</span> <span class="nv">对象</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">类型</span><span class="o">]</span>
+</code></pre></div></div><p><a name="BGrrn"></a></p><h3 id="getclassclassof">getClass&amp;classOf</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">ClassOfDemo</span> <span class="o">{</span>
+  <span class="k">class</span> <span class="nc">Person</span><span class="o">;</span>
+  <span class="k">class</span> <span class="nc">Student</span> <span class="k">extends</span> <span class="nc">Person</span><span class="o">;</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">p</span><span class="k">:</span> <span class="kt">Person</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Student</span><span class="o">;</span>
+
+    <span class="c1">// 通过isInstanceof关键字来判断创建的对象是否是Person类型的对象</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">p</span><span class="o">.</span><span class="py">isInstanceOf</span><span class="o">[</span><span class="kt">Person</span><span class="o">])</span> <span class="c1">// true</span>
+    <span class="c1">// 通过isInstanceOf关键字来判断创建的对象的是否是否是</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">p</span><span class="o">.</span><span class="py">isInstanceOf</span><span class="o">[</span><span class="kt">Student</span><span class="o">])</span> <span class="c1">//true</span>
+    <span class="c1">// 通过getClass和classOf关键字来判断创建的对象是否是Person类型的对象</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">p</span><span class="o">.</span><span class="py">getClass</span><span class="o">==</span><span class="n">classOf</span><span class="o">[</span><span class="kt">Person</span><span class="o">])</span> <span class="c1">// false</span>
+    <span class="c1">// 通过getClass和classOf关键字来判断创建的对象是否是Student类型的对象</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">p</span><span class="o">.</span><span class="py">getClass</span><span class="o">==</span><span class="n">classOf</span><span class="o">[</span><span class="kt">Student</span><span class="o">])</span> <span class="c1">// true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="DQnFi"></a> ###</p><p><a name="pPEwM"></a></p><h3 id="包的导入">包的导入</h3><p><a name="BXQ2H"></a></p><h3 id="异常捕获">异常捕获</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">捕获异常</span> 
+ <span class="k">try</span><span class="o">{</span>
+    <span class="c1">// 可能会出现问题的代码</span>
+  <span class="o">}</span><span class="k">catch</span><span class="o">{</span>
+    <span class="k">case</span> <span class="n">ex</span><span class="k">:</span><span class="kt">异常类型1</span> <span class="o">=&gt;</span> <span class="c1">//代码</span>
+    <span class="k">case</span> <span class="n">ex</span><span class="k">:</span><span class="kt">异常类型2</span> <span class="o">=&gt;</span> <span class="c1">//代码</span>
+  <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+    <span class="c1">// 代码,不管是否出现异常都会执行</span>
+  <span class="o">}</span>
+<span class="n">抛出异常</span>
+	<span class="k">throw</span> <span class="k">new</span> <span class="nc">Exception</span><span class="o">(</span><span class="s">"这里写异常的描述信息"</span><span class="o">)</span>
+
+<span class="cm">/**
+ * 异常捕捉的机制与其他语言中一样，如果有异常发生，catch 字句是按次序捕捉的。
+ * 因此，在 catch 字句中，越具体的异常越要靠前，越普遍的异常越靠后。 
+ * 如果抛出的异常不在 catch 字句中，该异常则无法处理，会被升级到调用者处。
+ */</span>
+<span class="k">class</span> <span class="nc">TryDemo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="nf">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
+    <span class="k">try</span><span class="o">{</span>
+      <span class="k">var</span> <span class="n">f</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"/Users/ssgao/Downloads/ls.txt"</span><span class="o">);</span>
+       <span class="k">var</span> <span class="n">a</span> <span class="k">:</span><span class="kt">Int</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+       <span class="k">var</span> <span class="n">flag</span> <span class="k">=</span><span class="kc">true</span><span class="o">;</span>
+       <span class="nf">while</span><span class="o">(</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">20</span><span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="o">){</span>
+         <span class="n">a</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
+         <span class="c1">// 模拟break的实现</span>
+         <span class="nf">if</span><span class="o">(</span><span class="n">a</span><span class="o">==</span><span class="mi">5</span><span class="o">)</span> <span class="n">flag</span><span class="k">=</span><span class="kc">false</span><span class="o">;</span>
+       <span class="o">}</span>
+      <span class="nf">println</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+       <span class="k">var</span> <span class="n">reader</span><span class="k">:</span><span class="kt">BufferedReader</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="n">f</span> <span class="o">);</span>
+       <span class="k">var</span> <span class="n">content</span> <span class="k">:</span><span class="kt">String</span><span class="o">=</span><span class="s">""</span><span class="o">;</span>
+       <span class="n">content</span><span class="k">=</span><span class="nv">reader</span><span class="o">.</span><span class="py">readLine</span><span class="o">()</span>
+       <span class="nf">while</span> <span class="o">(</span><span class="n">content</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+          <span class="nf">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+          <span class="n">content</span><span class="k">=</span><span class="nv">reader</span><span class="o">.</span><span class="py">readLine</span><span class="o">()</span>
+       <span class="o">}</span>
+      <span class="nf">println</span><span class="o">(</span><span class="s">"*"</span><span class="o">*</span><span class="mi">20</span><span class="o">)</span>
+    <span class="o">}</span><span class="k">catch</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="n">ex</span><span class="k">:</span><span class="kt">FileNotFoundException</span> <span class="o">=&gt;{</span>
+        <span class="nf">println</span><span class="o">(</span><span class="s">"文件没有找到"</span><span class="o">)</span>
+      <span class="o">}</span>
+      <span class="k">case</span> <span class="n">ex</span><span class="k">:</span><span class="kt">IOException</span> <span class="o">=&gt;{</span>
+        <span class="nf">println</span><span class="o">(</span><span class="s">"文件打开失败"</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><br /></p><p><a name="thNhj"></a></p><h3 id="模式匹配match">模式匹配match</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">类似java中的switch</span> <span class="k">case</span><span class="o">,</span><span class="n">但比java中的更加强大</span>
+
+<span class="k">var</span><span class="o">|</span><span class="k">val</span> <span class="nv">match</span><span class="o">{</span>
+	<span class="k">case</span> <span class="o">/</span><span class="n">字符串</span><span class="o">/</span><span class="n">类型</span><span class="o">/</span><span class="n">集合</span><span class="o">/</span><span class="nc">Tuple</span><span class="o">/</span><span class="n">样例类</span><span class="o">/</span><span class="n">样例对象</span> <span class="k">if</span> <span class="k">=&gt;</span> <span class="nc">Any</span>
+<span class="o">}</span>
+
+
+</code></pre></div></div><p><a name="9cJsv"></a></p><h4 id="匹配内容和类型">匹配内容和类型</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">object</span> <span class="nc">Test</span><span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+
+  <span class="o">}</span>
+
+  <span class="c1">// match 表达式通过以代码编写的先后次序尝试每个模式来完成计算</span>
+  <span class="c1">// 只要发现有一个匹配的case，剩下的case不会继续匹配。</span>
+  <span class="k">def</span> <span class="nf">matchTest</span><span class="o">(</span><span class="n">x</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">String</span><span class="o">=</span> <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="k">=&gt;</span> <span class="s">"one"</span>
+    <span class="k">case</span> <span class="mi">2</span> <span class="k">=&gt;</span> <span class="s">"two"</span>
+    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="s">"many"</span>
+  <span class="o">}</span>
+
+  <span class="c1">//</span>
+  <span class="k">def</span> <span class="nf">matchTest2</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span><span class="k">:</span> <span class="kt">Any</span> <span class="o">=</span> <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">1</span> <span class="k">=&gt;</span> <span class="s">"one"</span>    <span class="c1">// case对应整型数值 1</span>
+    <span class="k">case</span> <span class="s">"two"</span> <span class="k">=&gt;</span> <span class="mi">2</span>    <span class="c1">// case对应字符串值 two</span>
+    <span class="k">case</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=&gt;</span> <span class="s">"scala.Int"</span> <span class="c1">// 对应类型模式,用于判断传入的值是否为整型</span>
+    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="s">"many"</span> <span class="c1">// 类似swith中的default</span>
+  <span class="o">}</span>
+  <span class="k">val</span> <span class="nv">a</span><span class="k">:</span><span class="kt">Any</span><span class="o">=</span><span class="s">"ssgao"</span><span class="o">;</span>
+  <span class="c1">// a和string类型匹配将 a的值赋值给变量x</span>
+    <span class="k">val</span> <span class="nv">res2</span> <span class="k">=</span> <span class="n">a</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="n">x</span><span class="k">:</span><span class="kt">String</span> <span class="o">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${x} 是string类型"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="n">x</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${x} 是Int类型"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="n">x</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${x} 是Double类型"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"未匹配"</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="c1">// 当case校验的时候,变量没有在表达式中使用,则可以通过下划线来替代变量名</span>
+    <span class="k">val</span> <span class="nv">res3</span> <span class="k">=</span> <span class="n">a</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="k">_:</span><span class="kt">String</span> <span class="o">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"string类型"</span><span class="o">)</span> 
+      <span class="k">case</span> <span class="k">_:</span><span class="kt">Int</span> <span class="o">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"Int类型"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_:</span><span class="kt">Double</span> <span class="o">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"Double类型"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"未匹配"</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="KDz8T"></a></p><h4 id="匹配数组">匹配数组</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">ArrayMatchDemo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">arr1</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span>
+    <span class="k">var</span> <span class="n">arr2</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="k">var</span> <span class="n">arr3</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">)</span>
+    <span class="n">arr3</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"匹配到数组: 长度为3,首元素为1,剩下的两个元素无所谓,分别是${x},${y}"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"匹配到数组,长度为 且只有一个元素0"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="k">_</span><span class="o">*)</span> <span class="k">=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"匹配到数组, 元素以1开头,后面的元素无所谓"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"未匹配"</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><a name="zE1vG"></a></p><h4 id="匹配集合">匹配集合</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">ListMatchDemo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">list1</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="k">var</span> <span class="n">list2</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">);</span>
+    <span class="k">var</span> <span class="n">list3</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">);</span>
+
+    <span class="n">list1</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">List</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"匹配列表: 只包含一个元素0的列表"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="nc">List</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="k">_</span><span class="o">*)</span> <span class="k">=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"匹配列表: 以元素0开头,其他元素无所谓的列表"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="nc">List</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">)</span><span class="k">=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"匹配列表: 只包含两个任意元素的列表,分别是 ${x} ${y}"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"未匹配"</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="c1">// 通过关键字实现Nil tail</span>
+    <span class="n">list2</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="mi">0</span><span class="o">::</span><span class="nc">Nil</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"匹配列表: 只包含一个元素0的列表"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="mi">0</span><span class="o">::</span><span class="n">tail</span> <span class="k">=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"匹配列表: 以元素0开头,其他元素无所谓的列表"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="n">x</span><span class="o">::</span><span class="n">y</span><span class="o">::</span><span class="nc">Nil</span><span class="k">=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"匹配列表: 只包含两个任意元素的列表,分别是 ${x} ${y}"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"未匹配"</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><a name="z0EXW"></a></p><h4 id="匹配样例类型">匹配样例类型</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">样例匹配</span>
+	<span class="nc">Scala中可以使用匹配来匹配样例类</span><span class="o">,</span><span class="n">从而实现快速获取样例类中的成员函数</span><span class="err">。</span>
+	<span class="n">对象名</span> <span class="k">match</span> <span class="o">{</span>
+  	<span class="k">case</span> <span class="nf">样例类型1</span><span class="o">(</span><span class="n">字段1</span><span class="o">,</span><span class="n">字段2</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">表达式</span>
+    <span class="k">case</span> <span class="nf">样例类型2</span><span class="o">(</span><span class="n">字段1</span><span class="o">,</span><span class="n">字段2</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">表达式</span>
+    <span class="o">...</span>
+    <span class="k">case</span> <span class="k">_=&gt;</span> <span class="n">表达式</span>
+  <span class="o">}</span>
+<span class="n">ps</span><span class="k">:</span> <span class="kt">样例类型后的小括号</span><span class="o">,</span><span class="n">编写的字段个数要和该样例类的字段个数保持一致</span>
+    <span class="n">通过match进行模式匹配的时候</span><span class="o">,</span><span class="n">要匹配的对象必须声明为</span><span class="k">:</span> <span class="err">"</span><span class="kt">Any类型</span><span class="err">"</span>
+
+<span class="kt">object</span> <span class="kt">ClassDemo</span> <span class="o">{</span>
+  <span class="kt">case</span> <span class="kt">class</span> <span class="kt">Custom</span><span class="o">(</span><span class="kt">name:String</span><span class="o">,</span><span class="kt">age:Int</span><span class="o">);</span>
+  <span class="k">case</span> <span class="k">class</span> <span class="nc">Order</span><span class="o">(</span><span class="n">id</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">c</span><span class="k">:</span><span class="kt">Any</span><span class="o">=</span><span class="nc">Custom</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">,</span><span class="mi">30</span><span class="o">);</span>
+    
+    <span class="n">c</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Custom</span><span class="o">(</span><span class="n">name</span><span class="o">,</span><span class="n">age</span><span class="o">)</span><span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"${name}   ${age}"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="nc">Order</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="k">=&gt;</span>  <span class="nf">println</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="sExFK"></a></p><h4 id="匹配守卫">匹配守卫</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">所谓的守卫指的是</span><span class="o">,</span> <span class="n">在case语句中添加if条件判断</span><span class="o">,</span><span class="n">这样可以让我们的代码更简洁</span><span class="o">,</span><span class="n">更优雅</span><span class="err">。</span>
+
+<span class="n">变量</span> <span class="k">match</span> <span class="o">{</span>
+	<span class="k">case</span> <span class="n">变量名</span> <span class="nf">if条件1</span> <span class="o">(</span><span class="n">可以使用前面定义的变量名</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">表达式1</span>
+  <span class="k">case</span> <span class="n">变量名</span> <span class="n">if条件2</span> <span class="k">=&gt;</span> <span class="n">表达式2</span>
+  <span class="k">case</span> <span class="n">变量名</span> <span class="n">if条件3</span> <span class="k">=&gt;</span> <span class="n">表达式3</span>
+  <span class="o">...</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">表达式4</span>
+<span class="o">}</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"请录入数据:"</span><span class="o">)</span>
+    <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nv">StdIn</span><span class="o">.</span><span class="py">readLine</span><span class="o">();</span>
+    <span class="k">var</span> <span class="n">a</span> <span class="k">=</span> <span class="nv">Integer</span><span class="o">.</span><span class="py">valueOf</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+    <span class="k">var</span> <span class="n">b</span> <span class="k">=</span> <span class="nv">data</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+    <span class="c1">// 守卫指的是 在case语句中添加if条件判断</span>
+    <span class="n">a</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">x</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="k">=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"未匹配"</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></div></div><p><a name="2fGS6"></a></p><h4 id="tuple匹配">tuple匹配</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">tuple1</span> <span class="k">=</span> <span class="nc">Tuple3</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span>,<span class="kt">Int</span><span class="o">](</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span>
+    <span class="k">var</span> <span class="n">tuple2</span> <span class="k">=</span> <span class="nc">Tuple3</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span>,<span class="kt">Int</span><span class="o">]</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)</span>
+
+    <span class="n">tuple2</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="nf">case</span> <span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">)</span><span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"匹配元素,长度为3,以元素1开头,剩下的两个元素无所谓 分别是 ${x} ${y}"</span><span class="o">)</span>
+      <span class="nf">case</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">,</span><span class="mi">5</span><span class="o">)</span><span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"匹配元素,长度为3,最后一个元素为5,剩下的两个元素无所谓 分别是 ${x} ${y}"</span><span class="o">)</span>
+      <span class="k">case</span> <span class="k">_=&gt;</span><span class="nf">println</span><span class="o">(</span><span class="s">"未匹配"</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></div></div><p><a name="aIvHg"></a></p><h3 id="正则表达式">正则表达式</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scala</span> <span class="n">中提供了Regex类来定义正则表达式</span>
+<span class="n">要构造一个Regex对象</span><span class="o">,</span><span class="n">直接使用String类的r方法即可</span>
+<span class="n">建议使用三个双引号来表示正则表达式</span><span class="o">,</span><span class="n">不然就得对正则中的反斜杠进行转义</span>
+
+<span class="k">var</span> <span class="n">正则对象名</span> <span class="k">=</span> <span class="s">"""具体的正则表达式"""</span><span class="n">r</span>
+
+<span class="n">ps</span><span class="k">:</span> <span class="kt">使用findAllMatchIn</span><span class="o">()</span><span class="kt">方法可以获取到所有正则匹配到的数据</span><span class="o">(</span><span class="kt">字符串</span><span class="o">)</span>
+</code></pre></div></div><p><a name="09XFb"></a> #### <a name="wGmpL"></a></p><h3 id="提取器unapply">提取器unapply</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">提取器是从传递给它的对象中提取出构造该对象的参数</span><span class="err">。</span>
+<span class="n">scala提取器是一个带有unapply方法的对象</span><span class="o">,</span><span class="n">unapply方法算是apply方法的反向操作</span><span class="err">。</span><span class="n">unapply接受一个对象</span><span class="o">,</span><span class="n">然后从对象中提取值</span><span class="o">,</span><span class="n">提取的值通常是用来构造该对象的值</span>
+
+<span class="n">不是所有的类都可以进行这样的模式匹配</span>
+	<span class="n">一个类要支持模式匹配</span><span class="o">,</span><span class="n">则必须要实现一个提取器</span>
+  <span class="mi">1</span><span class="o">)</span> <span class="nf">提取器指的就是unapply</span><span class="o">()</span><span class="n">方法</span>
+  <span class="mi">2</span><span class="o">)</span> <span class="nf">样例类自动实现了apply</span><span class="o">()</span> <span class="nf">unapply</span><span class="o">()</span> <span class="n">方法</span><span class="o">,</span><span class="n">无需我们手动定义</span>
+
+<span class="n">要实现一个类的提取器</span><span class="o">,</span><span class="n">只需要在该类的伴生对象中实现一个unapply方法即可</span>
+<span class="c1">// 返回一个Option对象</span>
+<span class="k">def</span> <span class="nf">unapply</span><span class="o">(</span><span class="nc">Stu</span><span class="k">:</span><span class="kt">Student</span><span class="o">)</span><span class="k">:</span><span class="kt">Option</span><span class="o">[(</span><span class="kt">类型1</span><span class="o">)</span>,<span class="o">(</span><span class="kt">类型2</span><span class="o">)</span>,<span class="o">(</span><span class="kt">类型3</span><span class="o">)</span><span class="kt">...</span><span class="o">]</span> <span class="o">={</span>
+	 <span class="nf">if</span><span class="o">(</span><span class="n">stu</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+   		<span class="nc">Some</span><span class="o">((</span><span class="n">变量1</span><span class="o">,</span><span class="n">变量2</span><span class="o">,</span><span class="n">变量3</span><span class="o">))</span>
+   <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+   		<span class="nc">None</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><img src="https://cdn.nlark.com/yuque/0/2020/png/659846/1606082129432-3b9bd00a-b963-4a7f-b452-b0be36a99412.png#align=left&amp;display=inline&amp;height=140&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=191&amp;originWidth=641&amp;size=23483&amp;status=done&amp;style=none&amp;width=469" alt="image.png" /></p><p><a name="HtFHY"></a></p><h3 id="隐式转换implicit">隐式转换implicit</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">隐式转换和隐式参数是scala中非常有特色的功能</span><span class="o">,</span> <span class="n">java等其他语言没有改功能</span><span class="err">。</span>
+<span class="n">我们可以很方便的利用隐式转换来丰富现有类的功能</span><span class="err">。</span>
+
+<span class="n">隐式转换</span>
+     <span class="n">用implicit关键词</span><span class="o">,</span><span class="n">声明带有单个参数的方法</span>
+          <span class="n">作用就是将某一种类型的数据自动转换为另一种类型的数据</span>
+     <span class="n">需要一个增强的类</span><span class="o">,</span><span class="n">里面提供我们想要的方法</span><span class="o">,</span><span class="n">接收的参数的类型一定是要被增强类的类型</span>
+ 
+
+<span class="n">隐式参数</span>
+		 <span class="n">用implicit关键字修饰的变量</span>
+
+<span class="n">隐式转换的时机</span>
+	<span class="mi">1</span><span class="o">)</span> <span class="n">当对象调用类中不存在的方法或成员时</span><span class="o">,</span><span class="n">编译器会自动对该对象进行隐式转换</span>
+  <span class="mi">2</span><span class="o">)</span> <span class="n">当方法中的参数类型与目标类型不一致的时候</span><span class="o">,</span><span class="n">编译器也会自动调用隐式转换</span>
+  <span class="n">ps</span> <span class="n">当调用一个对象中不存在的方法时</span><span class="err">，</span><span class="n">程序就会自动对该对象进行隐式转换</span>
+     <span class="n">在scala中</span><span class="o">,</span><span class="n">如果在当前作用域中有隐式转换方法</span><span class="o">,</span><span class="n">会自动导入隐式转换</span>
+
+
+
+
+</code></pre></div></div><p><a name="WI0jc"></a></p><h4 id="隐式转换">隐式转换</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">ImplicitDemo</span> <span class="o">{</span>
+  <span class="cm">/**
+   * 所谓的隐式转换
+   *   指以implicit关键字声明的带有单个参数的方法,该方法是被自动调用的,用来实现自动将某种类型
+   *   的数据转换为另一中类型的数据
+   * 使用步骤
+   *   在object单例对象中定义隐式转换方法, 使用implicit关键字修饰的方法
+   *   在需要使用隐式转换的地方,引入隐式转换, 类似于导包,通过import关键字实现
+   *   当需要用到隐式转换方法时,程序会自动调用
+   */</span>
+  <span class="k">class</span> <span class="nc">RichFile</span><span class="o">(</span><span class="n">file</span><span class="k">:</span><span class="kt">File</span><span class="o">){</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="o">()</span> <span class="k">=</span> <span class="nv">Source</span><span class="o">.</span><span class="py">fromFile</span><span class="o">(</span><span class="s">"/Users/ssgao/Downloads/out.txt"</span><span class="o">).</span><span class="py">mkString</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="c1">// 定义单例对象ImplicitDemo 该单例对象有一个隐式转换方法</span>
+  <span class="k">object</span> <span class="nc">ImpicitDemo</span><span class="o">{</span>
+    <span class="c1">// 隐式转换方法 file2RichFile 用来将File对象转换成RichFile对象</span>
+    <span class="c1">// implicit是隐式转换的关键字, 这里定义一个隐式转换函数把当前类型转换成增强的类型</span>
+    <span class="k">implicit</span> <span class="k">def</span> <span class="nf">file2RichFile</span><span class="o">(</span><span class="n">file</span><span class="k">:</span> <span class="kt">File</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RichFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="c1">// ps 核心步骤,手动导入 隐式转换</span>
+    <span class="c1">// import ImpicitDemo.file2RichFile;</span>
+
+    <span class="c1">// 定义一个隐式转换方法,用来将file对象转换为richFile</span>
+    <span class="k">implicit</span>  <span class="k">def</span> <span class="nf">file2Rich</span><span class="o">(</span><span class="n">file</span><span class="k">:</span><span class="kt">File</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RichFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+    <span class="k">var</span> <span class="n">file</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"/Users/ssgao/Downloads/out.txt"</span><span class="o">);</span>
+    <span class="cm">/**
+     * 执行流程
+     *   1 先找File类有没有read()方法,有就用
+     *   2 如果没有,就去查看有没有该类型的隐式转换,将该对象转换成其他类型的对象
+     *   3 如果没有隐式转换,直接报错
+     *   4 如果可以将该类型的对象升级为其他类型的对象,则查看升级后的对象中有没有指定的方法
+     *     有 不报错, 没有 就报错
+     * 1 file对象没有read()方法
+     * 2 检测到有隐式转换,将file对象转换为richFile对象
+     * 3 调用richFile中的read()方法
+     */</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nv">file</span><span class="o">.</span><span class="py">read</span><span class="o">())</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="SiJyl"></a></p><h4 id="隐式参数">隐式参数</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 在scala中,可以带有一个implicit的参数列表。调用该方法时,此参数列表可以不用给初始化值。
+ * 因为编译器会自动查找缺省值,提供给该方法
+ *
+ * 使用步骤
+ *  在方法后面添加一个参数列表,参数使用implicit修饰
+ *  在object中定义implicit修饰的隐式值
+ *  调用方法,可以不传入implicit修饰的参数列表,编译器会自动查询缺省值
+ * ps
+ *   和隐式转换一样,可以使用import手动导入隐式参数
+ *   如果在当前作用域定义了隐式值,会自动进行导入
+ *
+ */</span>
+<span class="k">object</span> <span class="nc">ImplicitParaDemo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="nf">show</span><span class="o">(</span><span class="n">name</span><span class="k">:</span><span class="kt">String</span><span class="o">)(</span><span class="k">implicit</span> <span class="n">delimit</span><span class="k">:</span><span class="o">(</span><span class="kt">String</span><span class="o">,</span><span class="kt">String</span><span class="o">))</span> <span class="k">=</span> <span class="nv">delimit</span><span class="o">.</span><span class="py">_1</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="nv">delimit</span><span class="o">.</span><span class="py">_2</span>
+  <span class="k">object</span> <span class="nc">ImpilictParam</span><span class="o">{</span>
+    <span class="k">implicit</span> <span class="k">val</span> <span class="nv">delimit_default</span><span class="o">=</span><span class="s">"&lt;&lt;&lt;"</span><span class="o">-&gt;</span><span class="s">"&gt;&gt;&gt;"</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="c1">// 核心细节,手动导入 隐式参数的值</span>
+    <span class="c1">//import ImpilictParam.delimit_default;</span>
+
+    <span class="c1">// 自动导入隐式参数</span>
+    <span class="k">implicit</span> <span class="k">var</span> <span class="n">implicit_default</span> <span class="o">=</span><span class="s">"&lt;&lt;&lt;"</span><span class="o">-&gt;</span><span class="s">"&gt;&gt;&gt;"</span>
+
+    <span class="nf">println</span><span class="o">(</span><span class="nf">show</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">));</span>
+    <span class="c1">// 显示设置隐式转换的参数</span>
+    <span class="nf">println</span><span class="o">(</span><span class="nf">show</span><span class="o">(</span><span class="s">"xiaoxiao"</span><span class="o">)(</span><span class="s">"(("</span><span class="o">-&gt;</span><span class="s">"))"</span><span class="o">))</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><a name="U7tjN"></a></p><h3 id="递归介绍">递归介绍</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">递归指的是</span> <span class="n">方法自己调用自己的情况</span><span class="o">,</span> <span class="n">在涉及到复杂操作时</span><span class="o">,</span><span class="n">我们会经常用到它</span><span class="err">。</span><span class="n">在使用递归时</span><span class="o">,</span><span class="n">要注意以下四点</span><span class="k">:</span>
+ <span class="err">1</span> <span class="kt">递归必须有出口</span><span class="o">,</span><span class="n">否则容易造成死递归</span>
+ <span class="mi">2</span> <span class="n">递归必须要有规律</span>
+ <span class="mi">3</span> <span class="n">构造方法不能递归</span>
+ <span class="mi">4</span> <span class="n">递归方法必有</span> <span class="n">返回值的数据类型</span>
+<span class="n">例如</span><span class="k">:</span><span class="kt">下述的代码就是递归的写法</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="o">()</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+    	<span class="nf">show</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">FacterDemo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="nf">factorial</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">Int</span> <span class="o">={</span>
+    <span class="nf">if</span><span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span>
+      <span class="mi">1</span>
+    <span class="k">else</span>
+      <span class="n">n</span><span class="o">*</span><span class="nf">factorial</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">res</span> <span class="k">=</span> <span class="nf">factorial</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">res</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><br /></p><p><a name="s6DMB"></a></p><h3 id="泛型介绍">泛型介绍</h3><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">泛型的意思是</span><span class="o">,</span> <span class="n">泛指某种具体的数据类型</span><span class="o">,</span> <span class="n">在scala中泛型用</span><span class="o">[</span><span class="kt">数据类型</span><span class="o">]</span> <span class="n">表示</span><span class="err">。</span>
+
+<span class="n">泛型方法</span>
+   <span class="n">把泛型定义在方法声明之上</span><span class="o">,</span><span class="n">即该方法的参数是有泛型来决定的</span><span class="err">。</span><span class="n">在调用方法时</span><span class="o">,</span><span class="n">明确具体的数据类型</span>
+   <span class="k">def</span> <span class="nf">方法名</span><span class="o">[</span><span class="kt">泛型名称</span><span class="o">](...)={</span>
+   		<span class="c1">//...</span>
+   <span class="o">}</span>
+<span class="n">泛型类</span>
+	<span class="n">指的是</span> <span class="n">把泛型定义到类的声明上</span><span class="o">,</span><span class="n">即该类中的成员的参数类型是由泛型来决定的</span><span class="err">。</span>
+  <span class="n">在创建对象时</span><span class="o">,</span><span class="n">明确具体的数据类型</span>
+  <span class="k">class</span> <span class="nc">类</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="k">val</span> <span class="nv">变量名</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span>
+
+<span class="n">泛型特质</span>
+	<span class="n">泛型特质指的是</span> <span class="n">把泛型定义到特质的声明上</span><span class="o">,</span> <span class="n">即</span> <span class="n">该特质中的成员参数类型</span><span class="o">,</span><span class="n">是由泛型来决定的</span><span class="err">。</span>
+  <span class="n">在定义泛型特质的子类或者子单例对象时</span><span class="o">,</span><span class="n">明确具体的数据类型</span>
+  <span class="k">trait</span> <span class="nc">特质A</span><span class="o">[</span><span class="kt">T</span><span class="o">]{</span>
+    <span class="c1">// 特质中的成员</span>
+  <span class="o">}</span>
+  <span class="k">class</span> <span class="nc">类B</span> <span class="k">extends</span> <span class="n">特质A</span><span class="o">[</span><span class="kt">指定具体的数据类型</span><span class="o">]{</span>
+  	<span class="c1">// 类中的成员</span>
+  <span class="o">}</span>
+
+<span class="n">泛型的上下界</span>
+  <span class="nf">在使用泛型</span><span class="o">(</span><span class="n">方法</span><span class="o">,</span><span class="n">类</span><span class="o">,</span><span class="n">特质</span><span class="o">)</span> <span class="n">时</span><span class="o">,</span><span class="n">如果要限定该泛型必须从哪个类继承或者必须是哪个类的父类</span><span class="o">,</span><span class="n">此时就需要使用泛型的上下界</span><span class="err">。</span>
+  <span class="n">上界</span>
+      <span class="n">使用T</span><span class="k">&lt;:</span><span class="n">类型名</span> <span class="n">表示给类型添加一个上界</span><span class="o">,</span><span class="nf">表示泛型参数必须要从该类继承</span><span class="o">(</span><span class="n">或该类本身</span><span class="o">)</span>
+      <span class="n">格式</span><span class="o">[</span><span class="kt">T</span> <span class="k">&lt;:</span><span class="kt">类型</span><span class="o">]</span> <span class="n">ps</span><span class="k">:</span><span class="err">[</span><span class="kt">T</span><span class="k">&lt;:</span><span class="kt">Person</span><span class="err">]</span><span class="kt">的意思是</span><span class="o">,</span><span class="n">泛型T的数据类型必须是Person类型或者Person的子类型</span>
+  <span class="n">下界</span>
+		  <span class="n">使用T</span><span class="k">&gt;:</span><span class="n">数据类型表示给该类型添加一个下界</span><span class="o">,</span><span class="n">表示泛型参数必须从该类型本身或该类型的父类型</span>
+      <span class="n">格式</span><span class="k">:</span> <span class="err">[</span><span class="kt">T</span><span class="k">&gt;:</span> <span class="kt">类型</span><span class="err">]</span>
+      <span class="kt">例如:</span> <span class="err">[</span><span class="kt">T</span><span class="k">&gt;:</span> <span class="kt">Person</span><span class="err">]</span><span class="kt">的意思是</span><span class="o">,</span><span class="n">泛型T的数据类型必须是Person类型或者Person的父类型</span>
+            <span class="n">如果泛型既有上界</span><span class="o">,</span><span class="n">也有下界</span><span class="o">,</span><span class="n">下界写在前面</span><span class="o">,</span><span class="n">上界写在后面</span> <span class="n">即</span> <span class="o">[</span><span class="kt">T</span><span class="k">&gt;:</span><span class="kt">类型1</span> <span class="k">&lt;:</span><span class="kt">类型2</span><span class="o">]</span>
+  
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">ExtendDemo</span> <span class="o">{</span>
+  <span class="c1">// 不使用泛型: 使用普通方法必须用Any 最基础的类型来承接</span>
+  <span class="k">def</span> <span class="nf">getMiddleElement1</span><span class="o">(</span><span class="n">array</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">Any</span><span class="o">])</span><span class="k">=</span> <span class="nf">array</span><span class="o">(</span><span class="nv">array</span><span class="o">.</span><span class="py">length</span><span class="o">/</span><span class="mi">2</span><span class="o">);</span>
+  <span class="k">def</span> <span class="nf">getMiddelElement2</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">array</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span> <span class="k">=</span> <span class="nf">array</span><span class="o">(</span><span class="nv">array</span><span class="o">.</span><span class="py">length</span><span class="o">/</span><span class="mi">2</span><span class="o">);</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nf">println</span><span class="o">(</span> <span class="nf">getMiddleElement1</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)))</span>
+    <span class="nf">println</span><span class="o">(</span> <span class="nf">getMiddleElement1</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"a"</span><span class="o">,</span><span class="s">"b"</span><span class="o">,</span><span class="s">"c"</span><span class="o">)))</span>
+
+    <span class="nf">println</span><span class="o">(</span> <span class="nf">getMiddelElement2</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)))</span>
+    <span class="nf">println</span><span class="o">(</span> <span class="nf">getMiddelElement2</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"a"</span><span class="o">,</span><span class="s">"b"</span><span class="o">,</span><span class="s">"c"</span><span class="o">)))</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+ * 在创建对象的时候,明确具体的数据类型
+ */</span>
+<span class="k">object</span> <span class="nc">ExtendClassDemo</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="k">class</span> <span class="nc">Pair</span><span class="o">[</span><span class="kt">T</span>,<span class="kt">V</span><span class="o">](</span><span class="k">var</span> <span class="n">a</span><span class="k">:</span><span class="kt">T</span><span class="o">,</span><span class="k">var</span> <span class="n">b</span><span class="k">:</span><span class="kt">V</span><span class="o">)</span>
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">pair</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pair</span><span class="o">[</span><span class="kt">String</span>,<span class="kt">Int</span><span class="o">](</span><span class="s">"ssgao"</span><span class="o">,</span><span class="mi">33</span><span class="o">);</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"pair ${pair}"</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">object</span> <span class="nc">ExtendTraitDemo</span> <span class="o">{</span>
+  <span class="cm">/**
+   * 泛型特质:
+   *    在定义其子类或者子单例对象的时候,明确具体的数据类型
+   */</span>
+  <span class="k">trait</span> <span class="nc">Logger</span><span class="o">[</span><span class="kt">T</span><span class="o">]{</span>
+    <span class="k">val</span> <span class="nv">a</span><span class="k">:</span><span class="kt">T</span><span class="o">;</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="o">(</span><span class="n">b</span><span class="k">:</span><span class="kt">T</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="c1">// 定义单例对象ConsoleLogger 继承Logger特质</span>
+  <span class="k">object</span> <span class="nc">ConsoleLogger</span> <span class="k">extends</span> <span class="nc">Logger</span><span class="o">[</span><span class="kt">String</span><span class="o">]{</span>
+     <span class="k">override</span> <span class="k">val</span> <span class="nv">a</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"ssgao"</span><span class="o">;</span>
+     <span class="k">override</span> <span class="k">def</span> <span class="nf">show</span><span class="o">(</span><span class="n">b</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+       <span class="nf">println</span><span class="o">(</span><span class="n">b</span><span class="o">)</span>
+       <span class="nf">println</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+     <span class="o">}</span>
+   <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nv">ConsoleLogger</span><span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="s">"xiaoxiao"</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><a name="ZrsAl"></a></p><h4 id="泛型特质">泛型特质</h4><div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">object</span> <span class="nc">UpperDemo</span> <span class="o">{</span>
+  <span class="k">class</span> <span class="nc">Person</span><span class="o">;</span>
+  <span class="k">class</span> <span class="nc">Student</span> <span class="k">extends</span> <span class="nc">Person</span><span class="o">;</span>
+  <span class="cm">/**
+   * 定义一个泛型方法show, 该方法接收一个Array参数。
+   * 限定demo 方法的Array元素类型只能是Person 或者Person的子类
+   */</span>
+  <span class="k">def</span> <span class="nf">show</span><span class="o">[</span><span class="kt">T</span><span class="k">&lt;:</span><span class="kt">Person</span><span class="o">](</span><span class="n">array</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">T</span><span class="o">])={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="nf">show2</span><span class="o">[</span><span class="kt">T</span><span class="k">&gt;:</span> <span class="kt">Student</span><span class="o">](</span><span class="n">array</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nf">show</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="k">new</span> <span class="nc">Student</span><span class="o">(),</span><span class="k">new</span> <span class="nc">Student</span><span class="o">()));</span>
+    <span class="nf">show2</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="k">new</span> <span class="nc">Person</span><span class="o">(),</span><span class="k">new</span> <span class="nc">Person</span><span class="o">()));</span>
+<span class="c1">//    show("a","b");  这样代码会报错</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div><p><br /></p><p><a name="XJVO8"></a> #### <a name="22lx5"></a> #### <a name="hyNm5"></a> #### <a name="dChpo"></a></p><h4 id="协变逆变非变">协变,逆变,非变</h4><p><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /></p><div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"><h3>文档信息</h3><ul><li>本文作者：<a href="http://localhost:4000" target="_blank">ssgao</a></li><li>本文链接：<a href="http://localhost:4000/2021/10/21/scala%E5%9F%BA%E7%A1%80/" target="_blank">http://localhost:4000/2021/10/21/scala%E5%9F%BA%E7%A1%80/</a></li><li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li></ul></div></article><div class="share"></div><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/gitalk/gitalk.css"> <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> <script> var gitalk = new Gitalk({ id: '/2021/10/21/scala%E5%9F%BA%E7%A1%80/', clientID: 'd2e1cbbd298958076462', clientSecret: 'b42a4178e5fd4a7cf63189ef4b1453b05c375709', repo: 'blog-comments', owner: 'mzlogin', admin: ['mzlogin'], labels: ['gitment'], perPage: 50, }); gitalk.render('gitalk-container'); </script></div></div><div class="column one-fourth"><h3>Search</h3><div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"></div><ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul><script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'http://localhost:4000/assets/search_data.json?v=1635228956', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script><h3 class="post-directory-title mobile-hidden">Table of Contents</h3><div id="post-directory-module" class="mobile-hidden"><section class="post-directory"><dl></dl></section></div><script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/jquery.toc.js"></script></div></div></section><footer class="container"><div class="site-footer" role="contentinfo"><div class="copyright left mobile-block"> © 2015 <span title="ssgao">ssgao</span> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a></div><ul class="site-footer-links right mobile-hidden"><li> <a href="javascript:window.scrollTo(0,0)" >TOP</a></li></ul><a href="https://github.com/aouoxx/aouoxx.github.io" target="_blank" aria-label="view source code"> <span class="mega-octicon octicon-mark-github" title="GitHub"></span> </a><ul class="site-footer-links mobile-hidden"><li> <a href="http://localhost:4000/" title="首页" target="">首页</a></li><li> <a href="http://localhost:4000/categories/" title="分类" target="">分类</a></li><li> <a href="http://localhost:4000/links/" title="链接" target="">链接</a></li><li> <a href="http://localhost:4000/about/" title="关于" target="">关于</a></li><li><a href="http://localhost:4000/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a></li></ul></div></footer><div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a></div><script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script><div style="display:none"> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-80669434-1', 'auto'); ga('send', 'pageview'); </script></div></body></html>
