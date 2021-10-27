@@ -1,0 +1,21 @@
+{
+  "yuqueConfig": {
+    "baseUrl": "https://www.yuque.com/api/v2",
+    "login": "addata",
+    "repo": "lmz97o",
+    "mdNameFormat": "title",
+    "postPath": "./_posts/yuque",
+    "cachePath": "yuque.json",
+    "adapter": "markdown",
+    "token": "XdqRFPPPEj3sAPqgCCkgoDNZX63JZyQZQS4Ljxg6",
+    "onlyPublished": true,
+    "onlyPublic": true
+  },
+  "scripts": {
+    "clean:yuque": "yuque-hexo clean",
+    "sync": "yuque-hexo sync"
+  },
+  "devDependencies": {
+    "yuque-hexo": "^1.6.5"
+  }
+}
