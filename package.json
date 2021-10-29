@@ -2,10 +2,10 @@
   "yuqueConfig": {
     "baseUrl": "https://www.yuque.com/api/v2",
     "login": "addata",
-    "repo": "lmz97o",
+    "repo": "ee308m",
     "mdNameFormat": "title",
-    "postPath": "./_posts/yuque",
-    "cachePath": "yuque.json",
+    "postPath": "./_posts/yuque2",
+    "cachePath": "yuque3.json",
     "adapter": "markdown",
     "token": "XdqRFPPPEj3sAPqgCCkgoDNZX63JZyQZQS4Ljxg6",
     "onlyPublished": true,
