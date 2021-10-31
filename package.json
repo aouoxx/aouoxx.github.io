@@ -2,7 +2,7 @@
   "yuqueConfig": {
     "baseUrl": "https://www.yuque.com/api/v2",
     "login": "addata",
-    "repo": "ee308m",
+    "repo": "nuayhx",
     "mdNameFormat": "title",
     "postPath": "./_posts/yuque2",
     "cachePath": "yuque3.json",
