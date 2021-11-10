@@ -41,6 +41,8 @@ jobs:
        # cd ./public
     - name: deploy 
       run: |
+        rm -rf package-lock.json
+        rm -rf yuque.json
         git config user.name "aouoxx"
         git config user.email "aouo1987@163.com"
         git add .
