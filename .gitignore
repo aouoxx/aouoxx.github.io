@@ -24,3 +24,4 @@ out/
 *.ipr
 *.iws
 flink-ai/src/test/java
+node_modules
