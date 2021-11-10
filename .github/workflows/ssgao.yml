@@ -34,7 +34,8 @@ jobs:
         npm install
         yuque-hexo sync
         
-    - name: deploy     
+    - name: deploy 
+      run: |
         git clone "https://${{ secrets.GH_REF }}" deploy_git
         mv ./deploy_git/* ./public/
         cd ./public
