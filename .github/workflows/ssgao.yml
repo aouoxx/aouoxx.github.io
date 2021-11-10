@@ -36,7 +36,7 @@ jobs:
         
     - name: deploy 
       run: |
-        git clone "https://${{ secrets.GH_REF }}" deploy_git
+        git clone https://github.com/aouoxx/aouoxx.github.io.git deploy_git
         mv ./deploy_git/.git ./public/
         cd ./public
         git config user.name "aouoxx"
