@@ -11,4 +11,6 @@ curl -X POST https://api.github.com/repos/aouoxx/aouoxx.github.io/dispatches \\n
 -d '{"event_type":"start"}'
 
 
+https://service-nltg9mln-1308224370.sh.apigw.tencentcs.com/release/yuque
+
 
