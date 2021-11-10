@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - 8
+script:
+  - "npm run build:yuque"
+cache:
+  directories:
+    - node_modules
+deploy:
+  provider: pages
+  skip_cleanup: true
+  # access token存储在环境变量中防止泄露，$GITHUB_TOKEN 在travisCI中构建后面会说明如何添加
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  # 指定部署的repo，默认为当前repo
+  repo: aouoxx/aouoxx.github.io
+  # 指定branch，默认为gh-pages
+  target_branch: main
+  # 指定要部署的文件夹，hexo构建生成在public目录下
+  local_dir: public
+  on:
+    branch: main
