@@ -30,7 +30,7 @@ jobs:
       env:
         YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
       run: |
-        npm install hexo-cli -g
+        npm install jekyll -g
         npm install yuque-hexo -g
         npm install
         npm run start
