@@ -46,5 +46,3 @@ jobs:
         git push --force -- 
       
 quiet "https://${{ secrets.GH_TOKEN }}@${{ secrets.GH_REF }}" main:main
-
-name: Deploy To Github Pages
