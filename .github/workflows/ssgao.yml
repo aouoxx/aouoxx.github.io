@@ -26,15 +26,11 @@ jobs:
         node-version: "15.x"
     
     # from https://github.com/x-cold/yuque-hexo
-    - name: Setup Hexo Dependencies and Generate Public Files
+    - name: sync & deploy
       env:
         YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
       run: |
         yuque-hexo sync
-        
-    # from https://github.com/peaceiris/actions-gh-pages    
-   - name: Deploy blog
-      run: |
         git clone "https://${{ secrets.GH_REF }}" /Users/gaoshuoshuo/workspace/my_workspace/aouoxx.github.io
         cd /Users/gaoshuoshuo/workspace/my_workspace/aouoxx.github.io
         git config user.name "aouoxx"
