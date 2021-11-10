@@ -23,24 +23,22 @@ jobs:
     - name: Setup Node.js 10.x 
       uses: actions/setup-node@main
       with:
-        node-version: "10.x"
+        node-version: "15.x"
     
     # from https://github.com/x-cold/yuque-hexo
     - name: Setup Hexo Dependencies and Generate Public Files
       env:
         YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
       run: |
-        npm install jekyll -g
-        npm install yuque-hexo -g
-        npm install
-        npm run start
+        yuque-hexo sync
         
     # from https://github.com/peaceiris/actions-gh-pages    
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-          deploy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          external_repository: aouoxx/aouoxx.github.io
-          publish_branch: main
-          publish_dir: ./_post
-          commit_message: ${{ github.event.head_commit.message }}    
+   - name: Deploy blog
+      run: |
+        git clone "https://${{ secrets.GH_REF }}" /Users/gaoshuoshuo/workspace/my_workspace/aouoxx.github.io
+        cd /Users/gaoshuoshuo/workspace/my_workspace/aouoxx.github.io
+        git config user.name "aouoxx"
+        git config user.email "aouo1987@163.com"
+        git add .
+        git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+        git push --force -- 
