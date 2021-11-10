@@ -5,7 +5,7 @@ name: Deploy To Github Pages
 on: [push, repository_dispatch]
 
 # YUQUE_TOKEN
-# Github_SSH_PRIVATE_KEY
+# SSH_PRIVATE_KEY
 jobs:
   deploy: 
     name: Deploy Hexo Public To Pages
@@ -38,8 +38,8 @@ jobs:
     # from https://github.com/peaceiris/actions-gh-pages    
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.Github_SSH_PRIVATE_KEY }}
+      with:
+          deploy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           external_repository: aouoxx/aouoxx.github.io
           publish_branch: main
           publish_dir: ./_post
