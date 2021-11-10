@@ -17,6 +17,6 @@ deploy:
   # 指定branch，默认为gh-pages
   target_branch: main
   # 指定要部署的文件夹，hexo构建生成在public目录下
-  local_dir: public
+  local_dir: _post
   on:
     branch: main
