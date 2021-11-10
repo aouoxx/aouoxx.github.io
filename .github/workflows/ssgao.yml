@@ -30,6 +30,8 @@ jobs:
       env:
         YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
       run: |
+        rm -rf package-lock.json
+        rm -rf yuque.json
         npm install yuque-hexo -g
         npm install
         yuque-hexo sync
