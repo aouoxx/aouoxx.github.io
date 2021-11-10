@@ -4,7 +4,7 @@
     "login": "addata",
     "repo": "nuayhx",
     "mdNameFormat": "title",
-    "postPath": "./_posts/yuque",
+    "postPath": "./_posts",
     "cachePath": "yuque.json",
     "adapter": "markdown",
     "token": "XdqRFPPPEj3sAPqgCCkgoDNZX63JZyQZQS4Ljxg6",
