@@ -33,12 +33,12 @@ jobs:
         npm install yuque-hexo -g
         npm install
         yuque-hexo sync
-        
+    
+    # git clone https://github.com/aouoxx/aouoxx.github.io.git deploy_git
+       # mv ./deploy_git/.git ./public/
+       # cd ./public
     - name: deploy 
       run: |
-        git clone https://github.com/aouoxx/aouoxx.github.io.git deploy_git
-        mv ./deploy_git/.git ./public/
-        cd ./public
         git config user.name "aouoxx"
         git config user.email "aouo1987@163.com"
         git add .
