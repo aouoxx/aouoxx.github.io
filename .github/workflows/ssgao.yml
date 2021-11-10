@@ -8,7 +8,7 @@ on: [push, repository_dispatch]
 # SSH_PRIVATE_KEY
 jobs:
   deploy: 
-    name: Deploy Hexo Public To Pages
+    name: 部署我的博客内容
     runs-on: ubuntu-latest 
     env:
       TZ: Asia/Shanghai    
@@ -26,13 +26,18 @@ jobs:
         node-version: "15.x"
     
     # from https://github.com/x-cold/yuque-hexo
-    - name: sync & deploy
+    - name: sync
       env:
         YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
       run: |
+        npm install yuque-hexo -g
+        npm install
         yuque-hexo sync
-        git clone "https://${{ secrets.GH_REF }}" /Users/gaoshuoshuo/workspace/my_workspace/aouoxx.github.io
-        cd /Users/gaoshuoshuo/workspace/my_workspace/aouoxx.github.io
+        
+    - name: deploy     
+        git clone "https://${{ secrets.GH_REF }}" deploy_git
+        mv ./deploy_git/* ./public/
+        cd ./public
         git config user.name "aouoxx"
         git config user.email "aouo1987@163.com"
         git add .
