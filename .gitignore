@@ -23,5 +23,3 @@ atlassian-ide-plugin.xml
 out/
 *.ipr
 *.iws
-flink-ai/src/test/java
-node_modules

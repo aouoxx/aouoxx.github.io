@@ -13,4 +13,4 @@ curl -X POST https://api.github.com/repos/aouoxx/aouoxx.github.io/dispatches \\n
 云函数
 https://service-nltg9mln-1308224370.sh.apigw.tencentcs.com/release/yuque
 
-
+bundle exec jekyll serve

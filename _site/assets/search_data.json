@@ -83,147 +83,131 @@
 
   
     {
-      "title"    : "配置 Node.js 开发环境——使用 Atom",
-      "category" : "Node.js",
+      "title"    : "windows常用命令",
+      "category" : "windows",
       
-      "url"      : "http://localhost:4000/2016/04/18/develop-nodejs-with-atom/",
-      "keywords" : "Atom, Node.js, ternjs"
+      "url"      : "http://localhost:4000/2014/01/01/WINDOWS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/",
+      "keywords" : "windows"
     } ,
   
     {
-      "title"    : "判断前台 Activity 是否属于本进程",
-      "category" : "Android",
+      "title"    : "web基础知识",
+      "category" : "web",
       
-      "url"      : "http://localhost:4000/2016/04/20/determine-if-my-activities-foreground/",
-      "keywords" : "Android, Activity, Foreground"
+      "url"      : "http://localhost:4000/2014/09/27/WEB&JS&HTML/",
+      "keywords" : "web, js, html"
     } ,
   
     {
-      "title"    : "为绑定域名的 GitHub Pages 启用 HTTPS",
-      "category" : "GitHub",
+      "title"    : "web基础知识",
+      "category" : "web",
       
-      "url"      : "http://localhost:4000/2016/05/21/enable-https-for-github-pages/",
-      "keywords" : "GitHub Pages, SSL, Let&#39;s Encrypt"
+      "url"      : "http://localhost:4000/2014/10/01/WEB&Servlet/",
+      "keywords" : "web, servlet"
     } ,
   
     {
-      "title"    : "简化 kramdown 列表嵌套内容缩进的 Vim 插件",
-      "category" : "Vim",
+      "title"    : "avro,parquent,orc文件编码格式",
+      "category" : "avro",
       
-      "url"      : "http://localhost:4000/2016/06/28/vim-kramdown-tab/",
-      "keywords" : "kramdown, Vim, indent"
+      "url"      : "http://localhost:4000/2014/11/01/WEB&TOMCAT/",
+      "keywords" : "avro, parquent,orc"
     } ,
   
     {
-      "title"    : "Kloudsec 挂了，GitHub Pages 去 HTTPS 化",
-      "category" : "GitHub",
+      "title"    : "web基础知识",
+      "category" : "web",
       
-      "url"      : "http://localhost:4000/2016/07/11/remove-https/",
-      "keywords" : "Kloudsec, GitHub Pages"
+      "url"      : "http://localhost:4000/2014/11/19/WEB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
+      "keywords" : "web, cookie, seession"
     } ,
   
     {
-      "title"    : "在 Vim 里为 Markdown 文档展示导航窗格",
-      "category" : "Vim",
+      "title"    : "Webservice",
+      "category" : "",
       
-      "url"      : "http://localhost:4000/2016/08/03/add-outline-for-markdown-in-vim/",
-      "keywords" : "Vim, Markdown, Outline"
+      "url"      : "http://localhost:4000/2014/12/01/webservice/",
+      "keywords" : ""
     } ,
   
     {
-      "title"    : "C++ 程序员的 Java 指南",
-      "category" : "Java",
+      "title"    : "百度云推送",
+      "category" : "云推送",
       
-      "url"      : "http://localhost:4000/2016/08/30/java-guide-to-cpp-programmers/",
-      "keywords" : "C++, Java"
+      "url"      : "http://localhost:4000/2015/09/09/%E7%99%BE%E5%BA%A6%E4%BA%91%E6%8E%A8%E9%80%81/",
+      "keywords" : "云推送"
     } ,
   
     {
-      "title"    : "一道在知乎很火的 Java 题——如何输出 ab",
-      "category" : "Java",
+      "title"    : "Apache Http Server",
+      "category" : "apache",
       
-      "url"      : "http://localhost:4000/2016/09/20/java-output-ab/",
-      "keywords" : "Java"
+      "url"      : "http://localhost:4000/2015/10/21/Apache-Http-Server/",
+      "keywords" : "apache, http"
     } ,
   
     {
-      "title"    : "vim-markdown-toc 发布 v1.0 版",
-      "category" : "Vim",
+      "title"    : "观察者模式-Java提供Event机制",
+      "category" : "java",
       
-      "url"      : "http://localhost:4000/2016/10/22/vim-markdown-toc-release/",
-      "keywords" : "Vim, Markdown, Table of Contents"
+      "url"      : "http://localhost:4000/2015/10/21/Java-%E6%8F%90%E4%BE%9BEvent%E6%9C%BA%E5%88%B6-Observeable-observer/",
+      "keywords" : "java, 设计模式"
     } ,
   
     {
-      "title"    : "搭建大型源码阅读环境——使用 OpenGrok",
-      "category" : "Tools",
+      "title"    : "监听器模型",
+      "category" : "java",
       
-      "url"      : "http://localhost:4000/2016/12/14/rtfsc-with-opengrok/",
-      "keywords" : "OpenGrok, RTFSC"
+      "url"      : "http://localhost:4000/2015/10/21/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8Fmediator/",
+      "keywords" : "java, 设计模式"
     } ,
   
     {
-      "title"    : "记一个折磨了我一天半的 Bug",
-      "category" : "Java",
+      "title"    : "监听器模型",
+      "category" : "java",
       
-      "url"      : "http://localhost:4000/2019/05/25/a-stupid-bug/",
-      "keywords" : "Java, Bug"
+      "url"      : "http://localhost:4000/2015/10/21/%E7%9B%91%E5%90%AC%E5%99%A8%E7%9A%84%E6%A8%A1%E5%9E%8B/",
+      "keywords" : "java, 设计模式"
     } ,
   
     {
-      "title"    : "使用 jsDelivr 免费加速 GitHub Pages 博客的静态资源（二）",
-      "category" : "GitHub",
+      "title"    : "maven",
+      "category" : "maven",
       
-      "url"      : "http://localhost:4000/2020/10/07/cdn-for-github-pages-2/",
-      "keywords" : "GitHub, CDN, jsdelivr"
+      "url"      : "http://localhost:4000/2016/03/08/maven%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BB%8B%E7%BB%8D/",
+      "keywords" : "maven"
     } ,
   
     {
-      "title"    : "给 Mac 添加右键菜单「使用 VSCode 打开」",
-      "category" : "VSCode",
+      "title"    : "nexus",
+      "category" : "nexus",
       
-      "url"      : "http://localhost:4000/2020/10/28/add-vscode-to-right-click/",
-      "keywords" : "VSCode, macOS"
+      "url"      : "http://localhost:4000/2016/03/10/nexus%E7%9A%84%E4%BB%8B%E7%BB%8D/",
+      "keywords" : "nexus"
     } ,
   
     {
-      "title"    : "代码审查：从 ArrayList 说线程安全",
-      "category" : "Java",
+      "title"    : "completableFuture对象",
+      "category" : "java",
       
-      "url"      : "http://localhost:4000/2021/03/13/talk-about-threadsafe-with-arraylist/",
-      "keywords" : "线程安全"
+      "url"      : "http://localhost:4000/2016/10/21/CompletableFuture/",
+      "keywords" : "java, 多线程"
     } ,
   
     {
-      "title"    : "解决 IntelliJ IDEA 启动报 Unsupported Java Version 的问题",
-      "category" : "Java",
+      "title"    : "Spring介绍",
+      "category" : "",
       
-      "url"      : "http://localhost:4000/2021/03/27/intellij-idea-unsupported-java-version/",
-      "keywords" : "IntelliJ IDEA, Unsupported Java Version"
+      "url"      : "http://localhost:4000/2018/07/01/SPRING%E4%BB%8B%E7%BB%8D/",
+      "keywords" : ""
     } ,
   
     {
-      "title"    : "利用 XXL-JOB 实现灵活控制的分片处理",
-      "category" : "Java",
+      "title"    : "avro,parquent,orc文件编码格式",
+      "category" : "avro",
       
-      "url"      : "http://localhost:4000/2021/06/19/xxl-job-sharding/",
-      "keywords" : "XXL-JOB, Java, 分片广播"
-    } ,
-  
-    {
-      "title"    : "Scala基础",
-      "category" : "scala",
-      
-      "url"      : "http://localhost:4000/2021/10/21/scala%E5%9F%BA%E7%A1%80/",
-      "keywords" : "scala"
-    } ,
-  
-    {
-      "title"    : "读叔本华《人生的智慧》",
-      "category" : "Blog",
-      
-      "url"      : "http://localhost:4000/2021/10/25/the-wisdom-of-life/",
-      "keywords" : "叔本华, 人生的智慧"
+      "url"      : "http://localhost:4000/2019/01/12/%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81/",
+      "keywords" : "avro, parquent,orc"
     } 
   
 ]
