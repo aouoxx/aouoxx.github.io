@@ -2,12 +2,12 @@
 
 
 yuque token: XdqRFPPPEj3sAPqgCCkgoDNZX63JZyQZQS4Ljxg6
-github token: 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  有效期90天
+github token: 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  有效期90天
 
 
 gaoshuoshuo381@hb16381 test1 % curl -X POST https://api.github.com/repos/aouoxx/aouoxx.github.io/dispatches \
      -H 'Accept: application/vnd.github.everest-preview+json' \
-     -H "Authorization: token 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" \
+     -H "Authorization: token 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" \
      -d '{"event_type":"start"}'
 gaoshuoshuo381@hb16381 test1 %
 
