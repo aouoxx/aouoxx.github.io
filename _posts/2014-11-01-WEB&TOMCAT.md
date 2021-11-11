@@ -1,9 +1,9 @@
 ---
 layout: post
-title: avro,parquent,orc文件编码格式
-categories: [avro, parquent, orc]
-description: 文件编码格式介绍
-keywords: avro, parquent,orc
+title: WEB&TOMCAT
+categories: [tomcat, 容器]
+description: web页面的启动容器tomcat
+keywords: tomcat
 ---
 
 <meta name="referrer" content="no-referrer"/>
