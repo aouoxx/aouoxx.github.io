@@ -91,7 +91,7 @@
     } ,
   
     {
-      "title"    : "web基础知识",
+      "title"    : "web中jquery,js的使用",
       "category" : "web",
       
       "url"      : "http://localhost:4000/2014/09/27/WEB&JS&HTML/",
@@ -99,7 +99,7 @@
     } ,
   
     {
-      "title"    : "web基础知识",
+      "title"    : "web&amp;Servlet的基础信息介绍",
       "category" : "web",
       
       "url"      : "http://localhost:4000/2014/10/01/WEB&Servlet/",
@@ -115,7 +115,7 @@
     } ,
   
     {
-      "title"    : "web基础知识",
+      "title"    : "web基础知识cookie,session,filter,listener",
       "category" : "web",
       
       "url"      : "http://localhost:4000/2014/11/19/WEB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
