@@ -1,0 +1,616 @@
+<!DOCTYPE html><html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /><title>Shiro安全框架 &mdash; ssgao</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/primer-css/css/primer.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/components/collection.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/components/repo-card.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/sections/repo-list.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/components/boxed-group.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/globals/common.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/globals/responsive.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/css/posts/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/octicons/octicons/octicons.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mzlogin/rouge-themes@master/dist/github.css"><link rel="canonical" href="http://localhost:4000/2017/06/06/SHIRO%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/"><link rel="alternate" type="application/atom+xml" title="ssgao" href="http://localhost:4000/feed.xml"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/favicon.ico"><meta property="og:title" content="Shiro安全框架"><meta name="keywords" content="ssgao, 断点"><meta name="og:keywords" content="ssgao, 断点"><meta name="description" content="​"><meta name="og:description" content="​"><meta property="og:url" content="http://localhost:4000/2017/06/06/SHIRO%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/"><meta property="og:site_name" content="ssgao"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN" /><meta property="article:published_time" content="2017-06-06"> <script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/jquery-ui.js"></script> <script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/main.js"></script></head><body class="" data-mz=""><header class="site-header"><div class="container"><h1><a href="http://localhost:4000/" title="ssgao"><span class="octicon octicon-mark-github"></span> ssgao</a></h1><button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button><nav class="site-header-nav" role="navigation"> <a href="http://localhost:4000/" class=" site-header-nav-item" target="" title="首页">首页</a> <a href="http://localhost:4000/categories/" class=" site-header-nav-item" target="" title="分类">分类</a> <a href="http://localhost:4000/links/" class=" site-header-nav-item" target="" title="链接">链接</a> <a href="http://localhost:4000/about/" class=" site-header-nav-item" target="" title="关于">关于</a></nav></div></header><section class="collection-head small geopattern" data-pattern-id="Shiro安全框架"><div class="container"><div class="columns"><div class="column three-fourths"><div class="collection-title"><h1 class="collection-header">Shiro安全框架</h1><div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2017/06/06 </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 19785 字，约 57 分钟 </span></div></div></div><div class="column one-fourth mobile-hidden"><div class="collection-title"> <img style="height:72px;width:72px" src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/images/qrcode.jpg" alt="ssgao断点" /></div></div></div></div></section><section class="container content"><div class="columns"><div class="column three-fourths" ><article class="article-content markdown-body"><p>​</p><hr /><p>layout: post title: shiro 安全框架 categories: shiro description: shiro 安全框架 keywords: shiro</p><hr /><meta name="referrer" content="no-referrer" /><p>​</p><p>​</p><h3 id="shiro-框架介绍">shiro 框架介绍</h3><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Apache</span> <span class="nc">Shiro</span> <span class="n">是java的一个安全框架</span><span class="err">。</span>
+<span class="n">目前使用Apache</span> <span class="nc">Shiro的人越来越多</span><span class="err">，</span><span class="n">因为它相当简单</span><span class="err">，</span><span class="n">对于Spring</span> <span class="nc">Security</span><span class="o">,</span><span class="n">可能没有Spring</span> <span class="nc">Security功能强大</span><span class="err">，</span>
+<span class="n">但是实际工作是可能不需要那么复杂的东西</span><span class="err">，</span><span class="n">所以使用小而简单的shiro就足够了</span><span class="err">。</span><span class="n">对于它俩哪个好</span><span class="err">，</span><span class="n">这个不用纠结</span><span class="err">，</span><span class="n">能更简单的解决项目问题就好了</span><span class="err">。</span>
+</code></pre></div></div><p><img src="https://cdn.nlark.com/yuque/0/2021/png/659846/1636360081807-7a9898b1-5712-41ee-86b0-8f7416577885.png#clientId=u1a765526-e5fc-4&amp;from=paste&amp;height=248&amp;id=u31a90f07&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=354&amp;originWidth=546&amp;originalType=binary&amp;ratio=1&amp;size=244316&amp;status=done&amp;style=none&amp;taskId=u95b3fe07-5811-47d0-aea3-a35be4a8ba7&amp;width=383" alt="image.png" /></p><h4 id="shiro-各个组件信息">shiro 各个组件信息</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Authentication</span>
+<span class="n">身份认证</span><span class="o">/</span><span class="n">登陆</span> <span class="err">，</span><span class="n">验证用户是不是有相应的身份</span>
+<span class="nc">Authorization</span>
+    <span class="n">授权</span><span class="o">,</span><span class="n">即权限验证</span><span class="err">，</span><span class="n">验证某个已认证的用户时候拥有某个权限</span><span class="o">;</span><span class="n">即判断用户是否能做事情</span><span class="err">，</span><span class="n">常见的如</span><span class="err">：</span>
+    <span class="n">验证某个用户是否拥有某个角色</span>
+    <span class="n">或是细粒度的验证某个用户对某个资源是否具有某个权限</span><span class="err">。</span>
+<span class="nc">Session</span> <span class="nc">Manager</span>
+    <span class="n">回话管理</span><span class="err">，</span><span class="n">即用户登录后就是一次会话</span><span class="o">,</span><span class="n">在没有退出之前</span><span class="err">，</span><span class="n">它的所有信息都在回话中</span><span class="err">，</span><span class="n">回话可以是普通的JavaSE环境</span><span class="err">，</span><span class="n">也可以是如Web环境</span>
+<span class="nc">Cryptography</span>
+    <span class="n">加密</span><span class="err">，</span><span class="n">保护数据的安全性</span><span class="err">，</span><span class="n">如密码加密存储到数据库</span><span class="err">，</span><span class="n">而不是明文存储</span>
+<span class="nc">Web</span> <span class="nc">Support</span>
+    <span class="nc">Web支持</span><span class="err">，</span><span class="n">可以非常容易的基础到web环境</span>
+<span class="nc">Cache</span>
+    <span class="n">缓存</span><span class="err">，</span><span class="n">比如用户登录后</span><span class="err">，</span><span class="n">其用户信息</span><span class="err">，</span><span class="n">拥有的角色</span><span class="o">/</span><span class="n">权限不必每次去查</span><span class="err">，</span><span class="n">这样可以提高效率</span><span class="err">。</span>
+<span class="nc">Concurrency</span>
+    <span class="n">shiro</span> <span class="n">支持多线程应用的并发验证</span><span class="err">，</span><span class="n">即如在一个线程开启另一个线程</span><span class="err">，</span><span class="n">能把权限自动传播过去</span><span class="err">。</span>
+<span class="nc">Run</span> <span class="n">as</span>
+    <span class="n">允许一个用户假装另一个用户</span><span class="o">(</span><span class="n">如果他们允许</span><span class="o">)</span><span class="n">的身份进行访问</span>
+<span class="nc">Remember</span> <span class="n">me</span>
+    <span class="n">记住我</span><span class="err">，</span><span class="n">这个是非常常见的功能</span><span class="err">，</span><span class="n">即登陆一次后</span><span class="err">，</span><span class="n">下次再来的话不用登陆了</span>
+</code></pre></div></div><blockquote><p><em>记住一点：</em>​ <em>shiro 不会去维护用户，维护权限；这些需要我们自己去设计/提供；然后通过相应的接口注入给 shiro 即可</em>​</p></blockquote><p><strong>Subject</strong>​</p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">主体</span><span class="err">，</span><span class="n">可以看到主体可以是任何与应用交互的</span><span class="s">"用户"</span>
+</code></pre></div></div><p><strong>SecurityManager</strong></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">相当于springmvc中的DispatcherServlet或者struts2中的FilterDispatcher</span><span class="o">,</span>
+<span class="n">是shiro的心脏</span><span class="err">，</span><span class="n">所有具体的交互都是通过SecurityManager进行控制</span><span class="err">，</span>
+<span class="n">它管理所有subject</span><span class="err">，</span><span class="n">且负责进行认证和授权</span><span class="err">，</span><span class="n">以及会话</span><span class="err">、</span><span class="n">缓存的管理</span>
+</code></pre></div></div><p><strong>Authenticator</strong>​</p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">认证器</span><span class="err">，</span><span class="n">负责主体认证的</span><span class="err">，</span><span class="n">这是一个扩展点</span><span class="err">，</span>
+<span class="n">如果用户觉得shiro默认的不好</span><span class="err">，</span><span class="n">可以自定义实现</span><span class="err">；</span><span class="n">其需要认证策略</span><span class="o">(</span><span class="nc">Authentication</span> <span class="nc">Strategy</span><span class="o">)</span><span class="err">，</span><span class="n">即什么情况下算用户认证通过了</span><span class="err">。</span>
+<span class="nl">Authrizer:</span><span class="n">授权器或者访问控制器</span><span class="err">，</span><span class="n">用来决定主体是否有权限进行相应的操作</span><span class="err">，</span><span class="n">即控制着用户能访问应用中的哪些功能</span><span class="err">。</span>
+</code></pre></div></div><p><strong>Realm</strong></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">可以有一个或多个Realm</span><span class="err">，</span><span class="n">可以认为是安全实体数据源</span><span class="err">，</span><span class="n">即用于获取安全实体的</span><span class="err">；</span>
+	<span class="n">可以是JDBC实现</span><span class="err">，</span><span class="n">也可以是LDAP实现</span><span class="err">，</span><span class="n">或者内存实现等等</span><span class="err">，</span><span class="n">有用户提供</span><span class="err">。</span>
+<span class="n">注意</span><span class="err">：</span><span class="n">shiro不知道你的用户</span><span class="o">/</span><span class="n">权限存储在哪</span><span class="err">，</span><span class="n">以及以何种格式存储</span><span class="err">。</span><span class="n">所以我们一般在应用中都需要实现自己的Realm</span>
+</code></pre></div></div><p><strong>SessionManager</strong></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">如果写过Servelt就知道session的概念</span><span class="err">，</span><span class="n">session需要有人去管理它的生命周期</span><span class="err">，</span><span class="n">这个组件就是sessionManager</span><span class="err">；</span>
+<span class="n">而shiro并不仅仅可以用在web环境也可以用在如普通JavaSE环境</span><span class="err">，</span><span class="nc">EJB环境</span><span class="err">，</span>
+	<span class="n">所以shiro就抽象了一个自己的Session来管理主体与应用之间的交互数据</span><span class="err">。</span>
+<span class="n">这样话</span><span class="err">，</span><span class="n">比如我们在web环境</span><span class="err">，</span><span class="n">刚开始是一个web服务器</span><span class="err">，</span><span class="n">接着又上了台EJB服务器</span><span class="err">，</span><span class="n">这时想把两台服务器的回话数据放到一个地方</span><span class="err">，</span>
+<span class="n">这个时候就可以实现自己的分布式会话</span><span class="err">。</span>
+<span class="o">(</span><span class="n">如把数据放到memcached服务器</span><span class="o">)</span>
+</code></pre></div></div><p><strong>SessionDAO</strong></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dao大家都用过</span><span class="err">，</span><span class="n">数据访问对象</span><span class="err">，</span><span class="n">用于回话的CRUD</span><span class="err">，</span><span class="n">比如我们想把Session保存到数据库</span><span class="err">，</span>
+<span class="n">那么我们可以实现自己的Memcached</span> <span class="nc">SessionDAO</span><span class="o">,</span><span class="n">另外SessionDAO中</span><span class="err">，</span><span class="n">可以使用Cache进行缓存</span><span class="err">，</span><span class="n">以提高性能</span><span class="err">。</span>
+</code></pre></div></div><p><strong>CacheManager</strong></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">缓存控制器</span><span class="err">，</span><span class="n">来管理如用户</span><span class="err">，</span><span class="n">角色</span><span class="err">，</span><span class="n">权限等的缓存</span><span class="err">，</span><span class="n">因为这些数据基本上很少去改变</span><span class="err">，</span><span class="n">放到缓存中可以提高访问性能</span><span class="err">。</span>
+</code></pre></div></div><p><strong>Cryptography</strong>​</p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">密码模块</span><span class="err">，</span><span class="n">shiro提高了一些常见的加密组件用于密码加密</span><span class="o">/</span><span class="n">解密</span>
+</code></pre></div></div><h4 id="shiro-使用实例">shiro 使用实例</h4><p><img src="https://cdn.nlark.com/yuque/0/2021/png/659846/1636435340591-3a1dc5d0-5bef-4c33-81fe-f77f0aa2e930.png#clientId=uaf580b79-d820-4&amp;from=paste&amp;height=231&amp;id=u0c6333ac&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=462&amp;originWidth=914&amp;originalType=binary&amp;ratio=1&amp;size=217322&amp;status=done&amp;style=none&amp;taskId=u2a06e974-62fe-4be8-891f-c22e2d877a1&amp;width=457" alt="image.png" /></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">当前操作用户</span><span class="err">。</span>
+    <span class="n">但是在shiro中</span><span class="err">，</span><span class="n">subject这一概念不仅仅是人</span><span class="err">，</span><span class="n">也可以是第三方进程</span><span class="err">，</span><span class="n">后台账户</span><span class="o">(</span><span class="nc">DaemonAccount</span><span class="o">)</span><span class="n">或其他类似事物</span><span class="err">。</span>
+    <span class="n">它仅仅意味着</span><span class="s">"当前跟软件交互的东西"</span><span class="err">。</span><span class="n">但是考虑到大多数目的和用途</span><span class="err">，</span><span class="n">你可以把它认为是shiro的</span><span class="s">"用户"</span><span class="n">概念</span><span class="err">。</span>
+
+ <span class="n">subject代表了当前用户的安全操作</span><span class="err">，</span><span class="n">securityManager则管理所有用户的安全操作</span><span class="err">。</span>
+
+ <span class="nc">SecurityManager</span>
+   <span class="n">它是shiro框架的核心</span><span class="err">，</span><span class="n">典型的Facade模式</span><span class="err">，</span><span class="n">shiro通过SecurityManager来管理组件实例</span><span class="err">，</span><span class="n">并通过它来提供安全管理的各种服务</span><span class="err">。</span>
+ <span class="nc">Realms</span>
+   <span class="nc">Realms充当了与shiro与应用安全数据间的</span><span class="s">"桥梁"</span><span class="n">或者</span><span class="s">"连接器"</span><span class="err">。</span>
+    <span class="n">也就是说</span><span class="err">，</span><span class="n">当切实与像用户账户这类安全相关数据进行交互</span><span class="err">，</span><span class="n">执行认证</span><span class="o">(</span><span class="n">登录</span><span class="o">)</span><span class="n">和授权</span><span class="o">(</span><span class="n">访问控制</span><span class="o">)</span><span class="n">时</span><span class="err">，</span><span class="n">shiro会从应用配置的Realm中查找很多内容</span><span class="err">。</span>
+    <span class="n">从这个意义上讲</span><span class="err">，</span><span class="nc">Realm实质上是一个安全相关的DAO</span><span class="err">：</span><span class="n">它封装了数据源的连接细节</span><span class="err">，</span><span class="n">并在需要时将相关数据提供给shiro</span><span class="err">。</span>
+    <span class="n">当配置shiro时</span><span class="err">，</span><span class="n">你必须至少指定一个Realm</span><span class="err">，</span><span class="n">用于认证和授权</span><span class="err">。</span>
+    <span class="n">配置多个Realm是可以的</span><span class="err">，</span><span class="n">但是至少需要一个</span><span class="err">。</span>
+
+<span class="n">最简单的一个shiro</span> <span class="n">应用</span>
+<span class="mi">1</span> <span class="n">应用代码通过subject进行认证和授权</span><span class="err">，</span><span class="n">而subject又委托给securityManager</span>
+<span class="mi">2</span> <span class="n">我们需要给shiro的securityManager注入Realm</span><span class="err">，</span><span class="n">从而让SecurityManager能到到合法的用户以及权限进行判断</span>
+</code></pre></div></div><h5 id="maven-依赖">maven 依赖</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">4.12</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">logging</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">commons</span><span class="o">-</span><span class="n">logging</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">shiro</span><span class="o">-</span><span class="n">core</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">jasig</span><span class="o">.</span><span class="na">cas</span><span class="o">.</span><span class="na">client</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">cas</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">core</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+</code></pre></div></div><h5 id="代码解析">代码解析</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">args</span> <span class="o">)</span>
+    <span class="o">{</span>
+       <span class="c1">//获取SecurityManager 工厂,此处使用Ini配置文件初始化SecurityManager</span>
+        <span class="nc">Factory</span><span class="o">&lt;</span><span class="nc">SecurityManager</span><span class="o">&gt;</span> <span class="n">factory</span> <span class="o">=</span>  <span class="k">new</span> <span class="nc">IniSecurityManagerFactory</span><span class="o">(</span><span class="s">"classpath:shiro.ini"</span><span class="o">);</span>
+       <span class="c1">//得到SecurityManager实例,并绑定给SecrityUtils</span>
+        <span class="nc">SecurityManager</span> <span class="n">securityManager</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+        <span class="nc">SecurityUtils</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
+        <span class="c1">//得到Subject以及创建用户名/密码身份验证的Token</span>
+        <span class="nc">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="nc">SecurityUtils</span><span class="o">.</span><span class="na">getSubject</span><span class="o">();</span>
+        <span class="nc">UsernamePasswordToken</span> <span class="n">token</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UsernamePasswordToken</span><span class="o">(</span><span class="s">"zhang"</span><span class="o">,</span><span class="s">"123"</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//登录,即身份验证</span>
+            <span class="n">subject</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">isAuthenticated</span><span class="o">()){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"用户已经登录"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="c1">//登出</span>
+        <span class="n">subject</span><span class="o">.</span><span class="na">logout</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span><span class="o">)</span> <span class="n">首先通过new</span> <span class="nc">IniSecurotyManagerFactory并制定一个ini配置文件来创建一个SecurityManager工厂</span>
+<span class="mi">2</span><span class="o">)</span> <span class="n">接着获取SecurityManager并绑定到SecurotyUtils</span><span class="o">,</span><span class="n">这是一个全局设置</span><span class="err">，</span><span class="n">设置一次即可</span><span class="o">;</span>
+<span class="mi">3</span><span class="o">)</span> <span class="n">通过SecurityUtil来获取Subject</span><span class="err">，</span><span class="n">其会自动绑定到当前线程</span><span class="err">，</span><span class="n">如果是web环境</span><span class="err">，</span><span class="n">请求结束时解除绑定</span><span class="err">，</span><span class="n">然后获取身份验证的Token</span><span class="err">，</span><span class="n">如用户名</span><span class="o">/</span><span class="n">密码</span>
+<span class="mi">4</span><span class="o">)</span> <span class="n">调用subject</span><span class="o">.</span><span class="na">login</span><span class="o">()</span><span class="n">方法进行登录</span><span class="err">，</span><span class="n">其或自动委托给SecurityManager</span><span class="o">.</span><span class="na">login方法进行登录</span>
+<span class="n">如果身份验证失败请补获AuthenticationException或其子类</span><span class="err">，</span><span class="n">常见的如</span><span class="err">：</span>
+<span class="nc">DisabledAccountException</span><span class="o">(</span><span class="n">禁用的账号</span><span class="o">),</span>
+<span class="nc">LockedAccountException</span><span class="o">(</span><span class="n">锁定的账号</span><span class="o">),</span>
+<span class="nc">UnknownAccountException</span><span class="o">(</span><span class="n">错误的账号</span><span class="o">),</span>
+<span class="nc">ExcessiveAttemptsException</span><span class="o">(</span><span class="n">登录失败的账号</span><span class="o">),</span>
+<span class="nc">IncorrectCredentialsException</span><span class="o">(</span><span class="n">错误的凭证</span><span class="o">),</span>
+<span class="nc">ExpiredCredientialsException</span><span class="o">(</span><span class="n">过期的凭证</span><span class="o">)</span>
+<span class="n">最后调用subject</span><span class="o">.</span><span class="na">logout退出</span><span class="err">，</span><span class="n">其会自动委托给SecurityManager</span><span class="o">.</span><span class="na">logout方法退出</span>
+</code></pre></div></div><h4 id="shiro-认证流程">shiro 认证流程</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">principas:</span><span class="n">身份</span><span class="err">，</span><span class="n">即主体的标识属性</span><span class="err">，</span><span class="n">可以是任何东西</span><span class="err">，</span><span class="n">如用户名</span><span class="err">，</span><span class="n">邮箱等</span><span class="err">，</span><span class="n">唯一即可</span>
+<span class="n">一个主体可以有多个principals</span><span class="o">,</span><span class="n">但只有一个Primary</span> <span class="n">principals</span><span class="err">，</span><span class="n">一般是用户名</span><span class="o">/</span><span class="n">密码</span><span class="o">/</span><span class="n">手机号</span>
+
+<span class="n">credentials</span><span class="err">：</span><span class="n">证明</span><span class="o">/</span><span class="n">凭证</span><span class="err">，</span><span class="n">即主体知道的安全值</span><span class="err">，</span><span class="n">如密码</span><span class="o">/</span><span class="n">数字证书等</span><span class="err">。</span>
+<span class="n">最常见的principals和credentials组合就是用户名</span><span class="o">/</span><span class="n">密码</span><span class="err">。</span>
+</code></pre></div></div><p><img src="https://cdn.nlark.com/yuque/0/2021/png/659846/1636360081807-7a9898b1-5712-41ee-86b0-8f7416577885.png#from=url&amp;height=271&amp;id=Ww4mR&amp;margin=%5Bobject%20Object%5D&amp;originHeight=354&amp;originWidth=546&amp;originalType=binary&amp;ratio=1&amp;status=done&amp;style=none&amp;width=418" alt="" /></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">应用程序构建了一个终端用户认证信息的AuthenticationToken实例后</span><span class="err">，</span><span class="n">调用Subject</span><span class="o">.</span><span class="na">login方法</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Subject的实例通常是DelegatingSubject类</span><span class="o">(</span><span class="n">或子类</span><span class="o">)</span><span class="n">的实例对象</span><span class="err">，</span><span class="n">在认证开始时</span><span class="err">，</span>
+<span class="n">会委托应用程序设置的securityManager实例调用securityManager</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">token</span><span class="o">)</span><span class="n">方法</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">securityManager接受到token</span><span class="o">(</span><span class="n">令牌</span><span class="o">)</span><span class="n">信息后会委托内置的Authenticator的实例</span><span class="o">(</span><span class="n">通常都是ModularRealmAuthenticator类的实例</span><span class="o">)</span>
+<span class="n">调用authenticator</span><span class="o">.</span><span class="na">authenticate</span><span class="o">(</span><span class="n">token</span><span class="o">)</span>
+<span class="nc">ModularRealmAuthenticator在认证过程中会对设置的一个或多个Realm实例进行适配</span><span class="err">，</span><span class="n">它实际上为shiro提供了一个可拔插的认证机制</span>
+
+<span class="n">如果在应用程序中配置了多个Realm</span>
+<span class="nc">ModularRealmAuthenticator会根据配置的AuthencitationStategy</span><span class="err">（</span><span class="n">认证策略</span><span class="err">）</span><span class="n">来进行多Realm的认证过程</span><span class="err">。</span>
+<span class="n">在Realm被调用后</span><span class="o">,</span><span class="nc">AuthenticationStrategy将对每一个Realm的结果作出响应</span><span class="err">。</span>
+<span class="n">注</span><span class="err">：</span> <span class="n">如果应用程序中仅仅配置了一个Realm</span><span class="err">，</span><span class="nc">Realm将被直接调用而无需再配置认证策略</span>
+
+<span class="n">判断每一个Realm是否支持提交的token</span>
+<span class="n">如果支持Realm将调用getAuthenticationInfo</span><span class="o">(</span><span class="n">token</span><span class="o">)</span>
+<span class="n">getAuthenticationInfo方法就是实际认证处理</span><span class="o">,</span><span class="n">我们通过覆盖Realm的doGetAuthenticationInfo方法来编写我们自定义的认证处理</span><span class="err">。</span>
+</code></pre></div></div><h4 id="shiro-认证和认证策略">shiro 认证和认证策略</h4><blockquote><p><em>Authenticator 的职责是验证用户账号，是 Shiro API 身份验证的核心入口</em>​</p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Authenticator</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">AuthenticationInfo</span> <span class="nf">authenticate</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">authenticationToken</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="nc">AuthenticationException</span><span class="o">;</span>
+<span class="o">}</span>
+	<span class="n">如果验证成功</span><span class="o">,</span><span class="n">将返回AuthenticationInfo验证信息</span><span class="o">,</span><span class="n">此信息中包含了身份以及凭证</span><span class="o">;</span>
+	<span class="n">如果验证失败将抛出相应的AuthneticationException实现</span>
+</code></pre></div></div><h5 id="认证策略">认证策略</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">SecurityManager接口继承了Authenticator另外</span><span class="err">，</span><span class="n">还有一个ModularRealmAuthenticator实现</span><span class="err">，</span><span class="n">其委托给多个Realm进行验证</span><span class="o">,</span>
+<span class="n">验证规则通过AuthenticationStrategy接口指定</span><span class="err">，</span><span class="n">默认提供的实现</span><span class="err">：</span>
+<span class="nc">FirstSuccessfulStrategy</span>
+<span class="n">只要有一个Realm验证成功即可</span><span class="err">，</span><span class="n">只返回第一个Realm身份验证成功的认证信息</span><span class="err">，</span><span class="n">其他的忽略</span>
+<span class="nc">AtLeastOneSuccessfulStrategy</span>
+<span class="n">只要有一个Realm验证成功即可</span><span class="err">，</span><span class="n">和FirstSuccessFulStrategy不同</span><span class="o">,</span><span class="n">返回所有的Realm身份验证成功的认证信息</span>
+<span class="nc">AllSuccessfulStrategy</span>
+<span class="n">所有Realm验证成功才算成功</span><span class="err">，</span><span class="n">且返回所有Realm身份验证成功的认证信息</span><span class="err">，</span><span class="n">如果有一个失败就失败了</span>
+
+<span class="nc">ModularRealmAuthenticator默认使用AtLeastOneSuccessfulStrategy策略</span>
+</code></pre></div></div><h5 id="自定义认证策略">自定义认证策略</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//在所有Realm之前调用</span>
+<span class="nc">AuthenticationInfo</span> <span class="nf">beforeAllAttempts</span><span class="o">(</span><span class="nc">Collection</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Realm</span><span class="o">&gt;</span> <span class="n">realms</span><span class="o">,</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">)</span> <span class="kd">throws</span> <span class="nf">AuthenticationExcetion</span><span class="o">();</span>
+
+<span class="c1">//在每个Realm之前调用</span>
+<span class="nc">AuthenticationInfo</span> <span class="nf">beforeAttempt</span><span class="o">(</span><span class="nc">Realm</span> <span class="n">realm</span><span class="o">,</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">,</span><span class="nc">AuthenticationInfo</span> <span class="n">aggregate</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">AuthenticationExcetion</span>
+
+<span class="c1">//在每个Realm之后调用</span>
+<span class="nc">AuthenticationInfo</span> <span class="nf">afterAttempt</span><span class="o">(</span><span class="nc">Realm</span> <span class="n">realm</span><span class="o">,</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">,</span><span class="nc">AuthenticationInfo</span> <span class="n">singleRealmInfo</span><span class="o">,</span>
+<span class="nc">AuthenticationInfo</span> <span class="n">aggregateInfo</span><span class="o">,</span><span class="nc">Throwable</span> <span class="n">t</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">AuthenticationException</span>
+
+<span class="c1">//在所有Realm之后调用</span>
+<span class="nc">AuthenticationInfo</span> <span class="nf">afterAllAttempts</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">,</span><span class="nc">AuthenticationInfo</span> <span class="n">aggregate</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">AuthenticationException</span><span class="o">;</span>
+</code></pre></div></div><h4 id="ini-配置文件">INI 配置文件</h4><blockquote><p><em>ini 配置文件类似于 Java 中的 properties（key=value） 不过提供了将 key/value 分类的特性，key 是每个部分不重复即可，而不是整个配置文件</em></p></blockquote><h5 id="ini-配置分类">ini 配置分类</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="n">main</span><span class="o">]</span>
+<span class="err">#</span><span class="n">提供了对跟对象securityManager及其依赖的配置</span>
+<span class="n">securityManager</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">mgt</span><span class="o">.</span><span class="na">DefaultSecurityManager</span>
+<span class="o">...</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$jdbcRealm</span>
+
+
+<span class="o">[</span><span class="n">user</span><span class="o">]</span>
+<span class="err">#</span><span class="n">提供了对用户</span><span class="o">/</span><span class="n">密码及其角色的配置</span><span class="err">，</span><span class="n">用户名</span><span class="o">=</span><span class="n">密码</span><span class="err">，</span><span class="n">角色1</span><span class="err">，</span><span class="n">角色2</span>
+<span class="n">username</span><span class="o">=</span><span class="n">password</span><span class="o">,</span><span class="n">role1</span><span class="o">,</span><span class="n">role2</span>
+<span class="o">[</span><span class="n">roles</span><span class="o">]</span>
+<span class="err">#</span><span class="n">提供了角色和权限之间关系的配置</span><span class="err">，</span><span class="n">角色</span><span class="o">=</span><span class="n">权限1</span><span class="err">，</span><span class="n">权限2</span>
+<span class="n">role1</span><span class="o">=</span><span class="n">permission1</span><span class="o">,</span><span class="n">permission2</span>
+
+
+<span class="o">[</span><span class="n">urls</span><span class="o">]</span>
+<span class="err">#</span><span class="n">用于web</span><span class="o">,</span><span class="n">提供了对web</span> <span class="n">url拦截相关的配置</span> <span class="n">url</span><span class="o">=</span><span class="n">拦截器</span><span class="o">[</span><span class="n">参数</span><span class="o">]</span> <span class="n">拦截器</span>
+<span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="na">html</span> <span class="o">=</span> <span class="n">anon</span>
+<span class="o">/</span><span class="n">admin</span><span class="o">/**</span> <span class="o">=</span> <span class="n">authc</span><span class="o">,</span><span class="n">roles</span><span class="o">[</span><span class="n">admin</span><span class="o">],</span><span class="n">perms</span><span class="o">[</span><span class="s">"permission1"</span><span class="o">]</span>
+</code></pre></div></div><h5 id="main-部分">main 部分</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">提供了对根对象securityManager及其依赖对象的配置</span>
+<span class="n">创建对象</span>
+<span class="n">securityManager</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">mgt</span><span class="o">.</span><span class="na">DefaultSecurityManager</span>
+<span class="n">其构造器必须是public</span> <span class="n">空参构造器</span><span class="err">，</span><span class="n">通过反射创建相应的实例</span>
+</code></pre></div></div><h5 id="user-部分">user 部分</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">配置用户名</span><span class="o">/</span><span class="n">密码及其角色</span><span class="err">，</span><span class="n">格式</span><span class="err">：“</span><span class="n">用户名</span><span class="o">=</span><span class="n">密码</span><span class="err">，</span><span class="n">角色1</span><span class="err">，</span><span class="n">角色2</span><span class="err">”</span><span class="n">角色部分可以省略</span>
+</code></pre></div></div><h5 id="roles-部分">roles 部分</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">配置角色及其权限之间的关系格式</span> <span class="n">角色</span><span class="o">=</span><span class="n">权限1</span><span class="err">，</span><span class="n">权限2</span>
+</code></pre></div></div><h5 id="urls-部分">urls 部分</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">配置url以及相应的拦截器之间的关系</span><span class="err">，</span><span class="n">格式</span><span class="o">=</span><span class="s">"url=拦截器[参数]，拦截器[参数]"</span>
+</code></pre></div></div><h4 id="加密算法">加密算法</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">通常需要对密码进行散列</span><span class="err">，</span><span class="n">常用的有MD5</span><span class="o">,</span><span class="no">SHA</span>
+
+
+<span class="n">对MD5密码</span><span class="err">，</span><span class="n">如果知道散列后的值就可以通过穷举算法</span><span class="o">,</span><span class="n">得到MD5密码对应的明文</span>
+<span class="n">建议对MD5进行散列时加Salt</span><span class="o">(</span><span class="n">盐</span><span class="o">),</span><span class="n">这时加密相当于对原始明文密码</span><span class="o">+</span><span class="nc">Salt进行散列</span>
+
+<span class="n">正常使用散列方法时</span><span class="err">：</span>
+<span class="n">在程序对原始密码</span><span class="o">+</span><span class="n">盐进行散列</span><span class="err">，</span><span class="n">将散列值存储到数据库中</span><span class="err">，</span><span class="n">并且还要讲盐也存储到数据库中</span>
+<span class="n">如果进行密码比对时</span><span class="err">，</span><span class="n">使用相同的方法将原始密码</span><span class="o">+</span><span class="n">盐进行散列</span><span class="err">，</span><span class="n">进行比对</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MD5Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//原始密码</span>
+        <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"111111"</span><span class="o">;</span>
+        <span class="c1">//盐</span>
+        <span class="nc">String</span> <span class="n">salt</span> <span class="o">=</span> <span class="s">"ssgao"</span><span class="o">;</span>
+        <span class="c1">//散列次数</span>
+        <span class="kt">int</span> <span class="n">hashNo</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span>
+        <span class="cm">/**
+         * 第一个参数: 明文,原始密码
+         * 第二个参数: 盐,通过使用随机数
+         * 第三个参数: 散列的次数,比如散列两次,相当于MD5(MD5())
+         */</span>
+        <span class="nc">Md5Hash</span> <span class="n">md5Hash</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Md5Hash</span><span class="o">(</span><span class="n">password</span><span class="o">,</span><span class="n">salt</span><span class="o">,</span><span class="n">hashNo</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">password_md5</span> <span class="o">=</span> <span class="n">md5Hash</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"加密后:"</span><span class="o">+</span><span class="n">password_md5</span><span class="o">);</span>
+        <span class="cm">/**
+         * 第一个参数:使用的散列算法
+         */</span>
+        <span class="nc">SimpleHash</span> <span class="n">simpleHash</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleHash</span><span class="o">(</span><span class="s">"sha"</span><span class="o">,</span><span class="n">password</span><span class="o">,</span><span class="n">salt</span><span class="o">,</span><span class="n">hashNo</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">simple_md5</span> <span class="o">=</span> <span class="n">simpleHash</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"加密后:"</span><span class="o">+</span><span class="n">simple_md5</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><h4 id="自定义-realm">自定义 realm</h4><h5 id="realm-域">realm 域</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Shiro从Realm获取安全数据</span><span class="o">(</span><span class="n">如用户</span><span class="o">,</span><span class="n">角色</span><span class="o">,</span><span class="n">权限</span><span class="o">),</span><span class="n">就是说SecurityManager要验证用户身份</span><span class="o">,</span>
+<span class="n">那么它需要从Realm中获取相应的用户进行比较以确定用户身份是否合法</span><span class="err">；</span><span class="n">也需要从Realm得到用户相应的角色进行验证用户是够能进行操作</span><span class="err">，</span>
+<span class="n">可以吧Realm看成DataSource即安全数据源</span><span class="err">。</span>
+</code></pre></div></div><h5 id="realm-接口">realm 接口</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Realm</span><span class="o">{</span>
+ <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span><span class="err">；</span>
+     	<span class="n">返回一个唯一的Realm名字</span>
+ <span class="kt">boolean</span> <span class="nf">supports</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">)</span> <span class="o">;</span>
+    	<span class="n">判断此Realm是否支持此Token</span>
+ <span class="nc">AuthenticationInfo</span> <span class="nf">getAuthenticationInfo</span><span class="o">(</span><span class="nc">AuthenticaionToken</span> <span class="n">token</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">AuthenticationException</span><span class="err">；</span>
+ 		<span class="n">根据Token获取认证信息</span>
+<span class="o">}</span>
+</code></pre></div></div><h5 id="自定义-realm-1">自定义 realm</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRealm1</span> <span class="kd">implements</span> <span class="nc">Realm</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">(){</span>
+   <span class="k">return</span> <span class="err">“</span> <span class="nc">MyRealm1</span><span class="err">”</span><span class="o">;</span>  <span class="c1">//这里不能使用this.getName(),只能是返回特定的字符</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">supports</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">){</span>
+    <span class="c1">//仅支持UsernamePasswordToken 类型的Token</span>
+    <span class="k">return</span> <span class="n">token</span> <span class="n">instanceOf</span> <span class="nc">UserNamePasswordToken</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="nc">AuthenticationInfo</span> <span class="nf">getAuthenticationInfo</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">AuthenticationException</span><span class="o">{</span>
+   <span class="nc">String</span> <span class="n">userName</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="na">getPrincipal</span><span class="o">();</span><span class="c1">//得到用户名</span>
+   <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">token</span><span class="o">.</span><span class="na">getCredentials</span><span class="o">());</span><span class="c1">//得到密码</span>
+   <span class="k">if</span><span class="o">(</span><span class="s">"zhang"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">username</span><span class="o">)){</span>
+     <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnkownAccountException</span><span class="o">();</span><span class="c1">//如果用户名错误</span>
+    <span class="o">}</span>
+    <span class="k">if</span><span class="o">(!</span><span class="s">"123"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">password</span><span class="o">)){</span>
+     <span class="k">throw</span> <span class="k">new</span> <span class="nf">IncorrectCredentialsException</span><span class="o">();</span> <span class="c1">//如果密码错误</span>
+    <span class="o">}</span>
+    <span class="c1">//如果身份验证成功，返回一个AuthenticationInfo实现</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleAuthenticationInfo</span><span class="o">(</span><span class="n">username</span><span class="o">,</span><span class="n">password</span><span class="o">,</span><span class="n">getName</span><span class="o">());</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRealmB</span> <span class="kd">extends</span> <span class="nc">AuthorizingRealm</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"myRealmB"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="cm">/**
+     * 用于授权
+     * @param principals
+     * @return
+     */</span>
+    <span class="kd">protected</span> <span class="nc">AuthorizationInfo</span> <span class="nf">doGetAuthorizationInfo</span><span class="o">(</span><span class="nc">PrincipalCollection</span> <span class="n">principals</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="cm">/**
+     * 用户认证
+     * @param token
+     * @return
+     * @throws AuthenticationException
+     */</span>
+    <span class="kd">protected</span> <span class="nc">AuthenticationInfo</span> <span class="nf">doGetAuthenticationInfo</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">)</span>
+             <span class="kd">throws</span> <span class="nc">AuthenticationException</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">token</span><span class="o">.</span><span class="na">getPrincipal</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">((</span><span class="kt">char</span><span class="o">[])</span><span class="n">token</span><span class="o">.</span><span class="na">getCredentials</span><span class="o">());</span>
+
+
+        <span class="k">if</span><span class="o">(!</span><span class="s">"ssgao"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">)){</span>
+            <span class="k">throw</span>  <span class="k">new</span> <span class="nf">UnknownAccountException</span><span class="o">(</span><span class="s">"不存在该用户名!"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(!</span><span class="s">"ssgao1987"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">password</span><span class="o">)){</span>
+            <span class="k">throw</span>  <span class="k">new</span> <span class="nf">IncorrectCredentialsException</span><span class="o">(</span><span class="s">"密码错误!"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="c1">//身份认证成功返回认证凭证</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleAuthenticationInfo</span><span class="o">(</span><span class="n">name</span><span class="o">,</span><span class="n">password</span><span class="o">,</span><span class="n">getName</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><h5 id="ini-文件中配置自定义的-realm">ini 文件中配置自定义的 Realm</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="n">声明一个自定义的Realm</span>
+<span class="n">myRealm1</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="na">aouo</span><span class="o">.</span><span class="na">MyReaml</span>
+<span class="err">#</span><span class="n">指定securityManager的Realms实现</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$myRealm1</span>
+
+
+<span class="n">ini文件中配置多个realm</span>
+    <span class="err">#</span><span class="n">声明一个Realm</span>
+    <span class="n">myRealm1</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="na">aouo</span><span class="o">.</span><span class="na">MyRealm1</span>
+    <span class="n">myRealm2</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="na">aouo</span><span class="o">.</span><span class="na">MyRealm2</span>
+    <span class="err">#</span><span class="n">指定securityManager的realms的实现</span>
+    <span class="n">securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$myRealm1</span><span class="o">,</span><span class="n">$myRealm2</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">securityManager会按照Realms指定的顺序进行身份认证</span><span class="err">。</span><span class="n">如果我们使用显示指定顺序的方式指定了Realm的顺序</span><span class="err">，</span>
+<span class="n">如果我们删除securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$myRealm1</span><span class="o">,</span><span class="n">myRealm2</span> <span class="n">那么securityManager会按照realm声明的顺序来加载</span><span class="err">。</span>
+<span class="n">当我们显示指定Realm后</span><span class="err">，</span><span class="n">其他没有指定的Realm将被忽略</span>
+<span class="n">如securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$myRealms1</span> <span class="n">那么myRealm2不会被自动设置进去</span><span class="err">。</span>
+</code></pre></div></div><h3 id="shiro-授权流程">shiro 授权流程</h3><p>####</p><h4 id="shiro-支持的三种授权方式">shiro 支持的三种授权方式</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">编程式</span>
+    <span class="n">通过写if</span><span class="o">/</span><span class="n">else授权代码来实现</span>
+    <span class="nc">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="nc">SecurityUtils</span><span class="o">.</span><span class="na">getSubject</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">hashRole</span><span class="o">(</span><span class="s">"admin"</span><span class="o">)){</span>
+     <span class="c1">//有权限</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+     <span class="c1">//无权限</span>
+    <span class="o">}</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">注解式</span><span class="err">：</span>
+    <span class="n">通过在执行的Java方法上防止相应的注解完成</span>
+    <span class="nd">@RequireRoles</span><span class="o">(</span><span class="s">"admin"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">vodi</span> <span class="nf">hello</span><span class="o">(){</span>
+    <span class="c1">//有权限</span>
+    <span class="o">}</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">JSP</span><span class="o">/</span><span class="nc">GSP标签</span><span class="err">：</span>
+    <span class="n">在JSP</span><span class="o">/</span><span class="nc">GSP页面通过相应的标签完成</span>
+    <span class="o">&lt;</span><span class="nl">shiro:</span><span class="n">hasRole</span> <span class="n">name</span><span class="o">=</span><span class="s">"admin"</span> <span class="o">&gt;</span>
+     <span class="c1">//有权限</span>
+    <span class="o">&lt;/</span><span class="nl">shiro:</span><span class="n">hasRole</span><span class="o">&gt;</span>
+</code></pre></div></div><p><img src="https://cdn.nlark.com/yuque/0/2021/png/659846/1636437770312-82c15c31-bc4c-4c0b-bc4a-8cab53a3534d.png#clientId=uaf580b79-d820-4&amp;from=paste&amp;height=350&amp;id=u57aa11a8&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=700&amp;originWidth=492&amp;originalType=binary&amp;ratio=1&amp;size=146397&amp;status=done&amp;style=none&amp;taskId=ub860e542-e98f-45fa-8541-e522ed23934&amp;width=246" alt="image.png" /></p><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">'</span><span class="n">授权流程</span><span class="err">'</span>
+
+<span class="mi">1</span><span class="o">)</span> <span class="n">对subject进行授权</span><span class="err">，</span><span class="n">调用isPermitted</span><span class="o">(</span><span class="s">"permission串"</span><span class="o">)</span>
+<span class="mi">2</span><span class="o">)</span> <span class="n">securityManager执行授权</span><span class="o">,</span><span class="n">通过ModularRealmAuthorizer执行授权</span>
+<span class="mi">3</span><span class="o">)</span> <span class="nc">ModularRealmAuthorizer执行realm</span><span class="err">（</span><span class="n">自定义的Realm</span><span class="err">）</span><span class="n">来从数据库查询权限数据</span><span class="o">,</span>
+  <span class="n">调用realm的授权方法</span> <span class="err">'</span><span class="n">doGetAuthorizationInfo</span><span class="err">'</span>
+<span class="mi">4</span><span class="o">)</span> <span class="n">realm从数据库查询权限数据</span><span class="err">，</span><span class="n">返回modularRealmAuthorizer</span>
+<span class="mi">5</span><span class="o">)</span> <span class="n">modularRealmAuthorizer调用PermissionResolver进行权限串的比对</span>
+<span class="mi">6</span><span class="o">)</span> <span class="n">如果比对后</span><span class="o">,</span><span class="n">isPermitted</span><span class="o">(</span><span class="err">'</span><span class="n">permission串</span><span class="err">'</span><span class="o">)</span><span class="n">在realm查询到权限数据中</span><span class="err">，</span>
+<span class="n">说明用户访问permission串有权限</span><span class="err">，</span><span class="n">否则没有权限</span><span class="err">，</span><span class="n">抛出异常</span>
+</code></pre></div></div><h4 id="自定义-realm-2">自定义 realm</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAuthorizerRealm</span> <span class="kd">extends</span> <span class="nc">AuthorizingRealm</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"myRealmc"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="cm">/** 自定义授权信息 */</span>
+    <span class="kd">protected</span> <span class="nc">AuthorizationInfo</span> <span class="nf">doGetAuthorizationInfo</span><span class="o">(</span><span class="nc">PrincipalCollection</span> <span class="n">principalCollection</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"自定义授权信息"</span><span class="o">);</span>
+        <span class="c1">//从principalCollection中获取主身份信息</span>
+        <span class="c1">//将getPrimaryPrinpical方法返回值转为真实身份类型</span>
+        <span class="c1">//具体类型与doGetAuthenticationInfo认证通过填充到SimpleAuthenticationInfo的身份信息类型一致</span>
+        <span class="nc">String</span> <span class="n">principal</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">principalCollection</span><span class="o">.</span><span class="na">getPrimaryPrincipal</span><span class="o">();</span>
+        <span class="c1">//根据身份信息获取权限信息</span>
+        <span class="c1">//连接数据库</span>
+        <span class="c1">//模拟从数据库获取数据</span>
+        <span class="nc">Collection</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">permissions</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+        <span class="n">permissions</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"user:create"</span><span class="o">);</span>
+        <span class="n">permissions</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"items:add"</span><span class="o">);</span>
+        <span class="c1">//查到权限数据,返回授权信息</span>
+        <span class="nc">SimpleAuthorizationInfo</span> <span class="n">simpleAuthorizationInfo</span> <span class="o">=</span>
+                <span class="k">new</span> <span class="nf">SimpleAuthorizationInfo</span><span class="o">();</span>
+        <span class="c1">//将上面的对象填充到simpleAuthorizationInfo对象中</span>
+        <span class="n">simpleAuthorizationInfo</span><span class="o">.</span><span class="na">addStringPermissions</span><span class="o">(</span><span class="n">permissions</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">simpleAuthorizationInfo</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**自定义认证信息  */</span>
+    <span class="kd">protected</span> <span class="nc">AuthenticationInfo</span> <span class="nf">doGetAuthenticationInfo</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">authenticationToken</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="nc">AuthenticationException</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"用户登录认证!"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">usercode</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">authenticationToken</span><span class="o">.</span><span class="na">getPrincipal</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">((</span><span class="kt">char</span><span class="o">[])</span><span class="n">authenticationToken</span><span class="o">.</span><span class="na">getCredentials</span><span class="o">());</span>
+        <span class="c1">//模拟从数据库查询得到密码</span>
+        <span class="nc">String</span> <span class="n">flag</span> <span class="o">=</span> <span class="s">"ssgao1987"</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">flag</span><span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="n">password</span><span class="o">)){</span>
+            <span class="c1">//如果查询到返回认证信息AuthenticationInfo</span>
+            <span class="nc">SimpleAuthenticationInfo</span> <span class="n">simpleAuthenticationInfo</span> <span class="o">=</span>
+                    <span class="k">new</span> <span class="nf">SimpleAuthenticationInfo</span><span class="o">(</span><span class="n">usercode</span><span class="o">,</span><span class="n">flag</span><span class="o">,</span><span class="k">this</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+            <span class="k">return</span> <span class="n">simpleAuthenticationInfo</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><h4 id="ini-配置文件-1">ini 配置文件</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="n">main</span><span class="o">]</span>
+<span class="n">myRealmc</span><span class="o">=</span><span class="n">authorizer</span><span class="o">.</span><span class="na">MyAuthorizerRealm</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$myRealmc</span>
+</code></pre></div></div><h4 id="测试类">测试类</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//获取SecurityManager工厂,此处使用Ini配置文件初始化SecurityManager</span>
+        <span class="nc">Factory</span><span class="o">&lt;</span><span class="nc">SecurityManager</span><span class="o">&gt;</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IniSecurityManagerFactory</span><span class="o">(</span><span class="s">"classpath:myAuthorizer.ini"</span><span class="o">);</span>
+        <span class="nc">SecurityManager</span> <span class="n">securityManager</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+        <span class="c1">//将securityManager设置到上下文环境中</span>
+        <span class="nc">SecurityUtils</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
+        <span class="c1">//创建subject,以及创建用户名,密码验证Token</span>
+        <span class="nc">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="nc">SecurityUtils</span><span class="o">.</span><span class="na">getSubject</span><span class="o">();</span>
+        <span class="c1">//创建令牌</span>
+        <span class="nc">UsernamePasswordToken</span> <span class="n">usernamePasswordToken</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UsernamePasswordToken</span><span class="o">(</span><span class="s">"ssgao"</span><span class="o">,</span><span class="s">"ssgao1987"</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">subject</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">usernamePasswordToken</span><span class="o">);</span>
+            <span class="c1">//断言登陆是否成功</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">isAuthenticated</span><span class="o">());</span>
+            <span class="c1">//基于资源的授权,调用isPermitted,方法会调用自定义的Realm来从数据库查询权限数据</span>
+            <span class="c1">//isPermitted 传入权限标识符,用于判断user:create:1是否在自定义realm查询到的权限数据中</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">isPermitted</span><span class="o">(</span><span class="s">"user:create:1"</span><span class="o">));</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">isPermittedAll</span><span class="o">(</span><span class="s">"user:create"</span><span class="o">,</span><span class="s">"items:add"</span><span class="o">));</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="n">subject</span><span class="o">.</span><span class="na">logout</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">输出结果:</span>
+    <span class="n">用户登录认证</span><span class="o">!</span>
+    <span class="kc">true</span>
+    <span class="n">自定义授权信息</span>
+    <span class="kc">true</span>
+    <span class="n">自定义授权信息</span>
+    <span class="n">自定义授权信息</span>
+    <span class="kc">true</span>
+</code></pre></div></div><h3 id="shiro-核心类">shiro 核心类</h3><h4 id="passwordservice">PasswordService</h4><blockquote><p><em>shiro 提供了 PasswordService 和 CredentialsMatcher 用于提供加密密码以及验证密码服务</em>​</p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">PasswordService</span><span class="o">{</span>
+<span class="c1">//输入明文密码得到密文密码</span>
+ <span class="nc">String</span> <span class="nf">encryPassword</span><span class="o">(</span><span class="nc">Object</span> <span class="n">plaintextPassword</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IllegalArgumentException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Shiro</span> <span class="n">默认提供了PasswordService实现DefaultPasswordService</span><span class="o">;</span>
+<span class="nc">DefaultPasswordService配合PasswordMatcher实现简单的密码加密与验证服务</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRealm</span> <span class="kd">extends</span> <span class="nc">AuthorizingRealm</span><span class="o">{</span>
+ <span class="kd">private</span> <span class="nc">PasswordService</span> <span class="n">passwordService</span><span class="o">;</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPasswordService</span><span class="o">(</span><span class="nc">PasswordService</span> <span class="n">passwordService</span><span class="o">){</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">passwordService</span> <span class="o">=</span> <span class="n">passwordService</span><span class="o">;</span>
+ <span class="o">}</span>
+ <span class="c1">//省略doGetAuthorizationInfo</span>
+ <span class="kd">protected</span> <span class="nc">AuthenticationInfo</span> <span class="nf">doGetAuthenticationInfo</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">token</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">AuthenticatonExcetion</span><span class="o">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleAuthenticationInfo</span><span class="o">(</span><span class="s">"wu"</span><span class="o">,</span><span class="n">passwordService</span><span class="o">.</span><span class="na">encryptPassword</span><span class="o">(</span><span class="s">"123"</span><span class="o">),</span> <span class="n">getName</span><span class="o">());</span>
+ <span class="o">}</span>
+
+
+<span class="o">}</span>
+</code></pre></div></div><h5 id="defaultpasswordservice">DefaultPasswordService</h5><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="n">main</span><span class="o">]</span>
+<span class="n">passwordService</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">authc</span><span class="o">.</span><span class="na">credential</span><span class="o">.</span><span class="na">DefaultPasswordService</span>
+<span class="n">hashService</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">crypto</span><span class="o">.</span><span class="na">hash</span><span class="o">.</span><span class="na">DefaultHashCode</span>
+<span class="n">passwordService</span><span class="o">.</span><span class="na">hashService</span><span class="o">=</span><span class="n">$hashService</span>
+
+
+<span class="n">hashFormat</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">crypto</span><span class="o">.</span><span class="na">hash</span><span class="o">.</span><span class="na">format</span><span class="o">.</span><span class="na">Shiro1CryptFormat</span>
+<span class="n">passwordService</span><span class="o">.</span><span class="na">hashFormat</span><span class="o">=</span><span class="n">$hashFormat</span>
+<span class="n">hashFormatFactory</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">crypto</span><span class="o">.</span><span class="na">hash</span><span class="o">.</span><span class="na">format</span><span class="o">.</span><span class="na">DefaultHashFormatFatory</span>
+<span class="n">passwordService</span><span class="o">.</span><span class="na">hashFormatFactory</span><span class="o">=</span><span class="n">$hashFormatFactory</span>
+
+
+<span class="n">passwordMatcher</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">authc</span><span class="o">.</span><span class="na">credential</span><span class="o">.</span><span class="na">PasswordMatcher</span>
+<span class="n">passwordMatcher</span><span class="o">.</span><span class="na">passwordService</span><span class="o">=</span><span class="n">$passwordService</span>
+
+
+<span class="n">myRealm</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="na">aouo</span><span class="o">.</span><span class="na">MyRealm</span>
+<span class="n">myRealm</span><span class="o">.</span><span class="na">passwordService</span><span class="o">=</span><span class="n">$passwordSerivice</span>
+<span class="n">myRealm</span><span class="o">.</span><span class="na">CredentialMathcer</span><span class="o">=</span><span class="n">$passwordMatcher</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$myRealm</span>
+
+<span class="n">passwordService默认使用DefaultPasswordService</span><span class="err">，</span><span class="n">如果有必要可以自定义</span>
+<span class="n">hashService</span> <span class="n">定义散列密码使用hashService</span><span class="err">，</span><span class="n">默认使用DefaultService可以自定义</span>
+<span class="n">hashFormat</span> <span class="n">定义对散列出的值进行格式化</span><span class="o">,</span><span class="n">默认使用Shiro1CryptFormat另外提供了Base64Format和hHexFormat</span><span class="err">，</span><span class="n">对于有salt的密码自定义实现</span>
+<span class="nc">ParsableHashFormat然后把salt格式化到散列值中</span>
+<span class="n">hashFormatFactory</span> <span class="n">用于根据散列值的得到散列的密码和salt</span><span class="err">；</span><span class="n">因为如果使用SHA算法</span><span class="err">，</span><span class="n">那么会生成一个salt</span><span class="err">，</span><span class="n">此salt需要保存到散列后的值中</span><span class="err">，</span>
+<span class="n">以便只有与传入的密码比较时使用</span><span class="err">，</span><span class="n">默认使用DefaultHashFormatFactory</span>
+
+
+<span class="n">passwordMatcher使用PasswordMacher是一个CredenticalsMatcher实现</span>
+<span class="n">将credentialsMatcher赋值给myRealm</span><span class="err">，</span><span class="n">myRealm间接继承了AuthenticatingRealm</span><span class="err">，</span><span class="n">其在调用getAuthenticationInfo方法获取到AuthencicationInfo信息后</span>
+<span class="n">会使用credentialsMatcher来验证凭据是否匹配</span><span class="err">，</span><span class="n">如果不匹配</span><span class="err">，</span><span class="n">将抛出IncorrectCredentialsException异常</span>
+</code></pre></div></div><h4 id="hashedcredentialsmatcher">HashedCredentialsMatcher</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HashedCredentialsMatcher实现密码验证服务</span>
+
+<span class="n">shiro提供了CredentialsMatcher的散列实现HashedCredentialsMatcher</span><span class="err">，</span>
+      <span class="n">和之前的PasswordMatcher不同的是它只用于密码验证</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">algorithmName</span><span class="o">=</span><span class="s">"md5"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">username</span><span class="o">=</span><span class="s">"ssgao"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">password</span><span class="o">=</span><span class="s">"ssgao1987"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">salt</span><span class="o">=</span><span class="s">"123"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">salta</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SecureRandomNumberGenerator</span><span class="o">.</span><span class="na">nextBytes</span><span class="o">().</span><span class="na">toHex</span><span class="o">();</span>
+<span class="kt">int</span> <span class="n">hashInterations</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span>
+
+
+<span class="nc">SimpleHash</span> <span class="n">hash</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleHash</span><span class="o">(</span><span class="n">algorithmName</span><span class="o">,</span><span class="n">password</span><span class="o">,</span><span class="n">salt</span><span class="o">+</span><span class="n">salta</span><span class="err">，</span><span class="n">hashInterations</span><span class="o">);</span>
+</code></pre></div></div><h4 id="realm-默认实现">Realm 默认实现</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shiro的realm的默认实现和继承关系图</span>
+<span class="n">可以看出如果需要自定义Realm</span> <span class="n">只需要继承AuthorizingRealm</span><span class="o">(</span><span class="n">授权</span><span class="o">)</span><span class="n">即可</span><span class="err">，</span>
+<span class="n">其继承了AuthenticationRealm</span><span class="o">(</span><span class="n">身份验证</span><span class="o">),</span><span class="n">而且也间接继承了CacheingRealm</span><span class="err">（</span><span class="n">带有缓存实现</span><span class="err">）。</span>
+</code></pre></div></div><p><img src="https://cdn.nlark.com/yuque/0/2021/png/659846/1636437953872-bb8b0ae1-8aec-4f68-92e3-03cf200ed6df.png#clientId=uaf580b79-d820-4&amp;from=paste&amp;height=500&amp;id=u2925d233&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=1000&amp;originWidth=1552&amp;originalType=binary&amp;ratio=1&amp;size=665354&amp;status=done&amp;style=none&amp;taskId=u78465107-c475-493d-8a38-2d579512792&amp;width=776" alt="image.png" /></p><blockquote><p><strong><em>org.apache.shiro.realm.text.IniRealm</em></strong></p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="n">users</span><span class="o">]</span><span class="n">部分指定用户名</span><span class="o">/</span><span class="n">密码及其角色</span>
+<span class="o">[</span><span class="n">roles</span><span class="o">]</span><span class="n">部分指定角色即权限信息</span>
+</code></pre></div></div><blockquote><p><strong><em>org.apache.shiro.realm.text.PropertiesRealm</em></strong></p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user</span><span class="o">.</span><span class="na">username</span><span class="o">=</span><span class="n">password</span><span class="o">,</span><span class="n">role1</span><span class="o">,</span><span class="n">role2指定用户名</span><span class="o">/</span><span class="n">密码以及角色</span>
+<span class="n">role</span><span class="o">.</span><span class="na">role1</span><span class="o">=</span><span class="n">permission1</span><span class="o">,</span><span class="n">permission2指定角色以及权限</span>
+</code></pre></div></div><blockquote><p><strong><em>org.apache.shiro.realm.jdbc.JdbcRealm</em></strong></p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">通过sql查询相应的信息</span>
+
+<span class="s">"select password from users where username=?"</span> <span class="n">获取用户密码</span>
+
+<span class="s">"select password, password_salt from user where username= ?"</span> <span class="n">获取用户密码以及权限</span>
+
+<span class="s">"select role_name from user_roles where username=? "</span> <span class="n">获取用户角色</span>
+
+<span class="s">"select permission from roles_permissions where role_name=?"</span> <span class="n">获取角色对应的权限信息</span>
+
+<span class="n">也可以调用相应的api进行自定义sql</span><span class="o">;</span>
+</code></pre></div></div><h4 id="authenticator认证">Authenticator(认证)</h4><blockquote><p><strong><em>Authenticator 的职责是验证用户账号，是 shiro API 中身份验证核心的入口点</em></strong>​</p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Authenticator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">AuthenticationInfo</span> <span class="nf">authenticate</span><span class="o">(</span><span class="nc">AuthenticationToken</span> <span class="n">authenticationToken</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="nc">AuthenticationException</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="err">##</span><span class="n">验证成功</span><span class="err">，</span><span class="n">将返回AuthenticationInfo验证信息</span><span class="err">，</span><span class="n">此信息中包含了身份以及凭证</span><span class="err">；</span>
+<span class="n">如果验证失败将抛出</span>	<span class="n">相应的AuthenticationException实现</span>
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">securityManager接口继承了Authenticator</span><span class="err">，</span><span class="n">另外还有一个ModularRealmAuthenticator实现</span><span class="err">，</span>
+		<span class="n">其委托给多个Realm进行验证</span><span class="err">，</span><span class="n">验证规则通过AuthenticationStrategy接口指定</span><span class="err">，</span><span class="n">默认提供的实现</span><span class="err">。</span>
+
+<span class="nc">FirstSuccessfulStrategy</span>
+<span class="n">只要有一个Realm验证成功即可</span><span class="err">，</span><span class="n">只返回第一个Realm身份验证成功的认证信息</span><span class="err">，</span><span class="n">其他的忽略</span>
+
+<span class="nc">AtleastOneSuccessStrategy</span>
+<span class="n">只要有一个Realm验证成功即可</span><span class="err">，</span><span class="n">和FirstSuccessfulStrategy不同</span><span class="err">，</span><span class="n">返回所有Realm身份验证成功的认证信息</span>
+
+<span class="nc">AllSuccessfulStrategy</span>
+<span class="n">所有Realm验证成功才算成功</span><span class="err">，</span><span class="n">且返回所有Realm身份验证成功的认证信息</span><span class="err">，</span><span class="n">如果有一个失败就失败了</span>
+
+<span class="nc">ModularRealmAuthenticator默认使用AtLeastOneSuccessfulStrategy策略</span>
+
+</code></pre></div></div><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">假设我们有三个realm文件</span><span class="err">：</span>
+<span class="nl">myRealm1:</span><span class="n">用户名</span><span class="o">/</span><span class="n">密码为zhang</span><span class="o">/</span><span class="mi">123</span><span class="n">时成功</span><span class="err">，</span><span class="n">且返回身份</span><span class="o">/</span><span class="n">凭据为zhang</span><span class="o">/</span><span class="mi">123</span>
+<span class="nl">myRealm2:</span><span class="n">用户名为wang</span><span class="o">/</span><span class="mi">123</span><span class="n">时成功</span><span class="err">，</span><span class="n">且返回身份</span><span class="o">/</span><span class="n">凭据为wang</span><span class="o">/</span><span class="mi">123</span>
+<span class="nl">myRealm3:</span><span class="n">用户名为zhang</span><span class="o">/</span><span class="mi">123</span><span class="n">是成功</span><span class="err">，</span><span class="n">且返回身份</span><span class="o">/</span><span class="n">凭据为zhang</span><span class="err">@</span><span class="mi">163</span><span class="o">.</span><span class="na">com</span><span class="o">/</span><span class="mi">123</span> <span class="n">和myRealm1不同的是返回时的身份变了</span>
+
+
+<span class="n">ini</span> <span class="n">配置文件</span>
+<span class="err">#</span><span class="n">指定securityManager的authenticator</span>
+<span class="n">authenticator</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">pam</span><span class="o">.</span><span class="na">ModularRealmAuthenticator</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">authenticator</span><span class="o">=</span><span class="n">$authenticator</span>
+<span class="err">#</span><span class="n">指定securityManager</span><span class="o">.</span><span class="na">authenticator的authenticationStrategy</span>
+<span class="n">allSuccessfulStrategy</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">pam</span><span class="o">.</span><span class="na">AllsuccessfulStrategy</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">authenticator</span><span class="o">.</span><span class="na">authenticationStrategy</span><span class="o">=</span><span class="n">$allSuccessfulStrategy</span>
+
+
+<span class="n">myRealm1</span><span class="o">=</span><span class="n">main</span><span class="o">.</span><span class="na">MyRealm1</span>
+<span class="n">myRealm2</span><span class="o">=</span><span class="n">main</span><span class="o">.</span><span class="na">MyRealm2</span>
+<span class="n">myRealm3</span><span class="o">=</span><span class="n">main</span><span class="o">.</span><span class="na">MyRealm3</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">realms</span><span class="o">=</span><span class="n">$myRealm1</span><span class="o">,</span><span class="n">$myRealm3</span>
+</code></pre></div></div><h4 id="authorizer授权">Authorizer(授权)</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Authorizer的职责是进行授权</span><span class="o">(</span><span class="n">访问控制</span><span class="o">)</span><span class="err">，</span><span class="n">是shiroAPI</span> <span class="n">中授权核心的入口点</span><span class="err">，</span><span class="n">其提供了相应的角色</span><span class="o">/</span><span class="n">权限判断接口</span><span class="err">，</span><span class="n">具体参考器Javadoc</span><span class="err">。</span>
+
+<span class="nc">SecurityManager继承了Authorizer接口</span><span class="err">，</span><span class="n">且提供了ModularRealmAuthorizer</span> <span class="err">，</span><span class="n">用于多个Realm时的授权匹配</span><span class="err">。</span>
+    <span class="nc">PermissionResolver用于解析权限字符串到Permission实例</span>
+    <span class="nc">RolePermissionResolver</span> <span class="n">用于根据角色解析相应的权限集合</span>
+</code></pre></div></div><blockquote><p><strong><em>可以通过下面的 ini 配置更改 Authorizer 实现</em></strong></p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">authorizer</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">shiro</span><span class="o">.</span><span class="na">authz</span><span class="o">.</span><span class="na">ModularRealmAuthorizer</span>
+<span class="n">securityManager</span><span class="o">.</span><span class="na">authorizer</span><span class="o">=</span><span class="n">$authorizer</span>
+
+
+<span class="n">对于ModularRealmAuthorizer相应的AuthorizingSecurityManager会在初始化完成后自动将相应的realm设置进去</span><span class="err">，</span><span class="n">我们也可以通过调用其setRealms</span><span class="o">()</span><span class="n">方法进行设置</span><span class="err">。</span>
+<span class="n">对于实现自己的authorizer可以参考ModularRealmAuthorizer实现即可</span><span class="err">。</span>
+
+
+</code></pre></div></div><h4 id="permission">Permission</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">字符串通配符权限</span>
+
+<span class="n">规则</span><span class="err">：</span>
+
+ <span class="n">资源标识符</span><span class="err">：</span><span class="n">操作</span><span class="err">：</span><span class="n">对象实例ID</span>
+ <span class="n">即对那个资源的那个实例可以进行什么操作</span>
+
+<span class="n">其默认支持通配符权限字符串</span>
+
+<span class="s">":"</span> <span class="n">表示资源</span><span class="o">/</span><span class="n">操作</span><span class="o">/</span><span class="n">实例的分割符</span>
+<span class="s">","</span><span class="n">表示操作的分割</span>
+<span class="s">"*"</span><span class="n">表示任意资源</span><span class="o">/</span><span class="n">操作</span><span class="o">/</span><span class="n">实例</span>
+
+
+
+<span class="n">单个资源单个权限</span>
+	<span class="n">subject</span><span class="o">.</span><span class="na">checkPermission</span><span class="o">(</span><span class="s">"system:user:update"</span><span class="o">)</span>
+	<span class="n">用户拥有资源</span><span class="err">'</span><span class="nl">system:</span><span class="n">user</span><span class="err">"</span><span class="n">的update权限</span>
+</code></pre></div></div><h4 id="shiro-授权流程-1">shiro 授权流程</h4><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="mi">1</span><span class="o">)</span> <span class="n">首先调用Subject</span><span class="o">.</span><span class="na">isPermitted</span><span class="o">*/</span><span class="n">hasRole</span><span class="o">*</span><span class="n">接口</span><span class="err">，</span><span class="n">其会委托给SecurityManager</span><span class="err">，</span><span class="n">而SecurityManager接着会委托给Authorizer</span>
+
+<span class="mi">2</span><span class="o">)</span> <span class="nc">Authorizer是真正的授权者</span><span class="err">，</span><span class="n">如果我们调用如isPermitted</span><span class="o">(</span><span class="s">"user:view"</span><span class="o">),</span><span class="n">其首先会通过PermissionResolver把字符串转换成相应的Permission实例</span>
+
+<span class="mi">3</span><span class="o">)</span> <span class="n">在进行授权之前</span><span class="err">，</span><span class="n">会调用相应的Realm获取subject相应的角色</span><span class="err">、</span><span class="n">权限用于匹配传入的角色</span><span class="o">/</span><span class="n">权限</span>
+
+<span class="mi">4</span><span class="o">)</span> <span class="nc">Authorizer</span> <span class="n">会判断Realm的角色</span><span class="o">/</span><span class="n">权限是否和传入的匹配</span><span class="err">，</span><span class="n">如果多个Realm</span><span class="err">，</span><span class="n">会委托给ModularRealmAuthorizer进行循环判断</span><span class="err">。</span><span class="n">如果匹配如isPermitted</span><span class="o">*/</span><span class="n">hasRole</span><span class="o">*</span><span class="n">会返回true</span><span class="err">，</span><span class="n">否则返回false表示授权失败</span><span class="err">。</span>
+
+
+
+<span class="nc">ModularRealmAuthorizer进行多Realm匹配流程</span>
+
+<span class="mi">1</span><span class="o">)</span> <span class="n">首先检查相应的Realm是否实现了Authorizer</span>
+
+<span class="mi">2</span><span class="o">)</span><span class="n">如果实现了Authorizer</span><span class="err">，</span><span class="n">那么接着调用相应的isPermitted</span><span class="o">*/</span><span class="n">hasRole</span><span class="o">*</span><span class="n">接口进行匹配</span>
+
+<span class="mi">3</span><span class="o">)</span><span class="n">如果有一个Realm匹配那么将返回true</span><span class="o">,</span><span class="n">否则返回false</span>
+
+
+
+<span class="n">如果Realm进行授权的话</span><span class="err">，</span><span class="n">应该继承AuthorizingRealm</span><span class="err">，</span><span class="n">其流程是</span><span class="err">：</span>
+
+<span class="mi">1</span><span class="o">)</span> <span class="n">如果调用hasRole</span><span class="o">*,</span><span class="n">则直接获取AuthorizationInfo</span><span class="o">.</span><span class="na">getRoles</span><span class="o">()</span><span class="n">与传入角色比较即可</span>
+
+<span class="mi">2</span><span class="o">)</span> <span class="n">首先如果调用如</span> <span class="n">isPermitted</span><span class="o">(</span><span class="s">"user:view"</span><span class="o">),</span><span class="n">首先通过PermissionResolver将权限字符串转换成相应的Permission实例</span><span class="err">，</span><span class="n">默认使用WildcardPermissionResolver</span><span class="err">，</span><span class="n">即转换为通配符的WildcardPermission</span>
+
+
+
+<span class="n">通过AuthorizationInfo</span><span class="o">.</span><span class="na">getObjectPermissions</span><span class="o">()</span><span class="n">得到Permission实例集合</span><span class="err">；</span><span class="n">通过AuthorizationInfo</span><span class="o">.</span><span class="na">getStringPermissions</span><span class="o">()</span><span class="n">得到字符串集合并通过PermissionResolver解析为Permission实例</span><span class="err">，</span><span class="n">然后获取用户的角色</span><span class="err">，</span><span class="n">并通过RolePermissionResolver解析角色对应的权限集合</span><span class="o">(</span><span class="n">默认没有实现</span><span class="err">，</span><span class="n">可以自己提供</span><span class="o">)</span>
+
+<span class="n">接着调用Permission</span><span class="o">.</span><span class="na">implies</span><span class="o">(</span><span class="nc">Permission</span> <span class="n">p</span><span class="o">)</span><span class="n">逐个与传入的权限比较</span><span class="err">，</span><span class="n">如果有匹配的则返回true</span><span class="err">，</span><span class="n">否则返回false</span>
+
+
+
+
+</code></pre></div></div><h3 id="shiro-单点登录">shiro 单点登录</h3><blockquote><p><em>Shiro1.2 开始提供了 Jasig cas 单点登录的支持，单点登录主要用于多系统的集成，即在多个系统中，用户只需要到中央服务器登录一次，即可访问这些系统中的任何一个，无须多次登录。</em>​</p></blockquote><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cas单点登录系统分为服务器端和客户端</span><span class="err">，</span><span class="n">服务器端提供单点登录</span><span class="err">，</span><span class="n">多个客户端</span><span class="o">(</span><span class="n">子系统</span><span class="err">）</span><span class="n">将跳转到该服务器进行登录验证</span><span class="err">，</span><span class="n">大体流程如下</span><span class="err">：</span>
+
+<span class="mi">1</span><span class="o">)</span> <span class="n">访问客户端需要登录的页面</span> <span class="nl">http:</span><span class="c1">//localhost:9080/client/</span>
+	<span class="n">此时会跳转到单点登录服务器</span> <span class="nl">http:</span><span class="c1">//localhost:8443/server/login?service=http://localhost:9443/client/cas；</span>
+<span class="mi">2</span><span class="o">)</span> <span class="n">如果此时单点登录服务器也没有登录的话</span><span class="err">，</span><span class="n">会显示登录表单页面</span><span class="err">，</span><span class="n">输入用户名</span><span class="o">/</span><span class="n">密码进行登录</span>
+<span class="mi">3</span><span class="o">)</span> <span class="n">登录成功后服务器端会回调客户端传入的地址</span><span class="err">：</span><span class="nl">http:</span><span class="c1">//localhost:9443/client/cas?ticket=ST-1ecxdxxx且带一个ticket</span>
+<span class="mi">4</span><span class="o">)</span> <span class="n">客户端会把ticket提交给服务器来验证ticket是否有效</span><span class="err">，</span><span class="n">如果有效服务器端将返回用户身份</span>
+<span class="mi">5</span><span class="o">)</span> <span class="n">客户端可以再根据这个用户身份获取如当前系统用户</span><span class="err">、</span><span class="n">角色</span><span class="err">、</span><span class="n">权限信息</span><span class="err">。</span>
+
+</code></pre></div></div><div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"><h3>文档信息</h3><ul><li>本文作者：<a href="http://localhost:4000" target="_blank">ssgao</a></li><li>本文链接：<a href="http://localhost:4000/2017/06/06/SHIRO%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/" target="_blank">http://localhost:4000/2017/06/06/SHIRO%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/</a></li><li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li></ul></div></article><div class="share"></div><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/vendor/gitalk/gitalk.css"> <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> <script> var gitalk = new Gitalk({ id: '/2017/06/06/SHIRO%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E', clientID: 'd2e1cbbd298958076462', clientSecret: 'b42a4178e5fd4a7cf63189ef4b1453b05c375709', repo: 'blog-comments', owner: 'mzlogin', admin: ['mzlogin'], labels: ['gitment'], perPage: 50, }); gitalk.render('gitalk-container'); </script></div></div><div class="column one-fourth"><h3>Search</h3><div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"></div><ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul><script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'http://localhost:4000/assets/search_data.json?v=1636615028', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script><h3 class="post-directory-title mobile-hidden">Table of Contents</h3><div id="post-directory-module" class="mobile-hidden"><section class="post-directory"><dl></dl></section></div><script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/jquery.toc.js"></script></div></div></section><style> .videoWrapper { position: relative; padding-bottom: 56.333%; height: 0; background: black; } .videoWrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }</style><script> function get_youtube_id(url) { var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/; return (url.match(p)) ? RegExp.$1 : false; } function vimeo_embed(url,el) { var id = false; $.ajax({ url: 'https://vimeo.com/api/oembed.json?url='+url, async: true, success: function(response) { if(response.video_id) { id = response.video_id; if(url.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0; if(url.indexOf('loop=1') !== -1) var loop=1; else var loop=0; var theInnerHTML = '<div class="videoWrapper"><iframe src="https://player.vimeo.com/video/'+id+'/?byline=0&title=0&portrait=0'; if(autoplay==1) theInnerHTML += '&autoplay=1'; if(loop==1) theInnerHTML += '&loop=1'; theInnerHTML += '" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'; el.innerHTML = theInnerHTML; } } }); } function video_embed() { var p = document.getElementsByTagName('p'); for(var i = 0; i < p.length; i++) { //check if this is an external url (that starts with https:// or http:// if (p[i].innerHTML.indexOf("http://") == 0 || p[i].innerHTML.indexOf("https://") == 0) { var youtube_id = get_youtube_id(p[i].innerHTML); if(youtube_id) { if(p[i].innerHTML.indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0; if(p[i].innerHTML.indexOf('loop=1') !== -1) var loop=1; else var loop=0; var theInnerHTML = '<div class="videoWrapper"><iframe width="720" height="420" src="https://www.youtube.com/embed/' + youtube_id + '?rel=0&showinfo=0'; if(autoplay==1) theInnerHTML += '&autoplay=1'; if(loop==1) theInnerHTML += '&loop=1&playlist='+youtube_id+'&version=3'; if(p[i].innerHTML.indexOf('start=') !== -1) theInnerHTML += '&start='+p[i].innerHTML.substring(p[i].innerHTML.indexOf('start=')+6); theInnerHTML += '" frameborder="0" allowfullscreen></iframe></div>'; p[i].innerHTML = theInnerHTML; } if(p[i].innerHTML.indexOf('vimeo.com') !== -1) { //ask vimeo for the id and place the embed vimeo_embed(p[i].innerHTML,p[i]); } } } } video_embed(); function mp3_embed() { var p = document.getElementsByTagName('p'); for(var i = 0; i < p.length; i++) { if(p[i].innerHTML.indexOf('.mp3') !== -1) { var str = p[i].innerHTML.split('?'); if(str.length == 1) str[1] = ''; var str1 = str[1]; str1 = str1.replace('&','').replace('&',''); str1 = str1.replace('autoplay=1','').replace('autoplay=0',''); str1 = str1.replace('loop=1','').replace('loop=0',''); str1 = str1.replace('controls=0','').replace('controls=1',''); if (str[0].lastIndexOf('.mp3', str[0].length - 4) === str[0].length - 4 && str1.length == 0) { if(str[1].indexOf('autoplay=1') !== -1) var autoplay=1; else var autoplay=0; if(str[1].indexOf('loop=1') !== -1) var loop=1; else var loop=0; if(str[1].indexOf('controls=0') !== -1) var controls=0; else var controls=1; var newInnerHTML = '<audio'; if(autoplay==1) newInnerHTML += ' autoplay'; if(loop==1) newInnerHTML += ' loop'; if(controls==1) newInnerHTML += ' controls'; newInnerHTML += '><source src="'+str[0]+'" type="audio/mpeg">Your browser does not support the audio element.</audio>'; p[i].innerHTML = newInnerHTML; } } } } mp3_embed(); </script><footer class="container"><div class="site-footer" role="contentinfo"><div class="copyright left mobile-block"> © 2015 <span title="ssgao">ssgao</span> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a></div><ul class="site-footer-links right mobile-hidden"><li> <a href="javascript:window.scrollTo(0,0)" >TOP</a></li></ul><a href="https://github.com/aouoxx/aouoxx.github.io" target="_blank" aria-label="view source code"> <span class="mega-octicon octicon-mark-github" title="GitHub"></span> </a><ul class="site-footer-links mobile-hidden"><li> <a href="http://localhost:4000/" title="首页" target="">首页</a></li><li> <a href="http://localhost:4000/categories/" title="分类" target="">分类</a></li><li> <a href="http://localhost:4000/links/" title="链接" target="">链接</a></li><li> <a href="http://localhost:4000/about/" title="关于" target="">关于</a></li><li><a href="http://localhost:4000/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a></li></ul></div></footer><div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a></div><script src="https://cdn.jsdelivr.net/gh/aouoxx/aouoxx.github.io@master/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script><div style="display:none"> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-80669434-1', 'auto'); ga('send', 'pageview'); </script></div></body></html>
