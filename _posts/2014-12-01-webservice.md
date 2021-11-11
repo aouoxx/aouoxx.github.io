@@ -1,3 +1,13 @@
+---
+layout: post
+title: webservice的介绍
+categories: webservice
+description: webservice的介绍
+keywords: webservice
+---
+
+<meta name="referrer" content="no-referrer"/>
+
 ### JAVA 项目中发布 WebService
 
 ```java
