@@ -1,6 +1,6 @@
 ---
 layout: post
-title: web基础知识
+title: web&Servlet的基础信息介绍
 categories: [web, servlet]
 description: web基础知识的介绍,servlet的相关信息
 keywords: web, servlet

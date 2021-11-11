@@ -1,6 +1,6 @@
 ---
 layout: post
-title: web基础知识
+title: web中jquery,js的使用
 categories: [web, js, html]
 description: web基础知识的介绍,js和html的相关信息
 keywords: web, js, html
