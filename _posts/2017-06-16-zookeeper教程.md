@@ -367,6 +367,8 @@ close
 connect host:port
 ```
 
+#### zookeeper 的 cli 命令
+
 ```java
 列出某一节点下所有子节点信息
 	ls path [watch]
