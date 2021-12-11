@@ -1,19 +1,19 @@
-- name: Software Engineer Keywords
+- name: Software BigData Arithmetic ML
   keywords:
       - Java
-      - C++
-      - Python
+      - Flink
+      - Storm
+      - Scala
+      - Netty
+      - Hadoop
+      - Hive
+      - Spark
+      - ClickHouse
+      - Druid
+      - Spring/springboot
+      - Elasticsearch
+      - Redis
+      - Akka
+      - Dubbo
+      - presto/impala/kylin/kudu
       - Design Patterns
-
-- name: Mobile Developer Keywords
-  keywords:
-      - Android
-      - Reverse Engineering
-
-- name: Windows Developer Keywords
-  keywords:
-      - Win32 SDK
-      - DuiLib
-      - WTL
-      - COM
-      - WinDbg
