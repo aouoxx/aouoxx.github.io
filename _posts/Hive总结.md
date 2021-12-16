@@ -679,7 +679,7 @@ drwxr-xr-x   - root supergroup          0 2019-01-25 23:02 /mydb/home/province=h
 drwxr-xr-x   - root supergroup          0 2019-01-25 23:22 /mydb/home/province=shandong
 ```
 
-#### 动态分区\_
+#### 动态分区*​*
 
 ```
 https://blog.csdn.net/yeweiouyang/article/details/52560078
@@ -733,7 +733,7 @@ select url,substr(url,1,7) as month,day from t_partition
 -- 查询子句中需要包含 month,day 字段信息
 ```
 
-\_
+_​_
 
 #### _hive 外部表_
 
@@ -862,7 +862,7 @@ Row object ->Serializer -> <Key,Value> -> OutputFileFormat -> HDFS files
 #### _建表语句详细_
 
 ```
-CREATE TABLE `t1`(
+CREATE TABLE `t1`(  // 内部表
   `sid` int,
   `name` string,
   `age` int)
@@ -1289,6 +1289,11 @@ Time taken: 0.023 seconds, Fetched: 1 row(s)
 
 #### _show create table tbname_
 
+```
+查看表结构:
+describe formatted test_source;
+```
+
 #### _show partitions_
 
 ### _hive 自定义函数_
@@ -1369,7 +1374,7 @@ public class ItcastFunc extends UDF{
     select udffunc(2,3) from dual; //输出 5
 ```
 
-\_
+_​_
 
 #### UDAF(用户定义聚集函数)
 
@@ -1438,7 +1443,7 @@ public class UDTFDemo extends GenericUDTF {
 }
 ```
 
-\_
+_​_
 
 ```java
 UDTF的使用
@@ -1460,11 +1465,15 @@ UDTF两种使用方式:
        			lateral view explode_map(properties) mytable as col1,col2;
 ```
 
-\_
-\_
-\_
-\_
-\_
+_​_
+
+_​_
+
+_​_
+
+_​_
+
+_​_
 
 ### 开窗函数
 
@@ -1553,7 +1562,7 @@ id  studentid   language    math    english     classid departmentid    rank1   
 
 [_https://blog.csdn.net/wangpei1949/article/details/81437574_](https://blog.csdn.net/wangpei1949/article/details/81437574)
 
-### \_
+### _​_
 
 ### _hive 表索引_
 
@@ -1561,7 +1570,7 @@ id  studentid   language    math    english     classid departmentid    rank1   
 https://blog.csdn.net/zzq900503/article/details/79391071
 ```
 
-### \_
+### _​_
 
 ### _hive 谓词下推_
 
