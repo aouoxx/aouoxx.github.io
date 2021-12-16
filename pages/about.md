@@ -9,12 +9,11 @@ permalink: /about/
 ---
 
 我是矿工，数据+算法提升生产力，探索数据财富。
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e9b2999e718feb74308ccc1b8dfb16c1c3a3223
 仰慕「优雅编码的艺术」。
 坚信熟能生巧，努力改变人生。
+
+
+
 
 ## 联系
 
@@ -25,6 +24,8 @@ permalink: /about/
 {% if site.url contains 'mazhuang.org' %}
 
 {% endif %}
+  <li>邮箱地址: 1004217716@qq.com </li>
+  <li> 微信见二维码 </li>
 </ul>
 
 
