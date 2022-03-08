@@ -7,13 +7,6 @@ keywords: web, js, html
 ---
 
 <meta name="referrer" content="no-referrer"/>
-​
-
-​
-
-​
-
-​
 
 #### js 中 date 的介绍
 
@@ -34,8 +27,6 @@ keywords: web, js, html
 	var stringTime =
 
 ```
-
-​
 
 ```java
 /日期时间原型增加格式化方法
@@ -66,8 +57,6 @@ Date.prototype.Format = function (formatStr) {
 
 ```
 
-​
-
 #### window 的使用
 
 ```java
@@ -76,12 +65,6 @@ Date.prototype.Format = function (formatStr) {
 	window.setTimeout("window.location.href='xxxx'",2000);
 
 ```
-
-​
-
-​
-
-​
 
 ### JQuery 选择器
 
@@ -113,8 +96,6 @@ sele1 sele2 seleN 选择器 调用的格式如下： $("sele1 , sele2 ,seleN") �
 sele2到seleN为有效选择器,每个选择器之间用","号隔开，它们可以是前天提到的各种类型的选择器
 如 $('#id') $
 ```
-
-​
 
 ### JQuery 事件
 
@@ -155,8 +136,6 @@ $(selector).trigger(event,[param1,param2]) event
 [param1,param2] 传递到事件处理程序的额外参数。额外的参数对自定义事件特别有用
 ```
 
-​
-
 ### JQuery 处理事件
 
 ```html
@@ -165,10 +144,6 @@ mousemove(function); 鼠标在元素上移动触发事件 mouseout(function)
 鼠标从元素上离开后触发 mouseover(function) 鼠标移入对象时触发 mouseup(function)
 鼠标点击释放后触发
 ```
-
-​
-
-​
 
 #### 设置 checkbox
 
@@ -211,8 +186,6 @@ mousemove(function); 鼠标在元素上移动触发事件 mouseout(function)
 
 ```
 
-​
-
 #### select 选中值
 
 ```javascript
@@ -227,9 +200,3 @@ mousemove(function); 鼠标在元素上移动触发事件 mouseout(function)
 4) 获取当前选中项的text的值
  		$('.selector').find('option:selected').text();
 ```
-
-​
-
-​
-
-​

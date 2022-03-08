@@ -15,8 +15,6 @@ keywords: zookeeper
 客户端注册监听它关心的目录节点，当目录节点发生变化(数据改变，被删除，子目录节点增加删除)时，zookeeper会通知客户端
 ```
 
-​
-
 ```java
 'leader'
 leader服务器是整个ZK集群工作机制的核心
@@ -85,8 +83,6 @@ EPHEMRAL|SEQUENTIAL 临时自动编号节点
     znode节点编号会自动增加,但是会随session消失而消失
 
 ```
-
-​
 
 #### Stat 以及节点版本
 

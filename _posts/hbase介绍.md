@@ -165,8 +165,6 @@ meta是一种思想概念, 一种抽象思维, 用来描述数据的数据, 比�
 读的时候会同时读取memStore和HFile, 然后做merge
 ```
 
-**​**
-
 #### hbase 写数据
 
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/659846/1617183176601-f76c8a54-d33c-4247-9b80-97b7f0a6c802.png#height=353&id=xHvxT&margin=%5Bobject%20Object%5D&name=image.png&originHeight=429&originWidth=811&originalType=binary&ratio=1&size=65345&status=done&style=none&width=668)

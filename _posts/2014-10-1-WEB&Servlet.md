@@ -7,7 +7,6 @@ keywords: web, servlet
 ---
 
 <meta name="referrer" content="no-referrer"/>
-​
 
 ccc
 
@@ -53,9 +52,6 @@ welcome-file不可以是一个直接访问的action（直接跳转到对应的ur
 > _访问页面：http://127.0.0.1/Servlet/_
 
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/659846/1635735307992-8b33862c-168b-48dd-81f5-0e13518ab9c4.png#clientId=uaafaf5ae-53bd-4&from=paste&height=136&id=ufc9eaf2f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=207&originWidth=1180&originalType=binary&ratio=1&size=16065&status=done&style=none&taskId=u554bbb8a-bdff-4431-a48e-32141ba2da1&width=776)
-​
-
-​
 
 ### errorpage 页面跳转
 
@@ -86,7 +82,6 @@ location可以是html文件也可以是jsp页面。
 > _访问的不是当前服务下的页面：http://127.0.0.1/accociat_
 
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/659846/1635736134293-f20da321-fc92-40fd-b8d6-b2ddcad05048.png#clientId=uaafaf5ae-53bd-4&from=paste&height=137&id=uaae267d4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=225&originWidth=1309&originalType=binary&ratio=1&size=24733&status=done&style=none&taskId=u085f9caf-7493-4de7-9f29-0658f34c7ea&width=797.5)
-​
 
 ### urlpattern 的匹配
 
@@ -185,7 +180,7 @@ servlet的对外访问路径。
 
 > _\*匹配任意的字符，所以可以使用任意的 URL 去访问 ServletDemo01 这个 Servlet_
 
-**_映射关系的对应_**​
+**_映射关系的对应_**
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/659846/1635735833638-147f0ad0-eb00-4430-94c4-45fae2c2016b.png#clientId=uaafaf5ae-53bd-4&from=paste&height=226&id=u0b24d2e7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=452&originWidth=1742&originalType=binary&ratio=1&size=311270&status=done&style=none&taskId=u5135fa1b-2d75-4c45-8d18-9c8eb9e80f0&width=871)
 
 ```java
@@ -234,7 +229,7 @@ Web中URL地址的推荐写法
 	<jsp:include page="/jspfragments/demo.jsp" />
 ```
 
-> **_"/" 代表 webapps 目录的常见应用场景_**​
+> **_"/" 代表 webapps 目录的常见应用场景_**
 
 ```java
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -261,7 +256,7 @@ Web中URL地址的推荐写法
 
 ```
 
-> **_${pageContext.request.contextPath}的效果等同于 request.getContextPath()，两者获取到的都是"/项目名称"_**​
+> **_${pageContext.request.contextPath}的效果等同于 request.getContextPath()，两者获取到的都是"/项目名称"_**
 
 ```java
 1） 使用sendRedirect实现请求重定向
@@ -607,7 +602,7 @@ public class LoginServlet extends HttpServlet {
 }
 ```
 
-> *输入"login"页面跳转后的 URL 为*​
+> _输入"login"页面跳转后的 URL 为_
 
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/659846/1635736674165-ebdc29a4-6fa3-48dc-af34-881dcca3cd79.png#clientId=uaafaf5ae-53bd-4&from=paste&height=65&id=uae4a0f92&margin=%5Bobject%20Object%5D&name=image.png&originHeight=94&originWidth=1165&originalType=binary&ratio=1&size=11554&status=done&style=none&taskId=u66c57f12-49a3-4e5a-87a5-7681f05ac63&width=802.5)
 
@@ -1098,8 +1093,6 @@ HttpServletResponse对象代表服务器的响应，这个对象中封装了向�
     out.write(1+ "");
  }
 ```
-
-​
 
 **_文件下载和注意事项_**
 

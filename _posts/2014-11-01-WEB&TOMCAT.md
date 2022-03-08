@@ -8,11 +8,7 @@ keywords: tomcat
 
 <meta name="referrer" content="no-referrer"/>
 
-​
-
 ### tomcat 的使用介绍
-
-​
 
 ```javascript
 出现这种情况的原因有下面几种

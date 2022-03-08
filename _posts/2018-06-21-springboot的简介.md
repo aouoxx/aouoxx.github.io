@@ -7,9 +7,6 @@ keywords: 后端服务，spring
 ---
 
 <meta name="referrer" content="no-referrer"/>
-​
-
-​
 
 #### springboot 的概述
 
@@ -44,8 +41,6 @@ spring boot的优势
  现在非常流行为微服务,如果我这个项目仅仅只是需要发送一个邮件,如果我的项目仅仅是产生一个消费积分,都需要这么折腾一遍
  springboot的优势就体现出来,我们只需要非常少的几个配置就可以迅速方便的搭建起来一套web项目或者构建一个微服务。
 ```
-
-​
 
 ```java
 依赖配置信息

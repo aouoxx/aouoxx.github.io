@@ -370,8 +370,6 @@ springboot中使用定时任务很简单.
 
 ```
 
-​
-
 ```java
 >>>简单实例
     @SpringBootApplication

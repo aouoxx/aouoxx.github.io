@@ -7,9 +7,6 @@ keywords: 分布式, elasticjob
 ---
 
 <meta name="referrer" content="no-referrer"/>
-​
-
-​
 
 ### elasticjob 基本介绍
 
@@ -143,10 +140,6 @@ elastic-job-lite 原理
 
 ```
 
-​
-
-​
-
 ### elasticjob 的基本配置
 
 ```java
@@ -168,8 +161,6 @@ job:simple
     overwrite                   本地配置是否可覆盖注册中心配置,如果可覆盖,每次启动作业都以本地配置为准
 
 ```
-
-​
 
 ### elasticjob 的基本使用
 
@@ -195,8 +186,6 @@ job:simple
     // 定义Lite作业根配置
     JobRootConfiguration scriptJobRootConfig = LiteJobConfiguration.newBuilder(scriptCoreConfig).build();
 ```
-
-​
 
 ```java
 <dependency>
